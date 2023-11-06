@@ -38,3 +38,14 @@ def add_columns(df, gender, distance, style, category):
     # Fourth category
     df["category"] = [category]*df.shape[0]
     return df
+
+#Datacleaning
+def nas_rows(df):
+    # Remove columns with all NaN
+    df.dropna(axis=1, how='all', inplace=True)
+    # Remove rows with all NaN
+    df.dropna(axis=0, how='all', inplace=True)
+    # Remove first two rows
+    df.drop([0,1], axis=0, inplace=True)
+    
+    return df
