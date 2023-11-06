@@ -1,10 +1,13 @@
-#%%
 import tabula
 import pandas as pd
 import os
+# Import auxfunctions.py
+import auxfunctions as aux
+## Get all files in pdfs folder
+files = os.listdir('pdfs')
 
-# Read pdf
-df = tabula.read_pdf("pdfs/ResultList_25.pdf", pages='all')
+for file in files:
+    ## Read pdf file
+    lista = tabula.read_pdf('pdfs/'+file, pages='all')
+    
 
-print(df)
-# %%
