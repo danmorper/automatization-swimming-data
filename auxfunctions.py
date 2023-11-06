@@ -1,13 +1,6 @@
 import tabula
 import pandas as pd
 
-def pdf_to_csv(pdf_path, csv_path):
-    """
-    pdf_path: path to pdf file
-    csv_path: path to csv file
-    """
-    tabula.convert_into(pdf_path, csv_path, output_format="csv", pages='all')
-
 def gender_distance_style_category(lista):
     """
     lista: result of pdf_to_csv
@@ -33,3 +26,15 @@ def gender_distance_style_category(lista):
     category = namessplitspace[0]
 
     return gender, distance, style, category
+
+def add_columns(df, gender, distance, style, category): 
+    #add to df 3 columns
+    # First gender
+    df["gender"] = [gender]*df.shape[0]
+    # Second distance
+    df["distance"] = [distance]*df.shape[0]
+    # Third style
+    df["style"] = [style]*df.shape[0]
+    # Fourth category
+    df["category"] = [category]*df.shape[0]
+    return df
