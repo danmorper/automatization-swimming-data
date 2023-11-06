@@ -8,6 +8,5 @@ files = os.listdir('pdfs')
 
 for file in files:
     ## Read pdf file
-    lista = tabula.read_pdf('pdfs/'+file, pages='all')
+    lista = tabula.read_pdf(file, pages='all')
     
-
