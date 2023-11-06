@@ -32,5 +32,9 @@ for pdf in pdfs:
         with open(file_path, 'wb') as f:
             f.write(r.content)
             print("File downloaded successfully")
+            print("Saved in {}".format(file_path))
+
+# print list of files in pdfs directory
+print(os.listdir(output_dir))
 # Close the browser
 driver.close()
