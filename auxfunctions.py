@@ -97,3 +97,80 @@ def evenANDpuntos(df):
     # reset index
     even.reset_index(drop=True, inplace=True)
     return even
+
+def surnames_names_team (df):
+    df.iloc[:,0] = df.iloc[:,0].str.split('.')
+    # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
+    # remove the first column
+    first_column = df.columns[0]
+    df[["drop", "full_name"]] = pd.DataFrame(df[first_column].tolist(), index= df.index)
+    df.drop(first_column, axis=1, inplace=True)
+    df.drop("drop", axis=1, inplace=True)
+    # Reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # remove , in full_name
+    df["full_name"] = df["full_name"].str.replace(',', '')
+    # split full_name in three columns: firstname, secondname and name
+    name_parts = df['full_name'].str.split()
+    
+    df['first_surname'] = name_parts.str[0]
+    df['first_surname'] = df['first_surname'].str.lower()
+    df['second_surname'] = name_parts.str[1]
+    df['second_surname'] = df['second_surname'].str.lower()
+    df['name'] = name_parts.str[2]
+    df['name'] = df['name'].str.lower()
+    # remove full_name
+    df.drop("full_name", axis=1, inplace=True)
+
+    # first surname first column second surname second column and name third column
+    cols = df.columns.tolist()
+    cols = cols[-3:] + cols[:-3]
+    df = df[cols]
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # drop column 5
+    df.drop(df.columns[5], axis=1, inplace=True)
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # remove numbers and first whitespace in third column
+    teams = df.iloc[:,3]
+    df.drop(df.columns[3], axis=1, inplace=True)
+    # remove numbers from teams
+    teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
+    # remove first whitespace
+    teams = [team.lstrip() for team in teams]
+    print(teams)
+    # add teams as the fourth column
+    df.insert(loc = 3, column = "team", value = teams)
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    df.columns = ["first_surname", "second_surname", "name", "team", "time", "distance", "style", "category", "score"]
+    return df
+
+def delete_columns(df):
+    """
+    df: dataframe
+    Output: df without columns 2 and 4
+    """
+    df.drop(df.columns[2], axis=1, inplace=True)
+    df.drop(df.columns[4], axis=1, inplace=True)
+    return df
+
+def pdf_to_df(pdf): 
+    tabu = tabula.read_pdf(pdf, pages='all')
+    gender, distance, style, category = gender_distance_style_category(tabu)
+    tabu = add_columns(tabu[0], gender=gender, distance=distance, style=style, category=category) #add_columns has dataframe as input
+    tabu = nas_rows(tabu)
+    # reset index of tabu
+    tabu.reset_index(drop=True, inplace=True)
+    tabu = delete_columns(tabu) 
+    tabu = evenANDpuntos(tabu)
+    tabu = surnames_names_team(tabu)
+    return tabu
