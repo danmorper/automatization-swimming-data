@@ -6,8 +6,8 @@ def gender_distance_style_category(lista):
     lista: result of tabula.read_pdf
     Output is (gender, distance, style, category) of the pdf IT NEEDS TO BE USED BEFORE nas_rows
     """
-    lista = lista[0]
-    names = lista.columns
+    df = lista
+    names = df.columns
     #names in lowercase
     names = [name.lower() for name in names]
     names = [name.replace('á','a') for name in names]
@@ -23,7 +23,8 @@ def gender_distance_style_category(lista):
     distance = ''.join([i for i in distance if not i.isalpha()])
     style = namessplitpoint[1].split(' ')[2]
 
-    namessplitspace = names[4].split(' ')
+    # last element in names
+    namessplitspace = names[-1].split(' ')
     category = namessplitspace[0]
 
     return gender, distance, style, category
@@ -50,10 +51,10 @@ def nas_rows(df):
     df: dataframe
     Output: df with rows with only NaN removed and it removes the first two rows
     """
-    # Remove columns with all NaN
-    df.dropna(axis=1, how='all', inplace=True)
-    # Remove rows with all NaN
-    df.dropna(axis=0, how='all', inplace=True)
+    # Remove columns with more than 20% NaN
+    df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
+    # Remove rows with more than 20% NaN
+    df.dropna(axis=0, thresh=int(0.8*df.shape[1]), inplace=True)
     # Remove first two rows
     df.drop([0,1], axis=0, inplace=True)
     
@@ -151,26 +152,28 @@ def surnames_names_team (df):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    df.columns = ["first_surname", "second_surname", "name", "team", "time", "distance", "style", "category", "score"]
+    df.columns = ["first_surname", "second_surname", "name", "team", "time", "gender","distance", "style", "category", "score"]
     return df
 
-def delete_columns(df):
-    """
-    df: dataframe
-    Output: df without columns 2 and 4
-    """
-    df.drop(df.columns[2], axis=1, inplace=True)
-    df.drop(df.columns[4], axis=1, inplace=True)
-    return df
+# def delete_columns(df):
+#     """
+#     df: dataframe
+#     Output: df without columns 2 and 4
+#     """
+#     df.drop(df.columns[2], axis=1, inplace=True)
+#     df.drop(df.columns[4], axis=1, inplace=True)
+#     return df
 
 def pdf_to_df(pdf): 
     tabu = tabula.read_pdf(pdf, pages='all')
+    tabu = tabu[0]
     gender, distance, style, category = gender_distance_style_category(tabu)
-    tabu = add_columns(tabu[0], gender=gender, distance=distance, style=style, category=category) #add_columns has dataframe as input
+    tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category) #add_columns has dataframe as input
     tabu = nas_rows(tabu)
     # reset index of tabu
     tabu.reset_index(drop=True, inplace=True)
-    tabu = delete_columns(tabu) 
+    # tabu = delete_columns(tabu) 
     tabu = evenANDpuntos(tabu)
     tabu = surnames_names_team(tabu)
     return tabu
+
