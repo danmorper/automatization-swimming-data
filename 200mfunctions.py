@@ -1,12 +1,14 @@
 import tabula
 import pandas as pd
-
-def gender_distance_style_category(lista):
+from datetime import datetime as dt
+def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
     Output is (gender, distance, style, category) of the pdf IT NEEDS TO BE USED BEFORE nas_rows
     """
     df = lista
+    date_string = df.iloc[0,0].split(' ')[0]
+    time_string = df.iloc[0,0].split(' ')[2]
     names = df.columns
     #names in lowercase
     names = [name.lower() for name in names]
@@ -27,14 +29,14 @@ def gender_distance_style_category(lista):
     namessplitspace = names[-1].split(' ')
     category = namessplitspace[0]
 
-    return gender, distance, style, category
+    return gender, distance, style, category, date_string, time_string
 
-def add_columns(df, gender, distance, style, category): 
+def add_columns(df, gender, distance, style, category, date_string, time_string): 
     """"
     add to df 3 columns gender, distance, style, category.
     It should be used together with gender_distance_style_category
     """
-    #add to df 3 columns
+    #add to df 5 columns
     # First gender
     df["gender"] = [gender]*df.shape[0]
     # Second distance
@@ -43,6 +45,12 @@ def add_columns(df, gender, distance, style, category):
     df["style"] = [style]*df.shape[0]
     # Fourth category
     df["category"] = [category]*df.shape[0]
+    # Fifth date
+    df["date"] = [date_string]*df.shape[0]
+    df["date"] = pd.to_datetime(df["date"], format='%d/%m/%Y')
+    # Sixth time
+    df["time"] = [time_string]*df.shape[0]
+    df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
     return df
 
 #Datacleaning
@@ -66,11 +74,11 @@ def puntos(df):
     Output: list of points and df without the column of points. From now on I will say scores instead of points
     """
     # extract the forth column starting by the end
-    points = df.iloc[:,-5].tolist()
+    points = df.iloc[:,-7].tolist()
     # remove elements from puntos which are "-"
     points = [point for point in points if point != "-"]
     # remove the column
-    df.drop(df.columns[-5], axis=1, inplace=True)
+    df.drop(df.columns[-7], axis=1, inplace=True)
     return points, df
 def even_odd(df):
     """
@@ -152,7 +160,7 @@ def surnames_names_team (df):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    df.columns = ["first_surname", "second_surname", "name", "team", "time", "gender","distance", "style", "category", "score"]
+    df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time", "score"]
     return df
 
 # def delete_columns(df):
@@ -167,8 +175,8 @@ def surnames_names_team (df):
 def pdf_to_df(pdf): 
     tabu = tabula.read_pdf(pdf, pages='all')
     tabu = tabu[0]
-    gender, distance, style, category = gender_distance_style_category(tabu)
-    tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category) #add_columns has dataframe as input
+    gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
+    tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
     tabu = nas_rows(tabu)
     # reset index of tabu
     tabu.reset_index(drop=True, inplace=True)
