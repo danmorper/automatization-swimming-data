@@ -5,6 +5,7 @@ def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
     Output is (gender, distance, style, category) of the pdf IT NEEDS TO BE USED BEFORE nas_rows
+    Functions in which it is being used: pdf_to_df
     """
     df = lista
     date_string = df.iloc[0,0].split(' ')[0]
@@ -35,6 +36,7 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
     """"
     add to df 3 columns gender, distance, style, category.
     It should be used together with gender_distance_style_category
+    Functions in which it is being used: pdf_to_df
     """
     #add to df 5 columns
     # First gender
@@ -58,6 +60,7 @@ def nas_rows(df):
     """
     df: dataframe
     Output: df with rows with only NaN removed and it removes the first two rows
+    Functions in which it is being used: pdf_to_df
     """
     # Remove columns with more than 20% NaN
     df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
@@ -68,22 +71,46 @@ def nas_rows(df):
     
     return df
 
-def puntos(df):
-    """
-    df: dataframe
-    Output: list of points and df without the column of points. From now on I will say scores instead of points
-    """
-    # extract the forth column starting by the end
-    points = df.iloc[:,-7].tolist()
-    # remove elements from puntos which are "-"
-    points = [point for point in points if point != "-"]
-    # remove the column
-    df.drop(df.columns[-7], axis=1, inplace=True)
-    return points, df
+# def column_points(df):
+#     """
+#     df: dataframe
+#     Output: column with more than 20% of hyphens
+#     We use this function in points function, in order to find the column we'll called score
+#     """
+#     for column in df.columns:
+#         decimal_count = sum(df[column].apply(lambda x: isinstance(x, str) and x.count('.') == 1 and x.replace('.', '').isdigit()))
+#         if decimal_count >= len(df) / 5:
+#             return column
+#     return  KeyError("No column with more than 20% hyphens found. list_hyphens: {}".format(list_hyphens))
+
+# Example of usage:
+# Replace 'your_data_frame' with the name of your DataFrame
+# hyphen_columns = find_column_with_half_hyphens(your_data_frame)
+# print(hyphen_columns)
+
+# def puntos(df):
+#     """
+#     df: dataframe
+#     Output: list of points and df without the column of points. From now on I will say scores instead of points
+#     Functions being used: column_points
+#     Functions in which it is being used: evenANDpuntos
+#     """
+
+#     # find the column with more than 20% of hyphens
+#     column = column_points(df)
+#     # extract the forth column starting by the end
+#     points = df[column].tolist()
+#     # remove elements from puntos which are "-"
+#     points = [point for point in points if point != "-"]
+#     # remove the column
+#     df.drop(column, axis=1, inplace=True)
+#     return points, df
 def even_odd(df):
     """
     df: dataframe
     Output: df with only even rows and df with only odd rows
+    It uses even_odd function
+    Functions in which it is being used: evenANDpuntos
     """
     # create a new dataframe with even rows
     even = df.iloc[::2]
@@ -96,18 +123,25 @@ def evenANDpuntos(df):
     df: dataframe
     Output: df with only even rows and a new column for scores
     It uses even_odd and puntos functions
+    Functions in which it is being used: pdf_to_df
     """
     even, _ = even_odd(df)
-    score, _ = puntos(df)
+    # score, _ = puntos(df)
     # convert to float
-    score = [float(x) for x in score]
+    # score = [float(x) for x in score]
     # add puntos to even
-    even["score"] = score
+    # even["score"] = score
     # reset index
     even.reset_index(drop=True, inplace=True)
     return even
 
-def surnames_names_team (df):
+def columns_df (df):
+    """
+    df: dataframe
+    Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
+    It uses even_odd and puntos functions and it uses add_columns function
+    Functions in which it is being used: pdf_to_df
+    """
     df.iloc[:,0] = df.iloc[:,0].str.split('.')
     # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
     # remove the first column
@@ -149,18 +183,25 @@ def surnames_names_team (df):
     # remove numbers and first whitespace in third column
     teams = df.iloc[:,3]
     df.drop(df.columns[3], axis=1, inplace=True)
-    # remove numbers from teams
-    teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
-    # remove first whitespace
-    teams = [team.lstrip() for team in teams]
-    print(teams)
+    # remove numbers from teams if they exist
+
+    if teams.str.contains('\d').any():
+        teams = teams.str.replace('\d+', '')
+        # teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
+
+    # remove first whitespace if it exists
+    if teams.str.contains(' ').any():
+        teams = teams.str.replace(' ', '', 1)
+        # teams = [item.lstrip() for item in teams]
     # add teams as the fourth column
     df.insert(loc = 3, column = "team", value = teams)
 
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time", "score"]
+    print(df)
+
+    df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 
 # def delete_columns(df):
@@ -182,6 +223,6 @@ def pdf_to_df(pdf):
     tabu.reset_index(drop=True, inplace=True)
     # tabu = delete_columns(tabu) 
     tabu = evenANDpuntos(tabu)
-    tabu = surnames_names_team(tabu)
+    tabu = columns_df(tabu)
     return tabu
 

@@ -1,6 +1,6 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,score
-rodriguez,castro,victor,C.D.N. Ciudad De Algeciras,2:41.21,masc,200,estilos,alevin,2023-11-04,16:15:00,37.05
-molina,nuñez,victor,C.N. San Fernando,2:58.52,masc,200,estilos,alevin,2023-11-04,16:15:00,38.23
-rodriguez,piñero,antonio,C.N. San Fernando,2:58.53,masc,200,estilos,alevin,2023-11-04,16:15:00,39.22
-virues,alba,pablo,C.N. San Fernando,3:09.83,masc,200,estilos,alevin,2023-11-04,16:15:00,43.98
-rambouk,larrud,imran,C.D.N. Ciudad De Algeciras,3:19.27,masc,200,estilos,alevin,2023-11-04,16:15:00,47.05
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
+rodriguez,castro,victor,11C.D.N. Ciudad De Algeciras,2:41.21,masc,200,estilos,alevin,2023-11-04,16:15:00
+molina,nuñez,victor,11C.N. San Fernando,2:58.52,masc,200,estilos,alevin,2023-11-04,16:15:00
+rodriguez,piñero,antonio,11C.N. San Fernando,2:58.53,masc,200,estilos,alevin,2023-11-04,16:15:00
+virues,alba,pablo,11C.N. San Fernando,3:09.83,masc,200,estilos,alevin,2023-11-04,16:15:00
+rambouk,larrud,imran,12C.D.N. Ciudad De Algeciras,3:19.27,masc,200,estilos,alevin,2023-11-04,16:15:00
