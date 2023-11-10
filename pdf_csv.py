@@ -11,6 +11,7 @@ files = os.listdir('pdfs')
 ResultList_25_path = "pdfs/ResultList_25.pdf"
 # convert ResultList_25 dataframe into ResultList_25.csv
 ResultList_25_df = aux.pdf_to_df(ResultList_25_path)
+print(ResultList_25_df)
 ResultList_25_df.to_csv("csvs/ResultList_25.csv", index=False)
 
 ResultList_26 = "pdfs/ResultList_26.pdf"

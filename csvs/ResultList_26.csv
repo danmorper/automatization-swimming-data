@@ -1,11 +1,11 @@
-first_surname,second_surname,name,team,time,gender,distance,style,category,score
-escobar,cherbuy,clara,C.N. Los Barrios,2:36.46,fem,200,estilos,alevin,37.99
-mena,orozco,carlota,C.D.N. Sanlucar,2:40.31,fem,200,estilos,alevin,37.08
-monge,aixela,alexia,C.D.N. Ciudad De Algeciras,2:40.85,fem,200,estilos,alevin,36.41
-mena,orozco,blanca,C.D.N. Sanlucar,2:42.96,fem,200,estilos,alevin,37.71
-redondo,zamora,paloma,C.D.N. Ciudad De Algeciras,2:49.99,fem,200,estilos,alevin,39.78
-diaz,gonzalez,alicia,C.D.N. Ciudad De Algeciras,2:55.09,fem,200,estilos,alevin,41.44
-moreno,bustos,claudia,C.D.N. Ciudad De Algeciras,2:55.26,fem,200,estilos,alevin,42.25
-bravo,villar,marcela,C.N. Bahia De Cadiz,3:01.17,fem,200,estilos,alevin,40.6
-jimenez,martinez,claudia,C.N. San Fernando,3:08.59,fem,200,estilos,alevin,44.74
-estevez,terroba,leire,C.N. San Fernando,3:14.30,fem,200,estilos,alevin,43.03
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,score
+escobar,cherbuy,clara,C.N. Los Barrios,2:36.46,fem,200,estilos,alevin,2023-11-04,16:20:00,37.99
+mena,orozco,carlota,C.D.N. Sanlucar,2:40.31,fem,200,estilos,alevin,2023-11-04,16:20:00,37.08
+monge,aixela,alexia,C.D.N. Ciudad De Algeciras,2:40.85,fem,200,estilos,alevin,2023-11-04,16:20:00,36.41
+mena,orozco,blanca,C.D.N. Sanlucar,2:42.96,fem,200,estilos,alevin,2023-11-04,16:20:00,37.71
+redondo,zamora,paloma,C.D.N. Ciudad De Algeciras,2:49.99,fem,200,estilos,alevin,2023-11-04,16:20:00,39.78
+diaz,gonzalez,alicia,C.D.N. Ciudad De Algeciras,2:55.09,fem,200,estilos,alevin,2023-11-04,16:20:00,41.44
+moreno,bustos,claudia,C.D.N. Ciudad De Algeciras,2:55.26,fem,200,estilos,alevin,2023-11-04,16:20:00,42.25
+bravo,villar,marcela,C.N. Bahia De Cadiz,3:01.17,fem,200,estilos,alevin,2023-11-04,16:20:00,40.6
+jimenez,martinez,claudia,C.N. San Fernando,3:08.59,fem,200,estilos,alevin,2023-11-04,16:20:00,44.74
+estevez,terroba,leire,C.N. San Fernando,3:14.30,fem,200,estilos,alevin,2023-11-04,16:20:00,43.03
