@@ -1,50 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
-
+from selenium.webdriver.support.wait import WebDriverWait 
+from selenium.webdriver.support import expected_conditions as EC
 driver = webdriver.Firefox()  # Initialize your WebDriver
 
 driver.get("https://rfen.es/es/clubs")
-arrow = driver.find_element(By.CSS_SELECTOR, 'a.ml-trigger:nth-child(2)')
 
-# Create empty dataframe with 3 columns 'comunidad_autonoma', 'provincia', 'clubes'
-df = pd.DataFrame({'comunidad_autonoma': [], 'provincia': [], 'clubes': []})
-                   
-for i in range(1353):
-    # Find elements using By for 'delegacion'
-    delegacion_elements = driver.find_elements(By.CLASS_NAME, 'colstyle-delegacion')
-
-    # Find elements using By for 'nombres'
-    nombres_elements = driver.find_elements(By.CLASS_NAME, 'colstyle-nombre')
-
-    # Hacer un diccionario en el que la clave sea la delegación y el valor sea el club
-    # Access and print the text content of 'delegacion' elements
-    delegaciones = []
-    for element in delegacion_elements:
-        delegaciones.append(element.text)
-    # Separar en cada elemento de delegacion por | 
-
-    delegaciones = [delegacion.split("|") for delegacion in delegaciones]
-    # drop first element of delegaciones
-    delegaciones = delegaciones[1:]
-    
-    comunidad_autonoma = []
-    for delegacion in delegaciones:
-        comunidad_autonoma.append(delegacion[0])
-    
-    provincia = []
-    for delegacion in delegaciones:
-        provincia.append(delegacion[1])
-    print(delegaciones)
-
-    # Access and print the text content of 'nombres' elements
-    clubes = []
-    for element in nombres_elements:
-        clubes.append(element.text)
-    clubes = clubes[1:]
-
-    # change accents to non accents in the 3 lists and make them lowercase
-    def remove_accents(input_str):
+def remove_accents(input_str):
         s = input_str
         s = s.replace('á','a')
         s = s.replace('é','e')
@@ -52,21 +15,66 @@ for i in range(1353):
         s = s.replace('ó','o')
         s = s.replace('ú','u')
         return s
-    def make_lowercase(input_str):
-        s = input_str
-        s = s.lower()
-        return s
-    comunidad_autonoma = [remove_accents(comunidad) for comunidad in comunidad_autonoma]
-    comunidad_autonoma = [make_lowercase(comunidad) for comunidad in comunidad_autonoma]
-    provincia = [remove_accents(provincia) for provincia in provincia]
-    provincia = [make_lowercase(provincia) for provincia in provincia]
-    clubes = [remove_accents(club) for club in clubes]
-    clubes = [make_lowercase(club) for club in clubes]
-    # Create a dataframe with the lists
-    df.combine_first(pd.DataFrame({'comunidad_autonoma': comunidad_autonoma, 'provincia': provincia, 'clubes': clubes}))
-    
-    # Create a json file with the dataframe
-    driver.execute_script("arguments[0].click();", arrow)
+def make_lowercase(input_str):
+    s = input_str
+    s = s.lower()
+    return s  
+def remove_whitespace(input_str):
+    s = input_str
+    s = s.replace(' ','')
+    return s
 
-df.to_json('clubs.json', orient='records')
+# Create empty dataframe with 3 columns 'comunidad_autonoma', 'provincia', 'clubes'
+df = pd.DataFrame({'comunidad_autonoma': [], 'provincia': [], 'clubes': []})
+
+# Get max number of pages
+num = driver.find_element(By.XPATH, '/html/body/div[1]/div[1]/main/div/div[1]/div/div[2]/div/div[2]/div[4]/div[2]/span[1]').text
+num = int(num[-3:])
+print(num)
+# Iterate over each page
+for i in range(num):
+    
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'colstyle-delegacion')))
+    # find.element tbody
+    div = driver.find_element(By.CLASS_NAME, 'ml-bottom')
+    table = div.find_element(By.TAG_NAME, 'tbody')
+    # iterate over each row of the table
+    clubes = []
+    provincias = []
+    comunidades = []
+    for row in table.find_elements(By.TAG_NAME, 'tr'):
+        # iterate over each cell of the row
+        for cell in row.find_elements(By.TAG_NAME, 'td'):
+            # print the cell text
+            if cell.get_attribute('class') == 'colstyle-delegacion':
+                delegacion = cell.text
+                # split the text by |
+                delegacion = delegacion.split("|")
+                # apply remove_accents and make_lowercase to each element of delegacion
+                delegacion = [make_lowercase(element) for element in delegacion]
+                delegacion = [remove_accents(element) for element in delegacion]
+                delegacion = [remove_whitespace(element) for element in delegacion]
+                print(delegacion)
+                if delegacion == ['']:
+                    comunidades.append(None)
+                    provincias.append(None)
+                elif len(delegacion) == 1:
+                    comunidades.append("RFEN")
+                    provincias.append(None)
+                else:
+                    comunidades.append(delegacion[0])
+                    provincias.append(delegacion[1])
+            elif cell.get_attribute('class') == 'colstyle-nombre':
+                club = cell.text
+                club = make_lowercase(club)
+                club = remove_accents(club)
+                club = remove_whitespace(club)
+                clubes.append(club)
+    df = df.combine_first(pd.DataFrame({'comunidad_autonoma': comunidades, 'provincia': provincias, 'clubes': clubes}))
+    if i < (num-1):
+        arrow = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.fa-angle-right')))
+        driver.execute_script("arguments[0].click();", arrow)
+
+print("for loop finished" + str(i) + "OLE YO PIXA") 
+df.to_csv('clubs.csv', index=False)  # Save the dataframe to a CSV file
 driver.close()  # Close the browser
