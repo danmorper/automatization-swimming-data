@@ -54,7 +54,6 @@ for i in range(num):
                 delegacion = [make_lowercase(element) for element in delegacion]
                 delegacion = [remove_accents(element) for element in delegacion]
                 delegacion = [remove_whitespace(element) for element in delegacion]
-                print(delegacion)
                 if delegacion == ['']:
                     comunidades.append(None)
                     provincias.append(None)
@@ -70,9 +69,11 @@ for i in range(num):
                 club = remove_accents(club)
                 club = remove_whitespace(club)
                 clubes.append(club)
-    df = df.combine_first(pd.DataFrame({'comunidad_autonoma': comunidades, 'provincia': provincias, 'clubes': clubes}))
+    temp_df = pd.DataFrame({'comunidad_autonoma': comunidades, 'provincia': provincias, 'clubes': clubes})
+    df = pd.concat([df, temp_df], ignore_index=True)
+    print(df)
     if i < (num-1):
-        arrow = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.fa-angle-right')))
+        arrow = WebDriverWait(driver, 180).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.fa-angle-right')))
         driver.execute_script("arguments[0].click();", arrow)
 
 print("for loop finished" + str(i) + "OLE YO PIXA") 

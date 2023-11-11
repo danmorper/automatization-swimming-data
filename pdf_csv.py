@@ -3,6 +3,7 @@ import pandas as pd
 import os
 # Import 20mmfunctions.py
 import functions200m as fun200
+import functions100m as fun100
 ## Get all files in pdfs folder
 files = os.listdir('pdfs')
 
@@ -21,7 +22,7 @@ ResultList_26_df.to_csv("csvs/ResultList_26.csv", index=False)
 
 ResultList_27 = "pdfs/ResultList_27.pdf"
 # convert ResultList_27 dataframe into ResultList_27.csv
-ResultList_27_df = fun200.pdf_to_df(ResultList_27)
+ResultList_27_df = fun100.pdf_to_df(ResultList_27)
 ResultList_27_df.to_csv("csvs/ResultList_27.csv", index=False)
 
 # for file in files:

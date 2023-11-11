@@ -2,7 +2,6 @@ import tabula
 import pandas as pd
 from datetime import datetime as dt
 import csv
-
 def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
@@ -57,6 +56,10 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
     df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
     return df
 
+def race_timefun(df):
+    race_time = df.iloc[:,-2].tolist()
+    return race_time
+
 #Datacleaning
 def nas_rows(df):
     """
@@ -64,9 +67,9 @@ def nas_rows(df):
     Output: df with rows with only NaN removed and it removes the first two rows
     Functions in which it is being used: pdf_to_df
     """
-    # Remove columns with more than 5% NaN
+    # Remove columns with more than 20% NaN
     df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
-    # Remove rows with more than 5% NaN
+    # Remove rows with more than 20% NaN
     df.dropna(axis=0, thresh=int(0.8*df.shape[1]), inplace=True)
     # Remove first two rows
     df.drop([0,1], axis=0, inplace=True)
@@ -138,21 +141,27 @@ def evenANDpuntos(df):
     return even
 
 def remove_accents(input_str):
-        s = input_str
-        s = s.replace('á','a')
-        s = s.replace('é','e')
-        s = s.replace('í','i')
-        s = s.replace('ó','o')
-        s = s.replace('ú','u')
-        return s
+        new_list = []
+        for s in input_str:
+            s = s.replace('á','a')
+            s = s.replace('é','e')
+            s = s.replace('í','i')
+            s = s.replace('ó','o')
+            s = s.replace('ú','u')
+            new_list.append(s)
+        return new_list
 def make_lowercase(input_str):
-    s = input_str
-    s = s.lower()
-    return s  
+    new_list = []
+    for s in input_str:
+        new_list.append(s.lower())
+        
+    return new_list
 def remove_whitespace(input_str):
-    s = input_str
-    s = s.replace(' ','')
-    return s
+    new_list = []
+    for s in input_str:
+        s = s.replace(' ','')
+        new_list.append(s)
+    return new_list
 
 def find_teams(df, teams_rfen):
     """
@@ -170,12 +179,13 @@ def find_teams(df, teams_rfen):
                 element = remove_whitespace(element)
                 for character in element:
                     if character.isdigit():
-                        print(element)
-                        element = element.replace(character, '')
+                        for number in element:
+                            if number.isdigit():
+                                element = element.replace(number, '')
                 if element in teams_rfen["clubes"].tolist():
                     return column
-            
-def columns_df (df):
+
+def columns_df (df, race_time):
     """
     df: dataframe
     Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
@@ -230,7 +240,6 @@ def columns_df (df):
     teams_rfen = teams_rfen.iloc[1:]
     teams_column_name = find_teams(df, teams_rfen)
     teams = df[teams_column_name]
-
     # remove the column
     df.drop(teams_column_name, axis=1, inplace=True)
     # remove numbers and first whitespace in third column
@@ -249,12 +258,9 @@ def columns_df (df):
 
     # reset index
     df.reset_index(drop=True, inplace=True)
-    print(df)
-    # drop any column with more than 10% NaN
-    df.dropna(axis=1, thresh=int(0.9*df.shape[0]), inplace=True)
-    df.reset_index(drop=True, inplace=True)
 
-    print(df.iloc[:,2:])
+    print(df)
+    df.insert(loc = 3, column = "race_time", value = race_time)
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 
@@ -270,6 +276,7 @@ def columns_df (df):
 def pdf_to_df(pdf): 
     tabu = tabula.read_pdf(pdf, pages='all')
     tabu = tabu[0]
+    race_time = race_timefun(tabu)
     gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
     tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
     tabu = nas_rows(tabu)
@@ -277,6 +284,6 @@ def pdf_to_df(pdf):
     tabu.reset_index(drop=True, inplace=True)
     # tabu = delete_columns(tabu) 
     tabu = evenANDpuntos(tabu)
-    tabu = columns_df(tabu)
+    tabu = columns_df(tabu, race_time)
     return tabu
 
