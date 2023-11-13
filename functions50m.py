@@ -2,7 +2,6 @@ import tabula
 import pandas as pd
 from datetime import datetime as dt
 import csv
-
 def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
@@ -21,7 +20,8 @@ def gender_distance_style_category_date_time(lista):
     names = [name.replace('ó','o') for name in names]
     names = [name.replace('ú','u') for name in names]
     # Get the second name
-    namessplitpoint = names[1].split('.')
+    print(names)
+    namessplitpoint = names[2].split('.')
     gender = namessplitpoint[0]
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
@@ -57,6 +57,14 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
     df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
     return df
 
+def race_timefun(df):
+    race_time = df.iloc[:,-2].tolist()
+    # remove nan
+    race_time = [x for x in race_time if str(x) != 'nan']
+    # remove first element
+    race_time = race_time[1:]
+    return race_time
+
 #Datacleaning
 def nas_rows(df):
     """
@@ -64,9 +72,9 @@ def nas_rows(df):
     Output: df with rows with only NaN removed and it removes the first two rows
     Functions in which it is being used: pdf_to_df
     """
-    # Remove columns with more than 5% NaN
+    # Remove columns with more than 20% NaN
     df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
-    # Remove rows with more than 5% NaN
+    # Remove rows with more than 20% NaN
     df.dropna(axis=0, thresh=int(0.8*df.shape[1]), inplace=True)
     # Remove first two rows
     df.drop([0,1], axis=0, inplace=True)
@@ -107,35 +115,6 @@ def nas_rows(df):
 #     # remove the column
 #     df.drop(column, axis=1, inplace=True)
 #     return points, df
-def even_odd(df):
-    """
-    df: dataframe
-    Output: df with only even rows and df with only odd rows
-    It uses even_odd function
-    Functions in which it is being used: evenANDpuntos
-    """
-    # create a new dataframe with even rows
-    even = df.iloc[::2]
-    # create a new dataframe with odd rows
-    odd = df.iloc[1::2]
-    return even, odd
-
-def evenANDpuntos(df):
-    """
-    df: dataframe
-    Output: df with only even rows and a new column for scores
-    It uses even_odd and puntos functions
-    Functions in which it is being used: pdf_to_df
-    """
-    even, _ = even_odd(df)
-    # score, _ = puntos(df)
-    # convert to float
-    # score = [float(x) for x in score]
-    # add puntos to even
-    # even["score"] = score
-    # reset index
-    even.reset_index(drop=True, inplace=True)
-    return even
 
 def remove_accents(input_str):
         s = input_str
@@ -162,6 +141,7 @@ def find_teams(df, teams_rfen):
     Functions in which it is being used: pdf_to_df
     """
     columns = df.columns.tolist()
+    print(df)
     for column in columns:
         for element in df[column].tolist():
             if type(element) == str:
@@ -169,14 +149,15 @@ def find_teams(df, teams_rfen):
                 element = remove_accents(element)
                 element = remove_whitespace(element)
                 for character in element:
-                    # remove digits from element (teams names in some cases are like this: 1. CN Portuense)
-                    if character.isdigit():
-                        print(element)
-                        element = element.replace(character, '')
+                    if type(element) == list:
+                        pass
+                    else:
+                        if character.isdigit():
+                            element = element.replace(character, '')
                 if element in teams_rfen["clubes"].tolist():
                     return column
-            
-def columns_df (df):
+
+def columns_df (df, race_time):
     """
     df: dataframe
     Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
@@ -197,7 +178,10 @@ def columns_df (df):
     df["full_name"] = df["full_name"].str.replace(',', '')
     # split full_name in three columns: firstname, secondname and name
     name_parts = df['full_name'].str.split()
-    
+
+    for name_part in name_parts:
+        if len(name_part) == 2:
+            name_part.insert(1, '')
     df['first_surname'] = name_parts.str[0]
     df['first_surname'] = df['first_surname'].str.lower()
     df['second_surname'] = name_parts.str[1]
@@ -214,9 +198,12 @@ def columns_df (df):
 
     # reset index
     df.reset_index(drop=True, inplace=True)
+    
+    print(df.iloc[:,2])
 
-    # drop column 5
-    df.drop(df.columns[5], axis=1, inplace=True)
+    # remove columns index 3 and 5. They were nonsense
+    print(df)
+    df.drop(df.columns[[3, 5, 6]], axis=1, inplace=True)
 
     # reset index
     df.reset_index(drop=True, inplace=True)
@@ -231,7 +218,6 @@ def columns_df (df):
     teams_rfen = teams_rfen.iloc[1:]
     teams_column_name = find_teams(df, teams_rfen)
     teams = df[teams_column_name]
-
     # remove the column
     df.drop(teams_column_name, axis=1, inplace=True)
     # remove numbers and first whitespace in third column
@@ -250,12 +236,9 @@ def columns_df (df):
 
     # reset index
     df.reset_index(drop=True, inplace=True)
-    print(df)
-    # drop any column with more than 10% NaN
-    df.dropna(axis=1, thresh=int(0.9*df.shape[0]), inplace=True)
-    df.reset_index(drop=True, inplace=True)
 
     print(df.iloc[:,2:])
+    df.insert(loc = 4, column = "race_time", value = race_time)
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 
@@ -271,13 +254,13 @@ def columns_df (df):
 def pdf_to_df(pdf): 
     tabu = tabula.read_pdf(pdf, pages='all')
     tabu = tabu[0]
+    race_time = race_timefun(tabu)
     gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
     tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
     tabu = nas_rows(tabu)
     # reset index of tabu
     tabu.reset_index(drop=True, inplace=True)
     # tabu = delete_columns(tabu) 
-    tabu = evenANDpuntos(tabu)
-    tabu = columns_df(tabu)
+    tabu = columns_df(tabu, race_time)
     return tabu
 

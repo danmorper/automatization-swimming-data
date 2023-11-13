@@ -4,29 +4,38 @@ import os
 # Import 20mmfunctions.py
 import functions200m as fun200
 import functions100m as fun100
+import functions50m as fun50
 ## Get all files in pdfs folder
 files = os.listdir('pdfs')
 
+def selectfun(pdf):
+    tabu = tabula.read_pdf(pdf, pages='all')
+    df = tabu[0]
+    names = df.columns
+    # Get the second name
+    namessplitpoint = names[1].split('.')
+    distance = namessplitpoint[1].split(' ')[1]
+    # remove letters in distance
+    distance = ''.join([i for i in distance if not i.isalpha()])
 
-# Read pdf file
-ResultList_25_path = "pdfs/ResultList_25.pdf"
-# convert ResultList_25 dataframe into ResultList_25.csv
-ResultList_25_df = fun200.pdf_to_df(ResultList_25_path)
-ResultList_25_df.to_csv("csvs/ResultList_25.csv", index=False)
-print(ResultList_25_df)
+    return distance
 
-ResultList_26 = "pdfs/ResultList_26.pdf"
-# convert ResultList_26 dataframe into ResultList_26.csv
-ResultList_26_df = fun200.pdf_to_df(ResultList_26)
-ResultList_26_df.to_csv("csvs/ResultList_26.csv", index=False)
+for file in files:
+    ## Read pdf file
+    file = "pdfs/" + file
 
-ResultList_27 = "pdfs/ResultList_27.pdf"
-# convert ResultList_27 dataframe into ResultList_27.csv
-ResultList_27_df = fun100.pdf_to_df(ResultList_27)
-ResultList_27_df.to_csv("csvs/ResultList_27.csv", index=False)
+    ## Select function
+    distance = selectfun(file)
 
-# for file in files:
-#     ## Read pdf file
-#     file = "pdfs/" + file
-#     print(file)
-#     print(fun200.pdf_to_df(file))
+    ## Apply function
+    if distance == '200':
+        fun200.pdf_to_df(file)
+    elif distance == '100':
+        fun100.pdf_to_df(file)
+    elif distance == '50':
+        fun50.pdf_to_df(file)
+    else:
+        print("Distance not found")
+    
+
+    

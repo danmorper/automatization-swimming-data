@@ -58,6 +58,10 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
 
 def race_timefun(df):
     race_time = df.iloc[:,-2].tolist()
+    # remove nan
+    race_time = [x for x in race_time if str(x) != 'nan']
+    # remove first element
+    race_time = race_time[1:]
     return race_time
 
 #Datacleaning
@@ -141,27 +145,21 @@ def evenANDpuntos(df):
     return even
 
 def remove_accents(input_str):
-        new_list = []
-        for s in input_str:
-            s = s.replace('á','a')
-            s = s.replace('é','e')
-            s = s.replace('í','i')
-            s = s.replace('ó','o')
-            s = s.replace('ú','u')
-            new_list.append(s)
-        return new_list
+        s = input_str
+        s = s.replace('á','a')
+        s = s.replace('é','e')
+        s = s.replace('í','i')
+        s = s.replace('ó','o')
+        s = s.replace('ú','u')
+        return s
 def make_lowercase(input_str):
-    new_list = []
-    for s in input_str:
-        new_list.append(s.lower())
-        
-    return new_list
+    s = input_str
+    s = s.lower()
+    return s  
 def remove_whitespace(input_str):
-    new_list = []
-    for s in input_str:
-        s = s.replace(' ','')
-        new_list.append(s)
-    return new_list
+    s = input_str
+    s = s.replace(' ','')
+    return s
 
 def find_teams(df, teams_rfen):
     """
@@ -178,10 +176,11 @@ def find_teams(df, teams_rfen):
                 element = remove_accents(element)
                 element = remove_whitespace(element)
                 for character in element:
-                    if character.isdigit():
-                        for number in element:
-                            if number.isdigit():
-                                element = element.replace(number, '')
+                    if type(element) == list:
+                        pass
+                    else:
+                        if character.isdigit():
+                            element = element.replace(character, '')
                 if element in teams_rfen["clubes"].tolist():
                     return column
 
@@ -224,8 +223,8 @@ def columns_df (df, race_time):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    # drop column 5
-    df.drop(df.columns[5], axis=1, inplace=True)
+    # I remove the column with index 3 (fourth column) it had NaNs and made no sense
+    df.drop(df.columns[3], axis=1, inplace=True)
 
     # reset index
     df.reset_index(drop=True, inplace=True)
@@ -259,8 +258,8 @@ def columns_df (df, race_time):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    print(df)
-    df.insert(loc = 3, column = "race_time", value = race_time)
+    print(df.iloc[:,2:])
+    df.insert(loc = 4, column = "race_time", value = race_time)
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 
