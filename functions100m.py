@@ -57,11 +57,26 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
     return df
 
 def race_timefun(df):
-    race_time = df.iloc[:,-2].tolist()
+    # find column where there are some nan and it has the most rows with ":" in it
+    columns = df.columns.tolist()
+    previous_second_condition = 0
+    second_condition = 0
+    for column in columns:
+        first_condition = df[column].isnull().any()
+        previous_second_condition = second_condition
+        second_condition = sum(df[column].apply(lambda x: isinstance(x, str) and x.count(':') == 1))
+        # By adding second_condition > previous_second_condition I get at the end the column with the most rows with ":"
+        if first_condition and second_condition > previous_second_condition:
+            column_nan = column
+    race_time = df[column_nan].tolist()
     # remove nan
     race_time = [x for x in race_time if str(x) != 'nan']
-    # remove first element
-    race_time = race_time[1:]
+
+    # remove elements without :
+    race_time = [x for x in race_time if ':' in x]
+    
+    race_time = [x.split(' ')[0] for x in race_time]
+    df.drop(column_nan, axis=1, inplace=True)
     return race_time
 
 #Datacleaning
@@ -184,7 +199,7 @@ def find_teams(df, teams_rfen):
                 if element in teams_rfen["clubes"].tolist():
                     return column
 
-def columns_df (df, race_time):
+def columns_df (df, race_time, teams_column_name, teams_rfen):
     """
     df: dataframe
     Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
@@ -205,7 +220,11 @@ def columns_df (df, race_time):
     df["full_name"] = df["full_name"].str.replace(',', '')
     # split full_name in three columns: firstname, secondname and name
     name_parts = df['full_name'].str.split()
-    
+
+    # Take guiris into account
+    for name_part in name_parts:
+        if len(name_part) == 2:
+            name_part.insert(1, '')
     df['first_surname'] = name_parts.str[0]
     df['first_surname'] = df['first_surname'].str.lower()
     df['second_surname'] = name_parts.str[1]
@@ -223,21 +242,7 @@ def columns_df (df, race_time):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    # I remove the column with index 3 (fourth column) it had NaNs and made no sense
-    df.drop(df.columns[3], axis=1, inplace=True)
-
-    # reset index
-    df.reset_index(drop=True, inplace=True)
-
-    # Teams
-    file = open("clubs.csv", "r")
-    # dataframe from csv file with header
-    teams_rfen = pd.DataFrame(csv.reader(file, delimiter=","))
-    # make first row as header
-    teams_rfen.columns = teams_rfen.iloc[0]
-    # remove first row
-    teams_rfen = teams_rfen.iloc[1:]
-    teams_column_name = find_teams(df, teams_rfen)
+    # find teams column
     teams = df[teams_column_name]
     # remove the column
     df.drop(teams_column_name, axis=1, inplace=True)
@@ -260,6 +265,14 @@ def columns_df (df, race_time):
 
     print(df.iloc[:,2:])
     df.insert(loc = 4, column = "race_time", value = race_time)
+    
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # remove the sixth column
+    if (len(df.columns) != 11):
+        df.drop(df.columns[5], axis=1, inplace=True)
+
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 
@@ -275,14 +288,26 @@ def columns_df (df, race_time):
 def pdf_to_df(pdf): 
     tabu = tabula.read_pdf(pdf, pages='all')
     tabu = tabu[0]
-    race_time = race_timefun(tabu)
     gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
+    race_time = race_timefun(tabu)
     tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
     tabu = nas_rows(tabu)
     # reset index of tabu
     tabu.reset_index(drop=True, inplace=True)
+
+    # Teams
+    file = open("clubs.csv", "r")
+    # dataframe from csv file with header
+    teams_rfen = pd.DataFrame(csv.reader(file, delimiter=","))
+    # make first row as header
+    teams_rfen.columns = teams_rfen.iloc[0]
+    # remove first row
+    teams_rfen = teams_rfen.iloc[1:]
+    # find teams column
+    teams_column_name = find_teams(tabu, teams_rfen)
+
     # tabu = delete_columns(tabu) 
     tabu = evenANDpuntos(tabu)
-    tabu = columns_df(tabu, race_time)
+    tabu = columns_df(df=tabu, race_time=race_time, teams_column_name=teams_column_name, teams_rfen=teams_rfen)
     return tabu
 

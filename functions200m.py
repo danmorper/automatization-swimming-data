@@ -197,7 +197,11 @@ def columns_df (df):
     df["full_name"] = df["full_name"].str.replace(',', '')
     # split full_name in three columns: firstname, secondname and name
     name_parts = df['full_name'].str.split()
-    
+
+    # Take guiris into account
+    for name_part in name_parts:
+        if len(name_part) == 2:
+            name_part.insert(1, '')
     df['first_surname'] = name_parts.str[0]
     df['first_surname'] = df['first_surname'].str.lower()
     df['second_surname'] = name_parts.str[1]

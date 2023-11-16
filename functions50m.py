@@ -21,7 +21,7 @@ def gender_distance_style_category_date_time(lista):
     names = [name.replace('ú','u') for name in names]
     # Get the second name
     print(names)
-    namessplitpoint = names[2].split('.')
+    namessplitpoint = names[1].split('.')
     gender = namessplitpoint[0]
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
@@ -63,6 +63,7 @@ def race_timefun(df):
     race_time = [x for x in race_time if str(x) != 'nan']
     # remove first element
     race_time = race_time[1:]
+    df.drop(df.columns[-2], axis=1, inplace=True)
     return race_time
 
 #Datacleaning
@@ -165,10 +166,16 @@ def columns_df (df, race_time):
     Functions in which it is being used: pdf_to_df
     """
     df.iloc[:,0] = df.iloc[:,0].str.split('.')
-    # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
+
+    print(df.columns)
+    # remove rows with only one element in the first column
+    df = df[df.iloc[:,0].map(len) > 1]
     # remove the first column
     first_column = df.columns[0]
+    print(df[first_column])
     df[["drop", "full_name"]] = pd.DataFrame(df[first_column].tolist(), index= df.index)
+    print(df["drop"])
+    print(df["full_name"])
     df.drop(first_column, axis=1, inplace=True)
     df.drop("drop", axis=1, inplace=True)
     # Reset index
@@ -179,6 +186,7 @@ def columns_df (df, race_time):
     # split full_name in three columns: firstname, secondname and name
     name_parts = df['full_name'].str.split()
 
+    # Take guiris into account
     for name_part in name_parts:
         if len(name_part) == 2:
             name_part.insert(1, '')
@@ -200,13 +208,6 @@ def columns_df (df, race_time):
     df.reset_index(drop=True, inplace=True)
     
     print(df.iloc[:,2])
-
-    # remove columns index 3 and 5. They were nonsense
-    print(df)
-    df.drop(df.columns[[3, 5, 6]], axis=1, inplace=True)
-
-    # reset index
-    df.reset_index(drop=True, inplace=True)
 
     # Teams
     file = open("clubs.csv", "r")
@@ -236,9 +237,13 @@ def columns_df (df, race_time):
 
     # reset index
     df.reset_index(drop=True, inplace=True)
-
+    print(df)
     print(df.iloc[:,2:])
     df.insert(loc = 4, column = "race_time", value = race_time)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+    #drop sixth column
+    df.drop(df.columns[5], axis=1, inplace=True)
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 
