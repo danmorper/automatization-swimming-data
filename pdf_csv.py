@@ -7,18 +7,22 @@ import functions100m as fun100
 import functions50m as fun50
 ## Get all files in pdfs folder
 files = os.listdir('pdfs')
-
+files = [file for file in files if file.endswith('.pdf')]
 def selectfun(pdf):
+    # if any column name has the string '4 x ' then omit do nothing
     tabu = tabula.read_pdf(pdf, pages='all')
     df = tabu[0]
     names = df.columns
-    # Get the second name
-    namessplitpoint = names[1].split('.')
-    distance = namessplitpoint[1].split(' ')[1]
-    # remove letters in distance
-    distance = ''.join([i for i in distance if not i.isalpha()])
-
-    return distance
+    if any('4 x ' in name for name in names):
+        print('relevo')
+    else:
+        # Detect in which column the distance is
+        posible_distances = ['50m', '100m', '200m', '400m']
+        for distance in posible_distances:
+            for name in names:
+                if (distance in name):
+                    distance = ''.join([i for i in distance if not i.isalpha()])
+                    return distance
 
 for file in files:
     ## Read pdf file
