@@ -188,6 +188,12 @@ def columns_df (df):
     # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
     # remove the first column
     first_column = df.columns[0]
+
+    # remove rows with nan in any column
+    df.dropna(axis=0, how='any', inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
     df[["drop", "full_name"]] = pd.DataFrame(df[first_column].tolist(), index= df.index)
     df.drop(first_column, axis=1, inplace=True)
     df.drop("drop", axis=1, inplace=True)
@@ -196,7 +202,15 @@ def columns_df (df):
 
     # remove , in full_name
     df["full_name"] = df["full_name"].str.replace(',', '')
+    # remove first whitespace in full_name
+    df["full_name"] = df["full_name"].str.replace(' ', '', 1)
     # split full_name in three columns: firstname, secondname and name
+    df['full_name'].str.split()
+
+    # drop rows in df with nan in full_name
+    df.dropna(subset=['full_name'], inplace=True)
+    df.reset_index(drop=True, inplace=True)
+    
     name_parts = df['full_name'].str.split()
 
     # Take guiris into account
