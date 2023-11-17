@@ -21,7 +21,9 @@ def gender_distance_style_category_date_time(lista):
     names = [name.replace('ú','u') for name in names]
     # Get the second name
     print(names)
-    namessplitpoint = names[1].split('.')
+    # Find string in names which contains 50m, 100m, 200m or 400m
+    gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
+    namessplitpoint = gender_distance_style[0].split('.')
     gender = namessplitpoint[0]
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
@@ -242,8 +244,21 @@ def columns_df (df, race_time):
     df.insert(loc = 4, column = "race_time", value = race_time)
     # reset index
     df.reset_index(drop=True, inplace=True)
-    #drop sixth column
-    df.drop(df.columns[5], axis=1, inplace=True)
+
+    # rename last column to event_time
+    df.rename(columns={df.columns[-1]: "event_time"}, inplace=True)
+    #drop columns if they are not 11
+    if (len(df.columns) != 11):
+        # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        columns = df.columns.tolist()
+        notdropping = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        for column in columns:
+            if column not in notdropping:
+                df.drop(column, axis=1, inplace=True)
+                # reset index
+                df.reset_index(drop=True, inplace=True) 
+
+
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
 

@@ -24,22 +24,32 @@ def selectfun(pdf):
                     distance = ''.join([i for i in distance if not i.isalpha()])
                     return distance
 
-for file in files:
-    ## Read pdf file
-    file = "pdfs/" + file
+# for file in files:
+#     ## Read pdf file
+#     file = "pdfs/" + file
 
-    ## Select function
-    distance = selectfun(file)
+#     ## Select function
+#     distance = selectfun(file)
 
-    ## Apply function
-    if distance == '200':
-        fun200.pdf_to_df(file)
-    elif distance == '100':
-        fun100.pdf_to_df(file)
-    elif distance == '50':
-        fun50.pdf_to_df(file)
-    else:
-        print("Distance not found")
+#     ## Apply function
+#     if distance == '200':
+#         fun200.pdf_to_df(file)
+#     elif distance == '100':
+#         fun100.pdf_to_df(file)
+#     elif distance == '50':
+#         fun50.pdf_to_df(file)
+#     else:
+#         print("Distance not found")
     
 
     
+pdf = 'pdfs/ResultList_37.pdf'
+distance = selectfun(pdf)
+if distance == '200':
+    fun200.pdf_to_df(pdf)
+elif distance == '100':
+    fun100.pdf_to_df(pdf)
+elif distance == '50':
+    fun50.pdf_to_df(pdf)
+else:
+    print("Distance not found")

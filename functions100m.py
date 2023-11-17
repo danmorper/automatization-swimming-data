@@ -2,6 +2,14 @@ import tabula
 import pandas as pd
 from datetime import datetime as dt
 import csv
+import re
+
+# Define a function that checks if a string starts with an integer followed by a point, a whitespace, and then a letter
+def check_string_format(s):
+    # Regular expression pattern to match the specific format
+    pattern = r"^\d+\.\s[a-zA-Z]"
+    return bool(re.match(pattern, s))
+
 def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
@@ -19,8 +27,9 @@ def gender_distance_style_category_date_time(lista):
     names = [name.replace('í','i') for name in names]
     names = [name.replace('ó','o') for name in names]
     names = [name.replace('ú','u') for name in names]
-    # Get the second name
-    namessplitpoint = names[1].split('.')
+    # Find string in names which contains 50m, 100m, 200m or 400m
+    gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
+    namessplitpoint = gender_distance_style[0].split('.')
     gender = namessplitpoint[0]
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
@@ -159,46 +168,47 @@ def evenANDpuntos(df):
     even.reset_index(drop=True, inplace=True)
     return even
 
-def remove_accents(input_str):
-        s = input_str
-        s = s.replace('á','a')
-        s = s.replace('é','e')
-        s = s.replace('í','i')
-        s = s.replace('ó','o')
-        s = s.replace('ú','u')
-        return s
-def make_lowercase(input_str):
-    s = input_str
-    s = s.lower()
-    return s  
-def remove_whitespace(input_str):
-    s = input_str
-    s = s.replace(' ','')
-    return s
+def make_lowercase(s):
+    """Converts a string to lowercase."""
+    return s.lower()
+
+def remove_accents(s):
+    """Removes accents from a string."""
+    import unicodedata
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+
+def remove_whitespace(s):
+    """Removes whitespace from a string."""
+    return ''.join(s.split())
 
 def find_teams(df, teams_rfen):
     """
-    df: dataframe
-    Output: list of teams
-    It uses even_odd and puntos functions and it uses add_columns function
-    Functions in which it is being used: pdf_to_df
+    Modifies the input function to normalize the data for comparison,
+    and to check for partial matches in all columns.
     """
-    columns = df.columns.tolist()
-    for column in columns:
-        for element in df[column].tolist():
-            if type(element) == str:
-                element = make_lowercase(element)
-                element = remove_accents(element)
-                element = remove_whitespace(element)
-                for character in element:
-                    if type(element) == list:
-                        pass
-                    else:
-                        if character.isdigit():
-                            element = element.replace(character, '')
-                if element in teams_rfen["clubes"].tolist():
-                    return column
+    columns_with_teams = []
 
+    # Normalizing the team names
+    teams = [make_lowercase(remove_accents(remove_whitespace(team))) for team in teams_rfen["clubes"].tolist()]
+
+    # Iterating through each column in the dataframe
+    for column in df.columns:
+        # Normalizing the data in the column
+        normalized_column = df[column].apply(lambda x: make_lowercase(remove_accents(remove_whitespace(str(x)))))
+        
+        # Checking for any match in the column
+        for team in teams:
+            if normalized_column.str.contains(team).any():
+                columns_with_teams.append(column)
+                break  # Breaks the inner loop if a team is found in the current column
+
+    return columns_with_teams[0]
+
+def teams_with_names(df, teams_column_name):
+    if (check_string_format(df[teams_column_name].iloc[0])):
+        df[teams_column_name] = df[teams_column_name].str.split(' ', 1, expand=True)
+        return df
+    
 def columns_df (df, race_time, teams_column_name, teams_rfen):
     """
     df: dataframe
@@ -269,9 +279,18 @@ def columns_df (df, race_time, teams_column_name, teams_rfen):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    # remove the sixth column
+    # rename last column to event_time
+    df.rename(columns={df.columns[-1]: "event_time"}, inplace=True)
+    #drop columns if they are not 11
     if (len(df.columns) != 11):
-        df.drop(df.columns[5], axis=1, inplace=True)
+        # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        columns = df.columns.tolist()
+        notdropping = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        for column in columns:
+            if column not in notdropping:
+                df.drop(column, axis=1, inplace=True)
+                # reset index
+                df.reset_index(drop=True, inplace=True)
 
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
     return df
@@ -304,10 +323,16 @@ def pdf_to_df(pdf):
     # remove first row
     teams_rfen = teams_rfen.iloc[1:]
     # find teams column
+
+
     teams_column_name = find_teams(tabu, teams_rfen)
 
     # tabu = delete_columns(tabu) 
     tabu = evenANDpuntos(tabu)
+    # tabu to csv
+    tabu.to_csv("tabu.csv", index=False)
+    tabu = teams_with_names(tabu, teams_column_name)
+    print(tabu)
     tabu = columns_df(df=tabu, race_time=race_time, teams_column_name=teams_column_name, teams_rfen=teams_rfen)
     return tabu
 
