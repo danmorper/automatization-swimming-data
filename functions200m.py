@@ -20,8 +20,9 @@ def gender_distance_style_category_date_time(lista):
     names = [name.replace('í','i') for name in names]
     names = [name.replace('ó','o') for name in names]
     names = [name.replace('ú','u') for name in names]
-    # Get the second name
-    namessplitpoint = names[1].split('.')
+    # Find string in names which contains 50m, 100m, 200m or 400m
+    gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
+    namessplitpoint = gender_distance_style[0].split('.')
     gender = namessplitpoint[0]
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
@@ -259,8 +260,22 @@ def columns_df (df):
     df.dropna(axis=1, thresh=int(0.9*df.shape[0]), inplace=True)
     df.reset_index(drop=True, inplace=True)
 
-    print(df.iloc[:,2:])
+    #drop columns if they are not 11
+    if (len(df.columns) != 11):
+        # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        columns = df.columns.tolist()
+        notdropping = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        for column in columns:
+            if column not in notdropping:
+                df.drop(column, axis=1, inplace=True)
+                # reset index
+                df.reset_index(drop=True, inplace=True)
     df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+
+    # remove integers from team column if they exist
+    if df["team"].str.contains('\d').any():
+        df["team"] = df["team"].str.replace('\d+', '')
+        # df["team"] = [''.join(char for char in item if not char.isdigit()).strip() for item in df["team"]]
     return df
 
 # def delete_columns(df):
