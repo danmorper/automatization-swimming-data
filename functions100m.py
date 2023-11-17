@@ -206,8 +206,53 @@ def find_teams(df, teams_rfen):
 
 def teams_with_names(df, teams_column_name):
     if (check_string_format(df[teams_column_name].iloc[0])):
-        df[teams_column_name] = df[teams_column_name].str.split(' ', 1, expand=True)
+        # Regular expression pattern to extract the desired parts
+        # Capturing everything after the initial number and dot as the name
+        # Capturing the number followed by the team name as the second part
+        pattern1 = r'\d+\. ([\w\s,]+) (\d+ [\w\s.]+)'
+        # pattern2 is same but without digit at the beginning
+        pattern2 = r'([\w\s,]+) (\d+ [\w\s.]+)'
+
+        # Lists to store the extracted data
+        names = []
+        number_team = []
+
+        for item in df[teams_column_name].tolist():
+            match1 = re.match(pattern1, item)
+            match2 = re.match(pattern2, item)
+            if match1:
+                name_append = match1.group(1).strip()  # Name
+                number_team_append = match1.group(2).strip() # Number + Team
+
+                # Remove digits, dots and first whitespace from name_append
+                name_append = re.sub(r'^\d+\. ', '', name_append)
+                # Remove digits from number_team_append
+                number_team_append = re.sub(r'\d+', '', number_team_append)
+                
+                names.append(name_append)
+                number_team.append(number_team_append)
+            elif match2:
+                name_append = match2.group(1).strip()  # Name
+                number_team_append = match2.group(2).strip() # Number + Team
+                # Remove digits, dots and first whitespace from number_team_append if they have them
+                number_team_append = re.sub(r'^\d+\. ', '', match2.group(2).strip())
+
+                names.append(name_append)
+                number_team.append(number_team_append)
+            else:
+                # Append NaN or a placeholder if the pattern doesn't match
+                names.append(pd.NA)
+                number_team.append(pd.NA)
+        # Add columns to the dataframe
+        df.insert(loc = 3, column = "team", value = number_team)
+        df.insert(loc = 4, column = "full_name", value = names)
+        # Remove the original column
+        df.drop(teams_column_name, axis=1, inplace=True)
+
+        # Reset index
+        df.reset_index(drop=True, inplace=True)
         return df
+    return df
     
 def columns_df (df, race_time, teams_column_name, teams_rfen):
     """
@@ -216,21 +261,33 @@ def columns_df (df, race_time, teams_column_name, teams_rfen):
     It uses even_odd and puntos functions and it uses add_columns function
     Functions in which it is being used: pdf_to_df
     """
-    df.iloc[:,0] = df.iloc[:,0].str.split('.')
-    # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
-    # remove the first column
-    first_column = df.columns[0]
-    df[["drop", "full_name"]] = pd.DataFrame(df[first_column].tolist(), index= df.index)
-    df.drop(first_column, axis=1, inplace=True)
-    df.drop("drop", axis=1, inplace=True)
-    # Reset index
-    df.reset_index(drop=True, inplace=True)
+
+    if ("full_name" in df.columns):
+        pass
+    else:
+        df.iloc[:,0] = df.iloc[:,0].str.split('.')
+        # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
+        # remove the first column
+        names_column = df.columns[0]
+        df[["drop", "full_name"]] = pd.DataFrame(df[names_column].tolist(), index= df.index)
+        df.drop(names_column, axis=1, inplace=True)
+        df.drop("drop", axis=1, inplace=True)
+        # Reset index
+        df.reset_index(drop=True, inplace=True)
 
     # remove , in full_name
     df["full_name"] = df["full_name"].str.replace(',', '')
+    # remove first whitespace in full_name
+    df["full_name"] = df["full_name"].str.replace(' ', '', 1)
     # split full_name in three columns: firstname, secondname and name
-    name_parts = df['full_name'].str.split()
+    df['full_name'].str.split()
 
+    # remove rows with nan in full_name 
+    df.dropna(subset=['full_name'], inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    name_parts = df['full_name'].str.split()
     # Take guiris into account
     for name_part in name_parts:
         if len(name_part) == 2:
@@ -252,26 +309,27 @@ def columns_df (df, race_time, teams_column_name, teams_rfen):
     # reset index
     df.reset_index(drop=True, inplace=True)
 
-    # find teams column
-    teams = df[teams_column_name]
-    # remove the column
-    df.drop(teams_column_name, axis=1, inplace=True)
-    # remove numbers and first whitespace in third column
-    # remove numbers from teams if they exist
+    if ("team" not in df.columns):
+        # find teams column
+        teams = df[teams_column_name]
+        # remove the column
+        df.drop(teams_column_name, axis=1, inplace=True)
+        # remove numbers and first whitespace in third column
+        # remove numbers from teams if they exist
 
-    if teams.str.contains('\d').any():
-        teams = teams.str.replace('\d+', '')
-        # teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
+        if teams.str.contains('\d').any():
+            teams = teams.str.replace('\d+', '')
+            # teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
 
-    # remove first whitespace if it exists
-    if teams.str.contains(' ').any():
-        teams = teams.str.replace(' ', '', 1)
-        # teams = [item.lstrip() for item in teams]
-    # add teams as the fourth column
-    df.insert(loc = 3, column = "team", value = teams)
+        # remove first whitespace if it exists
+        if teams.str.contains(' ').any():
+            teams = teams.str.replace(' ', '', 1)
+            # teams = [item.lstrip() for item in teams]
+        # add teams as the fourth column
+        df.insert(loc = 3, column = "team", value = teams)
 
-    # reset index
-    df.reset_index(drop=True, inplace=True)
+        # reset index
+        df.reset_index(drop=True, inplace=True)
 
     print(df.iloc[:,2:])
     df.insert(loc = 4, column = "race_time", value = race_time)
@@ -303,6 +361,16 @@ def columns_df (df, race_time, teams_column_name, teams_rfen):
 #     df.drop(df.columns[2], axis=1, inplace=True)
 #     df.drop(df.columns[4], axis=1, inplace=True)
 #     return df
+def nas_rows_extreme(df, race_time):
+    # keep index in which there's a row with a nan
+    index = df.index[df.isnull().any(axis=1)]
+    # remove rows with nan
+    df.dropna(axis=0, inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+    # delete element in race_time with the same index as the row with nan
+    race_time = [race_time[i] for i in range(len(race_time)) if i not in index]
+    return df, race_time
 
 def pdf_to_df(pdf): 
     tabu = tabula.read_pdf(pdf, pages='all')
@@ -333,6 +401,7 @@ def pdf_to_df(pdf):
     tabu.to_csv("tabu.csv", index=False)
     tabu = teams_with_names(tabu, teams_column_name)
     print(tabu)
+    tabu, race_time = nas_rows_extreme(tabu, race_time)
     tabu = columns_df(df=tabu, race_time=race_time, teams_column_name=teams_column_name, teams_rfen=teams_rfen)
     return tabu
 
