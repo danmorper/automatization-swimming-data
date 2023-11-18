@@ -58,6 +58,19 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
     df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
     return df
 
+def race_time(df):
+    # if there's a whitespace in any of the rows of the lastcolumn
+    if(df.iloc[:, -1].str.contains(' ').any()):
+        # split the last column in two columns
+        race_time = df.iloc[:, -1].str.split(' ')[0].tolist()
+        print(race_time)
+        racetime_dic = {'column': df.columns[-1], 'race_time': race_time}
+        return racetime_dic
+    else:
+        race_time = df.iloc[:, -2].tolist()
+        print(race_time)
+        racetime_dic = {'column': df.columns[-2], 'race_time': race_time} 
+        return racetime_dic
 #Datacleaning
 def nas_rows(df):
     """
@@ -177,7 +190,7 @@ def find_teams(df, teams_rfen):
                 if element in teams_rfen["clubes"].tolist():
                     return column
             
-def columns_df (df):
+def columns_df (df, racetime_dic):
     """
     df: dataframe
     Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
@@ -274,6 +287,14 @@ def columns_df (df):
     df.dropna(axis=1, thresh=int(0.9*df.shape[0]), inplace=True)
     df.reset_index(drop=True, inplace=True)
 
+    # We add race_time
+    df["race_time"] = racetime_dic['race_time']
+    # We remove the column in which we extracted race_time
+    df.drop(racetime_dic['column'], axis=1, inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+
     #drop columns if they are not 11
     if (len(df.columns) != 11):
         # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
@@ -311,6 +332,7 @@ def pdf_to_df(pdf):
     tabu.reset_index(drop=True, inplace=True)
     # tabu = delete_columns(tabu) 
     tabu = evenANDpuntos(tabu)
-    tabu = columns_df(tabu)
+    racetime_dic = race_time(tabu)
+    tabu = columns_df(tabu, racetime_dic)
     return tabu
 

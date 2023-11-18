@@ -17,7 +17,7 @@ options.headless = True  # Set to False if you want to see the Firefox window
 driver = webdriver.Firefox(options=options)
 
 for url in urls.values():
-
+    print("url is: {}".format(url))
     # Open the URL in the browser
     driver.get(url)
 
@@ -29,22 +29,29 @@ for url in urls.values():
 
     output_dir = "pdfs"
     pdfs = []
-    del resultados_links[0]
-    for link in resultados_links:
-        pdfs.append(link.get_attribute('href'))
+    try:
+        del resultados_links[0]
+    except:
+        pass
+    try:
+        for link in resultados_links:
+            pdfs.append(link.get_attribute('href'))
+    except:
+        pass
 
-
-for pdf in pdfs:
-    r = requests.get(pdf)
-    if r.status_code == 200:
-        file_path = os.path.join(output_dir, os.path.basename(pdf))
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        with open(file_path, 'wb') as f:
-            f.write(r.content)
-            print("File downloaded successfully")
-            print("Saved in {}".format(file_path))
-
-# print list of files in pdfs directory
-print(os.listdir(output_dir))
+    # Create a new directory inside of pdfs to store the pdfs
+    new_folder_name = url.split('/')[-1]
+    if new_folder_name == '':
+        new_folder_name = url.split('/')[-2]
+    new_folder_path = os.path.join(output_dir, new_folder_name)
+    os.makedirs(new_folder_path, exist_ok=True)
+    for pdf in pdfs:
+        r = requests.get(pdf)
+        if r.status_code == 200:
+            file_path = os.path.join(new_folder_path, os.path.basename(pdf))
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            with open(file_path, 'wb') as f:
+                f.write(r.content)
+    # print list of files in pdfs directory
 # Close the browser
 driver.close()
