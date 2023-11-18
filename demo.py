@@ -2,26 +2,36 @@ import os
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
 
-url = 'https://fanatacion.es/resultados/cadiz/23_24/etapa%201%20jjnn%20rfen%20puerto/'
+# import urls.json file
+import json
+with open('urls.json') as f:
+    urls = json.load(f)
+
+# Set up Firefox options
+options = Options()
+options.headless = True  # Set to False if you want to see the Firefox window
 
 # Use the options to specify the driver path
-driver = webdriver.Firefox()
+driver = webdriver.Firefox(options=options)
 
-# Open the URL in the browser
-driver.get(url)
+for url in urls.values():
 
-# print the title of the page
-# print(driver.title)
+    # Open the URL in the browser
+    driver.get(url)
 
-# Find all <a> tags with "Resultados" in the text and click on it
-resultados_links = driver.find_elements(By.PARTIAL_LINK_TEXT, 'Resultados')
+    # print the title of the page
+    # print(driver.title)
 
-output_dir = "pdfs"
-pdfs = []
-del resultados_links[0]
-for link in resultados_links:
-    pdfs.append(link.get_attribute('href'))
+    # Find all <a> tags with "Resultados" in the text and click on it
+    resultados_links = driver.find_elements(By.PARTIAL_LINK_TEXT, 'Resultados')
+
+    output_dir = "pdfs"
+    pdfs = []
+    del resultados_links[0]
+    for link in resultados_links:
+        pdfs.append(link.get_attribute('href'))
 
 
 for pdf in pdfs:
