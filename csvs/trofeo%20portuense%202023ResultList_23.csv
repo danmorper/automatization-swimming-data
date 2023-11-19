@@ -1,15 +1,15 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-alonso,flor,jaime,C.N.Portuense,97,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-belinchon,matos,angel,C.N.Los Barrios,06,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-perez,vital,ruben,C.D.N.Sanlucar,03,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-leon-salas,vallejo,rafael,C.N.Portuense,02,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-garcia,llaves,daniel,C.N.Bahia De Cadiz,07,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-guerrero,güeto,marcos,C.N.Puerto Real,04,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-fernandez,roman,raul,C.N.Dos Hermanas,09,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-espinosa,carrasco,guillermo,C.N.San Fernando,10,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-lomas,vela,angel,C.N.Cadiz,08,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-martinez,gonzalez,alvaro,C.N.Los Barrios,09,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-gomez,garcia,samuel,C.D.N.Ciudad De Algeciras,10,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-corzo,uzquiza,aitor,C.N.Alcala,11,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-martínez,lópez,álvaro,C.N.Alcala,11,masc,200,mariposa,absoluto,2023-05-27,16:30:00
-molina,nuñez,victor,C.N.San Fernando,11,masc,200,mariposa,absoluto,2023-05-27,16:30:00
+name,first_surname,second_surname,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+jaime,alonso,flor,C.N.Portuense,2:07.38,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+angel,belinchon,matos,C.N.Los Barrios,2:12.10,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+ruben,perez,vital,C.D.N.Sanlucar,2:22.18,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+rafael,leon-salas,vallejo,C.N.Portuense,2:24.24,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+daniel,garcia,llaves,C.N.Bahia De Cadiz,2:27.61,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+marcos,guerrero,güeto,C.N.Puerto Real,2:27.81,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+raul,fernandez,roman,C.N.Dos Hermanas,2:29.55,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+guillermo,espinosa,carrasco,C.N.San Fernando,2:35.41,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+angel,lomas,vela,C.N.Cadiz,2:45.44,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+alvaro,martinez,gonzalez,C.N.Los Barrios,2:45.93,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+samuel,gomez,garcia,C.D.N.Ciudad De Algeciras,3:02.97,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+aitor,corzo,uzquiza,C.N.Alcala,3:13.38,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+álvaro,martínez,lópez,C.N.Alcala,3:25.86,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True
+victor,molina,nuñez,C.N.San Fernando,3:26.44,masc,200,mariposa,absoluto,2023-05-27,16:30:00,True

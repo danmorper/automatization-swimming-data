@@ -1,20 +1,20 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-robles,carreño,maria,11C.N. Dos Hermanas,1:20.26,fem,100,mariposa,alevin,2023-05-27,11:04:00
-carrión,gomez,sarah,11C.N. Dos Hermanas,1:20.86,fem,100,mariposa,alevin,2023-05-27,11:04:00
-estrada,chávez,natalia,11C.N. Puerto Real,1:27.74,fem,100,mariposa,alevin,2023-05-27,11:04:00
-lópez,montaño,maría,12C.D.N. Sanlucar,1:29.02,fem,100,mariposa,alevin,2023-05-27,11:04:00
-ballesteros,rivera,norah,11C.N. Los Barrios,1:32.06,fem,100,mariposa,alevin,2023-05-27,11:04:00
-valero,ramirez,gema,11C.N. Alcala,1:36.56,fem,100,mariposa,alevin,2023-05-27,11:04:00
-rubiño,rubio,jimena,11C.N. Alcala,1:39.54,fem,100,mariposa,alevin,2023-05-27,11:04:00
-lozano,pérez,julia,11C.N. Cadiz,1:40.44,fem,100,mariposa,alevin,2023-05-27,11:04:00
-monge,aixela,valeria,12C.D.N. Ciudad De Algeciras,1:43.85,fem,100,mariposa,alevin,2023-05-27,11:04:00
-jimenez,martinez,claudia,12C.N. San Fernando,1:45.99,fem,100,mariposa,alevin,2023-05-27,11:04:00
-reyes,garcía,álex,12Dkv Club Natacion Jerez,1:46.61,fem,100,mariposa,alevin,2023-05-27,11:04:00
-pastrana,uribe,julia,11C.N. Portuense,1:48.11,fem,100,mariposa,alevin,2023-05-27,11:04:00
-caro,vega,marta,12C.N. Portuense,1:49.07,fem,100,mariposa,alevin,2023-05-27,11:04:00
-estevez,terroba,leire,12C.N. San Fernando,1:49.22,fem,100,mariposa,alevin,2023-05-27,11:04:00
-buzon,serrano,genoveva,12C.D.N. Sanlucar,1:50.99,fem,100,mariposa,alevin,2023-05-27,11:04:00
-garcía,villalba,cayetana,12C.N. Caballa - Ciudad De Ceuta,1:53.22,fem,100,mariposa,alevin,2023-05-27,11:04:00
-menjibar,fandiño,carolina,11C.N. Bahia De Cadiz,1:56.34,fem,100,mariposa,alevin,2023-05-27,11:04:00
-suarez,pajares,ana,11C.N. Portuense,1:58.56,fem,100,mariposa,alevin,2023-05-27,11:04:00
-minaya,coello,elena,12C.D.N. Ciudad De Algeciras,2:00.53,fem,100,mariposa,alevin,2023-05-27,11:04:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+robles,carreño,maria,11C.N. Dos Hermanas,1:20.26,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+carrión,gomez,sarah,11C.N. Dos Hermanas,1:20.86,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+estrada,chávez,natalia,11C.N. Puerto Real,1:27.74,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+lópez,montaño,maría,12C.D.N. Sanlucar,1:29.02,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+ballesteros,rivera,norah,11C.N. Los Barrios,1:32.06,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+valero,ramirez,gema,11C.N. Alcala,1:36.56,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+rubiño,rubio,jimena,11C.N. Alcala,1:39.54,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+lozano,pérez,julia,11C.N. Cadiz,1:40.44,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+monge,aixela,valeria,12C.D.N. Ciudad De Algeciras,1:43.85,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+jimenez,martinez,claudia,12C.N. San Fernando,1:45.99,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+reyes,garcía,álex,12Dkv Club Natacion Jerez,1:46.61,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+pastrana,uribe,julia,11C.N. Portuense,1:48.11,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+caro,vega,marta,12C.N. Portuense,1:49.07,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+estevez,terroba,leire,12C.N. San Fernando,1:49.22,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+buzon,serrano,genoveva,12C.D.N. Sanlucar,1:50.99,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+garcía,villalba,cayetana,12C.N. Caballa - Ciudad De Ceuta,1:53.22,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+menjibar,fandiño,carolina,11C.N. Bahia De Cadiz,1:56.34,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+suarez,pajares,ana,11C.N. Portuense,1:58.56,fem,100,mariposa,alevin,2023-05-27,11:04:00,True
+minaya,coello,elena,12C.D.N. Ciudad De Algeciras,2:00.53,fem,100,mariposa,alevin,2023-05-27,11:04:00,True

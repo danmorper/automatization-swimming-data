@@ -1,9 +1,9 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-lópez,sánchez,pablo,11C.N. Conil,50.58,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-gómez,muñoz,alejandro,11C.N. Portuense,53.17,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-bermúdez,núñez,iker,11C.D.N. Ciudad De Algeciras,54.32,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-cavallé,durán,rodrigo,11C.N. Portuense,54.43,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-rivero,rodriguez,saul,11C.N. San Fernando,54.86,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-garcia,sanchez,carlos,11C.N. San Fernando,55.34,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-marín,lópez,gonzalo,11C.N. Conil,55.37,masc,50,mariposa,benjamin,2023-03-18,12:08:00
-antúnez,molina,daniel,11C.N. Los Barrios,1:16.26,masc,50,mariposa,benjamin,2023-03-18,12:08:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+lópez,sánchez,pablo,11C.N. Conil,50.58,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+gómez,muñoz,alejandro,11C.N. Portuense,53.17,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+bermúdez,núñez,iker,11C.D.N. Ciudad De Algeciras,54.32,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+cavallé,durán,rodrigo,11C.N. Portuense,54.43,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+rivero,rodriguez,saul,11C.N. San Fernando,54.86,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+garcia,sanchez,carlos,11C.N. San Fernando,55.34,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+marín,lópez,gonzalo,11C.N. Conil,55.37,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True
+antúnez,molina,daniel,11C.N. Los Barrios,1:16.26,masc,50,mariposa,benjamin,2023-03-18,12:08:00,True

@@ -1,5 +1,5 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-ramírez,melgar,daniel,C.N.Estepona,41.32,masc,100,mariposa,benjamin,2023-02-25,09:59:00
-rodriguez,castro,victor,C.D.N.Ciudad De Algeciras,48.20,masc,100,mariposa,benjamin,2023-02-25,09:59:00
-rambouk,larrud,imran,C.D.N.Ciudad De Algeciras,54.55,masc,100,mariposa,benjamin,2023-02-25,09:59:00
-bermúdez,núñez,iker,C.D.N.Ciudad De Algeciras,54.26,masc,100,mariposa,benjamin,2023-02-25,09:59:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+ramírez,melgar,daniel,C.N.Estepona,41.32,masc,100,mariposa,benjamin,2023-02-25,09:59:00,True
+rodriguez,castro,victor,C.D.N.Ciudad De Algeciras,48.20,masc,100,mariposa,benjamin,2023-02-25,09:59:00,True
+rambouk,larrud,imran,C.D.N.Ciudad De Algeciras,54.55,masc,100,mariposa,benjamin,2023-02-25,09:59:00,True
+bermúdez,núñez,iker,C.D.N.Ciudad De Algeciras,54.26,masc,100,mariposa,benjamin,2023-02-25,09:59:00,True

@@ -1,17 +1,17 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-cambiasso,pinzón,africa,C.N.Axarquia,36.34,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-rodríguez,gálvez,irene,C.N.Axarquia,36.47,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-moreno,bustos,claudia,C.D.N.Ciudad De Algeciras,37.39,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-pazos,ruiz,natalia,C.N.Estepona,38.35,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-gómez,muñoz,sofía,C.N.Estepona,40.17,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-santana,guzmán,carolina,C.D.N.Inacua Malaga,40.82,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-jimenez,iglesias,naiara,C.N.Fuengirola,41.17,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-jiménez,domingo,cecilia,C.N.Estepona,41.33,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-barranquero,barba,diana,C.N.Axarquia,42.10,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-segovia,villanua,mencía,C.N.Axarquia,42.36,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-pratt,del,cid,C.N.Estepona,42.47,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-monge,aixela,valeria,C.D.N.Ciudad De Algeciras,42.77,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-antúnez,ruiz,elena,C.N.Los Barrios,46.00,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-checa,delgado,ángela,C.N.Axarquia,47.75,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-kurylava,alysia,11,C.N.Estepona,47.81,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
-fernandez,martos,sara,C.N.Estepona,57.79,prueba 14 fem,50,espalda,alevin,2023-04-01,12:46:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+cambiasso,pinzón,africa,C.N.Axarquia,36.34,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+rodríguez,gálvez,irene,C.N.Axarquia,36.47,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+moreno,bustos,claudia,C.D.N.Ciudad De Algeciras,37.39,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+pazos,ruiz,natalia,C.N.Estepona,38.35,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+gómez,muñoz,sofía,C.N.Estepona,40.17,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+santana,guzmán,carolina,C.D.N.Inacua Malaga,40.82,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+jimenez,iglesias,naiara,C.N.Fuengirola,41.17,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+jiménez,domingo,cecilia,C.N.Estepona,41.33,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+barranquero,barba,diana,C.N.Axarquia,42.10,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+segovia,villanua,mencía,C.N.Axarquia,42.36,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+pratt,del,cid,C.N.Estepona,42.47,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+monge,aixela,valeria,C.D.N.Ciudad De Algeciras,42.77,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+antúnez,ruiz,elena,C.N.Los Barrios,46.00,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+checa,delgado,ángela,C.N.Axarquia,47.75,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+kurylava,alysia,11,C.N.Estepona,47.81,fem,50,espalda,alevin,2023-04-01,12:46:00,True
+fernandez,martos,sara,C.N.Estepona,57.79,fem,50,espalda,alevin,2023-04-01,12:46:00,True

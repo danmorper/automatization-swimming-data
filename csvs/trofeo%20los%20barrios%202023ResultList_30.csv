@@ -1,11 +1,11 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-cardenas,isabella,eva,C.N.Bahia De Cadiz,06,fem,200,estilos,absoluto,2023-04-15,16:53:00
-marin,montes,de,C.D.N.Ciudad De Algeciras,09,fem,200,estilos,absoluto,2023-04-15,16:53:00
-de,diego,moreno,C.N.San Fernando,06,fem,200,estilos,absoluto,2023-04-15,16:53:00
-hebrero,lerma,ines,C.N.Cadiz,06,fem,200,estilos,absoluto,2023-04-15,16:53:00
-corbacho,santamarta,sandra,C.KronosNatación Mijas,09,fem,200,estilos,absoluto,2023-04-15,16:53:00
-montero,navas,rosa,ClubDeportivo Waterpolo Jerez,07,fem,200,estilos,absoluto,2023-04-15,16:53:00
-quirós,calderón,daniela,C.D.N.Sanlucar,11,fem,200,estilos,absoluto,2023-04-15,16:53:00
-ferrero,arevalo,julieta,C.N.Estepona,06,fem,200,estilos,absoluto,2023-04-15,16:53:00
-canto,sanchez,marta,C.N.Los Barrios,06,fem,200,estilos,absoluto,2023-04-15,16:53:00
-candón,rodríguez,adriana,C.N.Puerto Real,08,fem,200,estilos,absoluto,2023-04-15,16:53:00
+name,first_surname,second_surname,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+eva,cardenas,isabella,C.N.Bahia De Cadiz,2:25.82,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+de,marin,montes,C.D.N.Ciudad De Algeciras,2:31.02,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+moreno,de,diego,C.N.San Fernando,2:35.32,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+ines,hebrero,lerma,C.N.Cadiz,2:38.33,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+sandra,corbacho,santamarta,C.KronosNatación Mijas,2:40.64,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+rosa,montero,navas,ClubDeportivo Waterpolo Jerez,2:47.37,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+daniela,quirós,calderón,C.D.N.Sanlucar,2:54.18,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+julieta,ferrero,arevalo,C.N.Estepona,2:55.33,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+marta,canto,sanchez,C.N.Los Barrios,3:00.98,fem,200,estilos,absoluto,2023-04-15,16:53:00,True
+adriana,candón,rodríguez,C.N.Puerto Real,3:09.40,fem,200,estilos,absoluto,2023-04-15,16:53:00,True

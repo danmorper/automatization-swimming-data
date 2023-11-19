@@ -1,23 +1,23 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-marin,montes,de,09C.D.N. Ciudad De Algeciras,1:06.11,fem,100,espalda,infantil,2023-04-15,10:22:00
-dobos,,dalma,09C.Kronos Natación Mijas,1:09.63,fem,100,espalda,infantil,2023-04-15,10:22:00
-pavon,soto,diana,09C.N. Bahia De Cadiz,1:09.64,fem,100,espalda,infantil,2023-04-15,10:22:00
-griffioen,marquez,laura,08C.N. Bahia De Cadiz,1:12.53,fem,100,espalda,infantil,2023-04-15,10:22:00
-maldonado,escalona,maria,09C.N. Los Barrios,1:12.89,fem,100,espalda,infantil,2023-04-15,10:22:00
-cruz,valero,maria,10C.N. San Fernando,1:14.43,fem,100,espalda,infantil,2023-04-15,10:22:00
-moreno,bustos,maria,08C.D.N. Ciudad De Algeciras,1:14.90,fem,100,espalda,infantil,2023-04-15,10:22:00
-burrueco,reyero,rebeca,10C.N. San Roque,1:14.92,fem,100,espalda,infantil,2023-04-15,10:22:00
-de,diego,moreno,10C.N. San Fernando,1:15.72,fem,100,espalda,infantil,2023-04-15,10:22:00
-buscató,sánchez,mara,09C.N. Los Barrios,1:16.92,fem,100,espalda,infantil,2023-04-15,10:22:00
-lozano,mandesis,irene,09C.N. Los Barrios,1:17.40,fem,100,espalda,infantil,2023-04-15,10:22:00
-pardo,contreras,cristina,08Fusion Colombino-Lepe,1:17.96,fem,100,espalda,infantil,2023-04-15,10:22:00
-garcía,diaz-crespo,itziar,09C.N. Cadiz,1:18.86,fem,100,espalda,infantil,2023-04-15,10:22:00
-becerra,cantero,elena,10C.N. Los Barrios,1:18.99,fem,100,espalda,infantil,2023-04-15,10:22:00
-martin,martin,aitana,10C.N. Los Barrios,1:19.30,fem,100,espalda,infantil,2023-04-15,10:22:00
-calvo,benitez,claudia,08C.D.N. Sanlucar,1:23.56,fem,100,espalda,infantil,2023-04-15,10:22:00
-mancebo,sanchez,paula,09C.N. Los Barrios,1:24.04,fem,100,espalda,infantil,2023-04-15,10:22:00
-guisado,ferrari,noah,09C.N. Cadiz,1:24.68,fem,100,espalda,infantil,2023-04-15,10:22:00
-perez,pato,lucia,10C.N. Estepona,1:25.17,fem,100,espalda,infantil,2023-04-15,10:22:00
-gallardo,salguero,blanca,09C.N. Puerto Real,1:26.98,fem,100,espalda,infantil,2023-04-15,10:22:00
-godoy,,pilar,08C.N. Estepona,1:27.13,fem,100,espalda,infantil,2023-04-15,10:22:00
-mckenna,smith,charlotte,10C.Kronos Natación Mijas,1:27.35,fem,100,espalda,infantil,2023-04-15,10:22:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+marin,montes,de,09C.D.N. Ciudad De Algeciras,1:06.11,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+dobos,,dalma,09C.Kronos Natación Mijas,1:09.63,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+pavon,soto,diana,09C.N. Bahia De Cadiz,1:09.64,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+griffioen,marquez,laura,08C.N. Bahia De Cadiz,1:12.53,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+maldonado,escalona,maria,09C.N. Los Barrios,1:12.89,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+cruz,valero,maria,10C.N. San Fernando,1:14.43,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+moreno,bustos,maria,08C.D.N. Ciudad De Algeciras,1:14.90,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+burrueco,reyero,rebeca,10C.N. San Roque,1:14.92,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+de,diego,moreno,10C.N. San Fernando,1:15.72,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+buscató,sánchez,mara,09C.N. Los Barrios,1:16.92,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+lozano,mandesis,irene,09C.N. Los Barrios,1:17.40,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+pardo,contreras,cristina,08Fusion Colombino-Lepe,1:17.96,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+garcía,diaz-crespo,itziar,09C.N. Cadiz,1:18.86,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+becerra,cantero,elena,10C.N. Los Barrios,1:18.99,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+martin,martin,aitana,10C.N. Los Barrios,1:19.30,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+calvo,benitez,claudia,08C.D.N. Sanlucar,1:23.56,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+mancebo,sanchez,paula,09C.N. Los Barrios,1:24.04,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+guisado,ferrari,noah,09C.N. Cadiz,1:24.68,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+perez,pato,lucia,10C.N. Estepona,1:25.17,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+gallardo,salguero,blanca,09C.N. Puerto Real,1:26.98,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+godoy,,pilar,08C.N. Estepona,1:27.13,fem,100,espalda,infantil,2023-04-15,10:22:00,True
+mckenna,smith,charlotte,10C.Kronos Natación Mijas,1:27.35,fem,100,espalda,infantil,2023-04-15,10:22:00,True

@@ -1,7 +1,7 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-martin,garcia,guillermo,11Club Deportivo Waterpolo Jerez,1:26.55,masc,100,libre,benjamin,2023-01-14,11:00:00
-serrano,fuentes,daniel,11C.D.N. Ciudad De Algeciras,1:37.57,masc,100,libre,benjamin,2023-01-14,11:00:00
-garcia,sanchez,carlos,11C.N. San Fernando,1:39.71,masc,100,libre,benjamin,2023-01-14,11:00:00
-mulero,roman,biel,11C.N. Los Barrios,1:40.31,masc,100,libre,benjamin,2023-01-14,11:00:00
-morejon,lara,mario,11C.N. Bahia De Cadiz,1:55.51,masc,100,libre,benjamin,2023-01-14,11:00:00
-antúnez,molina,daniel,11C.N. Los Barrios,1:59.92,masc,100,libre,benjamin,2023-01-14,11:00:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+martin,garcia,guillermo,11Club Deportivo Waterpolo Jerez,1:26.55,masc,100,libre,benjamin,2023-01-14,11:00:00,True
+serrano,fuentes,daniel,11C.D.N. Ciudad De Algeciras,1:37.57,masc,100,libre,benjamin,2023-01-14,11:00:00,True
+garcia,sanchez,carlos,11C.N. San Fernando,1:39.71,masc,100,libre,benjamin,2023-01-14,11:00:00,True
+mulero,roman,biel,11C.N. Los Barrios,1:40.31,masc,100,libre,benjamin,2023-01-14,11:00:00,True
+morejon,lara,mario,11C.N. Bahia De Cadiz,1:55.51,masc,100,libre,benjamin,2023-01-14,11:00:00,True
+antúnez,molina,daniel,11C.N. Los Barrios,1:59.92,masc,100,libre,benjamin,2023-01-14,11:00:00,True

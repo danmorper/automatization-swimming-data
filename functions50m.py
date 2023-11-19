@@ -2,6 +2,15 @@ import tabula
 import pandas as pd
 from datetime import datetime as dt
 import csv
+
+def check_gender (x):
+    if 'masc' in x:
+        return 'masc'
+    elif 'fem' in x:
+        return 'fem'
+    else:
+        return None
+    
 def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
@@ -19,12 +28,12 @@ def gender_distance_style_category_date_time(lista):
     names = [name.replace('í','i') for name in names]
     names = [name.replace('ó','o') for name in names]
     names = [name.replace('ú','u') for name in names]
-    # Get the second name
-    print(names)
+    
     # Find string in names which contains 50m, 100m, 200m or 400m
     gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
     namessplitpoint = gender_distance_style[0].split('.')
-    gender = namessplitpoint[0]
+    gender_str = namessplitpoint[0]
+    gender = check_gender(gender_str)
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
     distance = ''.join([i for i in distance if not i.isalpha()])

@@ -1,21 +1,21 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-gamboa,duran,alejandra,12Navial,1:27.22,fem,100,braza,alevin,2023-04-01,17:06:00
-cardeña,holzmann,telma,12C.N. Fuengirola,1:29.19,fem,100,braza,alevin,2023-04-01,17:06:00
-mateo,gómez,alba,12C.N. Estepona,1:30.00,fem,100,braza,alevin,2023-04-01,17:06:00
-olivia,racoare,carla,11C.Kronos Natación Mijas,1:33.51,fem,100,braza,alevin,2023-04-01,17:06:00
-martínez,garcía,maya,12Navial,1:34.22,fem,100,braza,alevin,2023-04-01,17:06:00
-delgado,chamorro,edurne,11C.N. Villarrense,1:34.79,fem,100,braza,alevin,2023-04-01,17:06:00
-cabezas,vieitez,irene,11Navial,1:34.98,fem,100,braza,alevin,2023-04-01,17:06:00
-fernandez,garcia,alejandra,11Navial,1:36.65,fem,100,braza,alevin,2023-04-01,17:06:00
-mellado,roldan,adriana,12Navial,1:37.16,fem,100,braza,alevin,2023-04-01,17:06:00
-gallo,,mia,11C.N. Fuengirola,1:37.45,fem,100,braza,alevin,2023-04-01,17:06:00
-barranquero,barba,diana,11C.N. Axarquia,1:39.52,fem,100,braza,alevin,2023-04-01,17:06:00
-millán,cózar,carla,11C.N. Estepona,1:47.44,fem,100,braza,alevin,2023-04-01,17:06:00
-prause,coca,carla,11C.N.Comarca Guadalhorce,1:47.65,fem,100,braza,alevin,2023-04-01,17:06:00
-rengifo,armenta,maría,11C.N. Los Barrios,1:47.68,fem,100,braza,alevin,2023-04-01,17:06:00
-millet,senciales,celia,11C.N. Axarquia,1:48.04,fem,100,braza,alevin,2023-04-01,17:06:00
-jimenez,rubio,lola,12C.N. Los Barrios,1:48.38,fem,100,braza,alevin,2023-04-01,17:06:00
-kneale,,aimee,12C.Kronos Natación Mijas,1:52.19,fem,100,braza,alevin,2023-04-01,17:06:00
-monge,aixela,valeria,12C.D.N. Ciudad De Algeciras,1:55.35,fem,100,braza,alevin,2023-04-01,17:06:00
-perez,campos,noa,12C.N. Torremolinos,1:56.17,fem,100,braza,alevin,2023-04-01,17:06:00
-boza,baez,daniela,12C.N. Los Barrios,2:07.01,fem,100,braza,alevin,2023-04-01,17:06:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+gamboa,duran,alejandra,12Navial,1:27.22,fem,100,braza,alevin,2023-04-01,17:06:00,True
+cardeña,holzmann,telma,12C.N. Fuengirola,1:29.19,fem,100,braza,alevin,2023-04-01,17:06:00,True
+mateo,gómez,alba,12C.N. Estepona,1:30.00,fem,100,braza,alevin,2023-04-01,17:06:00,True
+olivia,racoare,carla,11C.Kronos Natación Mijas,1:33.51,fem,100,braza,alevin,2023-04-01,17:06:00,True
+martínez,garcía,maya,12Navial,1:34.22,fem,100,braza,alevin,2023-04-01,17:06:00,True
+delgado,chamorro,edurne,11C.N. Villarrense,1:34.79,fem,100,braza,alevin,2023-04-01,17:06:00,True
+cabezas,vieitez,irene,11Navial,1:34.98,fem,100,braza,alevin,2023-04-01,17:06:00,True
+fernandez,garcia,alejandra,11Navial,1:36.65,fem,100,braza,alevin,2023-04-01,17:06:00,True
+mellado,roldan,adriana,12Navial,1:37.16,fem,100,braza,alevin,2023-04-01,17:06:00,True
+gallo,,mia,11C.N. Fuengirola,1:37.45,fem,100,braza,alevin,2023-04-01,17:06:00,True
+barranquero,barba,diana,11C.N. Axarquia,1:39.52,fem,100,braza,alevin,2023-04-01,17:06:00,True
+millán,cózar,carla,11C.N. Estepona,1:47.44,fem,100,braza,alevin,2023-04-01,17:06:00,True
+prause,coca,carla,11C.N.Comarca Guadalhorce,1:47.65,fem,100,braza,alevin,2023-04-01,17:06:00,True
+rengifo,armenta,maría,11C.N. Los Barrios,1:47.68,fem,100,braza,alevin,2023-04-01,17:06:00,True
+millet,senciales,celia,11C.N. Axarquia,1:48.04,fem,100,braza,alevin,2023-04-01,17:06:00,True
+jimenez,rubio,lola,12C.N. Los Barrios,1:48.38,fem,100,braza,alevin,2023-04-01,17:06:00,True
+kneale,,aimee,12C.Kronos Natación Mijas,1:52.19,fem,100,braza,alevin,2023-04-01,17:06:00,True
+monge,aixela,valeria,12C.D.N. Ciudad De Algeciras,1:55.35,fem,100,braza,alevin,2023-04-01,17:06:00,True
+perez,campos,noa,12C.N. Torremolinos,1:56.17,fem,100,braza,alevin,2023-04-01,17:06:00,True
+boza,baez,daniela,12C.N. Los Barrios,2:07.01,fem,100,braza,alevin,2023-04-01,17:06:00,True

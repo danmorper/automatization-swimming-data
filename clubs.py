@@ -79,3 +79,5 @@ for i in range(num):
 print("for loop finished" + str(i) + "OLE YO PIXA") 
 df.to_csv('clubs.csv', index=False)  # Save the dataframe to a CSV file
 driver.close()  # Close the browser
+
+print(sum(df["comunidad_autonoma"]=='Andalucía'))

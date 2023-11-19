@@ -1,19 +1,19 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-moron,maña,jose,09Fusion Colombino-Lepe,30.36,masc,50,espalda,alevin,2023-04-01,12:36:00
-sanchez,abadía,mario,09C.N. Dos Hermanas,32.37,masc,50,espalda,alevin,2023-04-01,12:36:00
-barrera,traverso,pablo,09Circulo Mercantil,33.21,masc,50,espalda,alevin,2023-04-01,12:36:00
-fernandez,santana,juan,09C.N. Mairena Aljarafe,34.42,masc,50,espalda,alevin,2023-04-01,12:36:00
-perez,calbo,tomás,09Circulo Mercantil,34.78,masc,50,espalda,alevin,2023-04-01,12:36:00
-ramirez,ortiz,gonzalo,10C.N. Dos Hermanas,36.63,masc,50,espalda,alevin,2023-04-01,12:36:00
-llamas,palacios,daniel,09Dkv Club Natacion Jerez,36.72,masc,50,espalda,alevin,2023-04-01,12:36:00
-hoya,montero,raul,09C.N. Union Rinconada,36.87,masc,50,espalda,alevin,2023-04-01,12:36:00
-rubio,colorado,tristán,09C.N. Dos Hermanas,39.72,masc,50,espalda,alevin,2023-04-01,12:36:00
-farauste,camacho,uriel,10C.N. Huelva,40.48,masc,50,espalda,alevin,2023-04-01,12:36:00
-castillo,sanchez,david,09G.N. Sevilla 2004,41.26,masc,50,espalda,alevin,2023-04-01,12:36:00
-hernández,gómez,tayron,09C.N. Puerto Real,43.07,masc,50,espalda,alevin,2023-04-01,12:36:00
-baena,orozco,emilio,09C.N. Cadiz,46.95,masc,50,espalda,alevin,2023-04-01,12:36:00
-monge,ferruz,sergio,10C.N. Cadiz,48.08,masc,50,espalda,alevin,2023-04-01,12:36:00
-alcántara,aznar,lucas,10C.N. Bahia De Cadiz,49.35,masc,50,espalda,alevin,2023-04-01,12:36:00
-rodriguez,lozano,javier,10C.N. Cadiz,49.37,masc,50,espalda,alevin,2023-04-01,12:36:00
-figueiras,ordoñez,pablo,09C.N. Bahia De Cadiz,51.16,masc,50,espalda,alevin,2023-04-01,12:36:00
-andreu,perez-rubio,juan,10C.N. Bahia De Cadiz,58.63,masc,50,espalda,alevin,2023-04-01,12:36:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+moron,maña,jose,09Fusion Colombino-Lepe,30.36,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+sanchez,abadía,mario,09C.N. Dos Hermanas,32.37,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+barrera,traverso,pablo,09Circulo Mercantil,33.21,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+fernandez,santana,juan,09C.N. Mairena Aljarafe,34.42,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+perez,calbo,tomás,09Circulo Mercantil,34.78,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+ramirez,ortiz,gonzalo,10C.N. Dos Hermanas,36.63,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+llamas,palacios,daniel,09Dkv Club Natacion Jerez,36.72,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+hoya,montero,raul,09C.N. Union Rinconada,36.87,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+rubio,colorado,tristán,09C.N. Dos Hermanas,39.72,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+farauste,camacho,uriel,10C.N. Huelva,40.48,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+castillo,sanchez,david,09G.N. Sevilla 2004,41.26,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+hernández,gómez,tayron,09C.N. Puerto Real,43.07,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+baena,orozco,emilio,09C.N. Cadiz,46.95,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+monge,ferruz,sergio,10C.N. Cadiz,48.08,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+alcántara,aznar,lucas,10C.N. Bahia De Cadiz,49.35,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+rodriguez,lozano,javier,10C.N. Cadiz,49.37,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+figueiras,ordoñez,pablo,09C.N. Bahia De Cadiz,51.16,masc,50,espalda,alevin,2023-04-01,12:36:00,False
+andreu,perez-rubio,juan,10C.N. Bahia De Cadiz,58.63,masc,50,espalda,alevin,2023-04-01,12:36:00,False
