@@ -1,20 +1,20 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-monge,ferruz,marcos,C.N.Cadiz,06,masc,200,espalda,absoluto,2023-05-27,19:20:00
-belinchon,matos,angel,C.N.Los Barrios,06,masc,200,espalda,absoluto,2023-05-27,19:20:00
-ruiz,manga,oscar,C.D.N.Sanlucar,08,masc,200,espalda,absoluto,2023-05-27,19:20:00
-merino,rodriguez,yeison,C.N.Portuense,08,masc,200,espalda,absoluto,2023-05-27,19:20:00
-gonzalez,ceballos,rafael,C.N.San Fernando,08,masc,200,espalda,absoluto,2023-05-27,19:20:00
-rodriguez,ramos,alvaro,C.N.San Fernando,09,masc,200,espalda,absoluto,2023-05-27,19:20:00
-sanchez,abadía,mario,C.N.Dos Hermanas,09,masc,200,espalda,absoluto,2023-05-27,19:20:00
-pastoril,ibañez,fabio,C.N.Bahia De Cadiz,06,masc,200,espalda,absoluto,2023-05-27,19:20:00
-jimenez,romay,victor,C.N.Portuense,09,masc,200,espalda,absoluto,2023-05-27,19:20:00
-martinez,jimenez,daniel,C.N.Cadiz,06,masc,200,espalda,absoluto,2023-05-27,19:20:00
-alabarce,manrique,ismael,C.N.Los Barrios,09,masc,200,espalda,absoluto,2023-05-27,19:20:00
-romero,rios,alejandro,C.N.Puerto Real,02,masc,200,espalda,absoluto,2023-05-27,19:20:00
-lopez,gomez,pablo,C.N.Alcala,10,masc,200,espalda,absoluto,2023-05-27,19:20:00
-rivero,benitez,adrian,C.N.Ubrique,10,masc,200,espalda,absoluto,2023-05-27,19:20:00
-rodriguez,muriel,jose,C.D.N.Ciudad De Algeciras,09,masc,200,espalda,absoluto,2023-05-27,19:20:00
-fernandez,escarcena,hugo,C.D.N.Ciudad De Algeciras,10,masc,200,espalda,absoluto,2023-05-27,19:20:00
-de,lara,infiesta,C.N.Dos Hermanas,11,masc,200,espalda,absoluto,2023-05-27,19:20:00
-rodríguez,garcía,ivan,C.N.Alcala,12,masc,200,espalda,absoluto,2023-05-27,19:20:00
-de,la,cruz,C.N.Ubrique,10,masc,200,espalda,absoluto,2023-05-27,19:20:00
+name,first_surname,second_surname,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+marcos,monge,ferruz,C.N.Cadiz,2:18.63,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+angel,belinchon,matos,C.N.Los Barrios,2:19.45,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+oscar,ruiz,manga,C.D.N.Sanlucar,2:24.09,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+yeison,merino,rodriguez,C.N.Portuense,2:24.90,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+rafael,gonzalez,ceballos,C.N.San Fernando,2:25.26,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+alvaro,rodriguez,ramos,C.N.San Fernando,2:25.90,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+mario,sanchez,abadía,C.N.Dos Hermanas,2:30.20,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+fabio,pastoril,ibañez,C.N.Bahia De Cadiz,2:31.57,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+victor,jimenez,romay,C.N.Portuense,2:32.11,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+daniel,martinez,jimenez,C.N.Cadiz,2:34.09,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+ismael,alabarce,manrique,C.N.Los Barrios,2:40.82,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+alejandro,romero,rios,C.N.Puerto Real,2:52.02,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+pablo,lopez,gomez,C.N.Alcala,3:00.49,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+adrian,rivero,benitez,C.N.Ubrique,3:08.69,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+jose,rodriguez,muriel,C.D.N.Ciudad De Algeciras,3:10.73,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+hugo,fernandez,escarcena,C.D.N.Ciudad De Algeciras,3:17.31,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+infiesta,de,lara,C.N.Dos Hermanas,3:21.93,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+ivan,rodríguez,garcía,C.N.Alcala,3:31.69,masc,200,espalda,absoluto,2023-05-27,19:20:00,True
+cruz,de,la,C.N.Ubrique,3:43.12,masc,200,espalda,absoluto,2023-05-27,19:20:00,True

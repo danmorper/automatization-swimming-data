@@ -2,7 +2,14 @@ import tabula
 import pandas as pd
 from datetime import datetime as dt
 import csv
-
+def check_gender (x):
+    if 'masc' in x:
+        return 'masc'
+    elif 'fem' in x:
+        return 'fem'
+    else:
+        return None
+    
 def gender_distance_style_category_date_time(lista):
     """
     lista: result of tabula.read_pdf
@@ -23,7 +30,8 @@ def gender_distance_style_category_date_time(lista):
     # Find string in names which contains 50m, 100m, 200m or 400m
     gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
     namessplitpoint = gender_distance_style[0].split('.')
-    gender = namessplitpoint[0]
+    gender_str = namessplitpoint[0]
+    gender = check_gender(gender_str)
     distance = namessplitpoint[1].split(' ')[1]
     # remove letters in distance
     distance = ''.join([i for i in distance if not i.isalpha()])
@@ -58,19 +66,38 @@ def add_columns(df, gender, distance, style, category, date_string, time_string)
     df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
     return df
 
+def has_whitespace(x):
+    return x.count(' ')>0
+
+def list_has_whitespace(x):
+    return sum(map(has_whitespace, x))>0
+
 def race_time(df):
+    last_column = df.iloc[:, -7].tolist() # it is called last_column because at the beginning it was
+    last_column_name = df.columns[-7]
+    racetime_dic = dict()
     # if there's a whitespace in any of the rows of the lastcolumn
-    if(df.iloc[:, -1].str.contains(' ').any()):
-        # split the last column in two columns
-        race_time = df.iloc[:, -1].str.split(' ')[0].tolist()
-        print(race_time)
-        racetime_dic = {'column': df.columns[-1], 'race_time': race_time}
-        return racetime_dic
+    if (list_has_whitespace(last_column)):
+        #key is the column name
+        racetime_dic[last_column_name] = []
+        for element in last_column:
+            if (has_whitespace(element)):
+                race_time = element.split(' ')[0]
+                racetime_dic[last_column_name].append(race_time)
+
+            else:
+                if(element.count(':')>0):
+                    race_time = element
+                    racetime_dic[last_column_name].append(race_time)
     else:
-        race_time = df.iloc[:, -2].tolist()
-        print(race_time)
-        racetime_dic = {'column': df.columns[-2], 'race_time': race_time} 
-        return racetime_dic
+        previous_last_column = df.iloc[:,-8].tolist()
+        previous_last_column_name = df.columns[-8]
+        racetime_dic[previous_last_column_name] = []
+        for element in previous_last_column:
+            if(element.count(':')>0):
+                    race_time = element
+                    racetime_dic[last_column_name].append(race_time)
+    return racetime_dic
 #Datacleaning
 def nas_rows(df):
     """
@@ -185,7 +212,6 @@ def find_teams(df, teams_rfen):
                 for character in element:
                     # remove digits from element (teams names in some cases are like this: 1. CN Portuense)
                     if character.isdigit():
-                        print(element)
                         element = element.replace(character, '')
                 if element in teams_rfen["clubes"].tolist():
                     return column
@@ -248,7 +274,7 @@ def columns_df (df, racetime_dic):
     df.reset_index(drop=True, inplace=True)
 
     # drop column 5
-    df.drop(df.columns[5], axis=1, inplace=True)
+    # df.drop(df.columns[5], axis=1, inplace=True)
 
     # reset index
     df.reset_index(drop=True, inplace=True)
@@ -282,18 +308,23 @@ def columns_df (df, racetime_dic):
 
     # reset index
     df.reset_index(drop=True, inplace=True)
-    print(df)
     # drop any column with more than 10% NaN
     df.dropna(axis=1, thresh=int(0.9*df.shape[0]), inplace=True)
     df.reset_index(drop=True, inplace=True)
 
     # We add race_time
-    df["race_time"] = racetime_dic['race_time']
+    column = list(racetime_dic.keys())[0]
+    values = racetime_dic[column]
+    df["race_time"] = values
     # We remove the column in which we extracted race_time
-    df.drop(racetime_dic['column'], axis=1, inplace=True)
+    df.drop(column, axis=1, inplace=True)
     # reset index
     df.reset_index(drop=True, inplace=True)
 
+    # We add event_time
+    df.rename(columns={"time": "event_time"}, inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
 
     #drop columns if they are not 11
     if (len(df.columns) != 11):
@@ -305,7 +336,9 @@ def columns_df (df, racetime_dic):
                 df.drop(column, axis=1, inplace=True)
                 # reset index
                 df.reset_index(drop=True, inplace=True)
-    df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+    df = df[["name", "first_surname", "second_surname", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]]
+    # reset index
+    df.reset_index(drop=True, inplace=True)
 
     # remove integers from team column if they exist
     if df["team"].str.contains('\d').any():

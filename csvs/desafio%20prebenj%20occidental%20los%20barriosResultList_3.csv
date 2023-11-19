@@ -1,22 +1,22 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-mesamiranda,,fernando,prueba 3 masc,1:27.67,100, Circulo Mercantil,estilos,prebenjamin,2023-06-10,16:50:00
-santosmartín,,nacho,prueba 3 masc,1:28.66,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-garciaparrado,,pablo,prueba 3 masc,1:31.87,100, C.D.N. Sanlucar,estilos,prebenjamin,2023-06-10,16:50:00
-ortegabaena,,david,prueba 3 masc,1:34.11,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00
-garridoalves,,mario,prueba 3 masc,1:34.93,100, C.N. Huelva,estilos,prebenjamin,2023-06-10,16:50:00
-verabermejo,,enrique,prueba 3 masc,1:35.06,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00
-gonzalezford,henry,william,prueba 3 masc,1:36.29,100, C.D.N. Ciudad De Algeciras,estilos,prebenjamin,2023-06-10,16:50:00
-rojascoto,,miguel,prueba 3 masc,1:36.90,100, Circulo Mercantil,estilos,prebenjamin,2023-06-10,16:50:00
-hernandezcamarero,,marc,prueba 3 masc,1:36.93,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00
-calderonhidalgo,,nicolas,prueba 3 masc,1:37.29,100, C.N. Bahia De Cadiz,estilos,prebenjamin,2023-06-10,16:50:00
-ruizmoreno,antonio,jose,prueba 3 masc,1:38.41,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-villatoroferrari,,hugo,prueba 3 masc,1:38.88,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-machucacuadrado,,martin,prueba 3 masc,1:39.22,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00
-viejolobo,,hugo,prueba 3 masc,1:39.33,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00
-garcíaalba,,ulises,prueba 3 masc,1:40.84,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-aguilarperez,,josé,prueba 3 masc,1:41.90,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-barreranozal,,miguel,prueba 3 masc,1:42.24,100, C.D.N. Cordoba,estilos,prebenjamin,2023-06-10,16:50:00
-jiménezzamorano,,diego,prueba 3 masc,1:42.74,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-martínezalcalá,,hernán,prueba 3 masc,1:43.71,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
-morachico,,hugo,prueba 3 masc,1:43.99,100, C.N. Huelva,estilos,prebenjamin,2023-06-10,16:50:00
-skopetskiymaiko,,taras,prueba 3 masc,1:44.14,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+mesamiranda,,fernando,masc,1:27.67,100, Circulo Mercantil,estilos,prebenjamin,2023-06-10,16:50:00,True
+santosmartín,,nacho,masc,1:28.66,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+garciaparrado,,pablo,masc,1:31.87,100, C.D.N. Sanlucar,estilos,prebenjamin,2023-06-10,16:50:00,True
+ortegabaena,,david,masc,1:34.11,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00,True
+garridoalves,,mario,masc,1:34.93,100, C.N. Huelva,estilos,prebenjamin,2023-06-10,16:50:00,True
+verabermejo,,enrique,masc,1:35.06,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00,True
+gonzalezford,henry,william,masc,1:36.29,100, C.D.N. Ciudad De Algeciras,estilos,prebenjamin,2023-06-10,16:50:00,True
+rojascoto,,miguel,masc,1:36.90,100, Circulo Mercantil,estilos,prebenjamin,2023-06-10,16:50:00,True
+hernandezcamarero,,marc,masc,1:36.93,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00,True
+calderonhidalgo,,nicolas,masc,1:37.29,100, C.N. Bahia De Cadiz,estilos,prebenjamin,2023-06-10,16:50:00,True
+ruizmoreno,antonio,jose,masc,1:38.41,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+villatoroferrari,,hugo,masc,1:38.88,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+machucacuadrado,,martin,masc,1:39.22,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00,True
+viejolobo,,hugo,masc,1:39.33,100, C.N. Mairena Aljarafe,estilos,prebenjamin,2023-06-10,16:50:00,True
+garcíaalba,,ulises,masc,1:40.84,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+aguilarperez,,josé,masc,1:41.90,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+barreranozal,,miguel,masc,1:42.24,100, C.D.N. Cordoba,estilos,prebenjamin,2023-06-10,16:50:00,True
+jiménezzamorano,,diego,masc,1:42.74,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+martínezalcalá,,hernán,masc,1:43.71,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True
+morachico,,hugo,masc,1:43.99,100, C.N. Huelva,estilos,prebenjamin,2023-06-10,16:50:00,True
+skopetskiymaiko,,taras,masc,1:44.14,100, Navial,estilos,prebenjamin,2023-06-10,16:50:00,True

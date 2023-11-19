@@ -1,19 +1,19 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-robles,romero,carlos,12C.D.N. Sanlucar,1:33.37,masc,100,espalda,benjamin,2023-01-14,12:51:00
-garcia,abellan,jose,12Club Deportivo Waterpolo Jerez,1:39.02,masc,100,espalda,benjamin,2023-01-14,12:51:00
-martin,garcia,guillermo,11Club Deportivo Waterpolo Jerez,1:41.21,masc,100,espalda,benjamin,2023-01-14,12:51:00
-herrera,gallardo,nicolas,12C.N. Portuense,1:42.36,masc,100,espalda,benjamin,2023-01-14,12:51:00
-lópez,sánchez,pablo,11C.N. Conil,1:44.12,masc,100,espalda,benjamin,2023-01-14,12:51:00
-marquez,rodriguez,octavio,12C.N. Cadiz,1:45.20,masc,100,espalda,benjamin,2023-01-14,12:51:00
-serrano,fuentes,daniel,11C.D.N. Ciudad De Algeciras,1:49.10,masc,100,espalda,benjamin,2023-01-14,12:51:00
-garcia,sanchez,carlos,11C.N. San Fernando,1:56.00,masc,100,espalda,benjamin,2023-01-14,12:51:00
-cavallé,durán,rodrigo,11C.N. Portuense,1:56.42,masc,100,espalda,benjamin,2023-01-14,12:51:00
-marín,lópez,gonzalo,11C.N. Conil,1:58.33,masc,100,espalda,benjamin,2023-01-14,12:51:00
-pérez,macías,luca,12C.N. Portuense,1:58.37,masc,100,espalda,benjamin,2023-01-14,12:51:00
-gonzalez,prada,alonso,12C.N. Portuense,2:00.48,masc,100,espalda,benjamin,2023-01-14,12:51:00
-cabrera,rufian,pepe,12C.N. Portuense,2:02.87,masc,100,espalda,benjamin,2023-01-14,12:51:00
-morejon,lara,mario,11C.N. Bahia De Cadiz,2:05.44,masc,100,espalda,benjamin,2023-01-14,12:51:00
-roman,de,rueda,12Dkv Club Natacion Jerez,2:09.30,masc,100,espalda,benjamin,2023-01-14,12:51:00
-barrajon,panao,daniel,12C.N. Bahia De Cadiz,2:22.34,masc,100,espalda,benjamin,2023-01-14,12:51:00
-bárcena,sánchez,guillermo,12C.N. Bahia De Cadiz,2:27.93,masc,100,espalda,benjamin,2023-01-14,12:51:00
-caro,cuellar,hugo,12C.N. Portuense,2:28.31,masc,100,espalda,benjamin,2023-01-14,12:51:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+robles,romero,carlos,12C.D.N. Sanlucar,1:33.37,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+garcia,abellan,jose,12Club Deportivo Waterpolo Jerez,1:39.02,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+martin,garcia,guillermo,11Club Deportivo Waterpolo Jerez,1:41.21,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+herrera,gallardo,nicolas,12C.N. Portuense,1:42.36,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+lópez,sánchez,pablo,11C.N. Conil,1:44.12,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+marquez,rodriguez,octavio,12C.N. Cadiz,1:45.20,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+serrano,fuentes,daniel,11C.D.N. Ciudad De Algeciras,1:49.10,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+garcia,sanchez,carlos,11C.N. San Fernando,1:56.00,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+cavallé,durán,rodrigo,11C.N. Portuense,1:56.42,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+marín,lópez,gonzalo,11C.N. Conil,1:58.33,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+pérez,macías,luca,12C.N. Portuense,1:58.37,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+gonzalez,prada,alonso,12C.N. Portuense,2:00.48,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+cabrera,rufian,pepe,12C.N. Portuense,2:02.87,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+morejon,lara,mario,11C.N. Bahia De Cadiz,2:05.44,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+roman,de,rueda,12Dkv Club Natacion Jerez,2:09.30,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+barrajon,panao,daniel,12C.N. Bahia De Cadiz,2:22.34,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+bárcena,sánchez,guillermo,12C.N. Bahia De Cadiz,2:27.93,masc,100,espalda,benjamin,2023-01-14,12:51:00,True
+caro,cuellar,hugo,12C.N. Portuense,2:28.31,masc,100,espalda,benjamin,2023-01-14,12:51:00,True

@@ -20,7 +20,6 @@ for url in urls.values():
     print("url is: {}".format(url))
     # Open the URL in the browser
     driver.get(url)
-
     # print the title of the page
     # print(driver.title)
 
@@ -45,6 +44,12 @@ for url in urls.values():
         new_folder_name = url.split('/')[-2]
     new_folder_path = os.path.join(output_dir, new_folder_name)
     os.makedirs(new_folder_path, exist_ok=True)
+    #Find text in the page which contains 'Piscina Corta'
+    if 'Piscina Corta' in driver.page_source:
+        # Create a file called piscina_corta.txt inside of the new folder
+        with open(os.path.join(new_folder_path, 'piscina_corta.txt'), 'w') as f:
+            f.write('forsa clu natasion jere lolololololo')
+
     for pdf in pdfs:
         r = requests.get(pdf)
         if r.status_code == 200:
@@ -52,6 +57,8 @@ for url in urls.values():
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             with open(file_path, 'wb') as f:
                 f.write(r.content)
+
+
     # print list of files in pdfs directory
 # Close the browser
 driver.close()

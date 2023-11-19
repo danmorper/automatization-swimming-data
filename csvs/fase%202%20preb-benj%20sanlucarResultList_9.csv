@@ -1,12 +1,12 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-muñoz,rodriguez,arturo,12Club Deportivo Waterpolo Jerez,1:26.17,masc,100,libre,benjamin,2023-03-25,10:50:00
-garcia,abellan,jose,12Club Deportivo Waterpolo Jerez,1:28.63,masc,100,libre,benjamin,2023-03-25,10:50:00
-méndez,sarria,ángel,12C.N. Los Barrios,1:29.34,masc,100,libre,benjamin,2023-03-25,10:50:00
-rubio,gonzález,roberto,12C.D.N. Ciudad De Algeciras,1:30.88,masc,100,libre,benjamin,2023-03-25,10:50:00
-roman,de,rueda,12Dkv Club Natacion Jerez,1:32.05,masc,100,libre,benjamin,2023-03-25,10:50:00
-jiménez,vidal,alberto,12C.D.N. Sanlucar,1:35.28,masc,100,libre,benjamin,2023-03-25,10:50:00
-galván,romero,antonio,12C.N. Caballa - Ciudad De Ceuta,1:44.59,masc,100,libre,benjamin,2023-03-25,10:50:00
-roncero,aguilera,juan,12C.N. Los Barrios,1:52.13,masc,100,libre,benjamin,2023-03-25,10:50:00
-lópez,garcía,damián,12C.D.N. Sanlucar,1:54.69,masc,100,libre,benjamin,2023-03-25,10:50:00
-villar,rodriguez,sergio,12C.N. Bahia De Cadiz,1:55.60,masc,100,libre,benjamin,2023-03-25,10:50:00
-rodriguez,campelo,iago,12Club Deportivo Waterpolo Jerez,1:58.62,masc,100,libre,benjamin,2023-03-25,10:50:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+muñoz,rodriguez,arturo,12Club Deportivo Waterpolo Jerez,1:26.17,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+garcia,abellan,jose,12Club Deportivo Waterpolo Jerez,1:28.63,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+méndez,sarria,ángel,12C.N. Los Barrios,1:29.34,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+rubio,gonzález,roberto,12C.D.N. Ciudad De Algeciras,1:30.88,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+roman,de,rueda,12Dkv Club Natacion Jerez,1:32.05,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+jiménez,vidal,alberto,12C.D.N. Sanlucar,1:35.28,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+galván,romero,antonio,12C.N. Caballa - Ciudad De Ceuta,1:44.59,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+roncero,aguilera,juan,12C.N. Los Barrios,1:52.13,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+lópez,garcía,damián,12C.D.N. Sanlucar,1:54.69,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+villar,rodriguez,sergio,12C.N. Bahia De Cadiz,1:55.60,masc,100,libre,benjamin,2023-03-25,10:50:00,True
+rodriguez,campelo,iago,12Club Deportivo Waterpolo Jerez,1:58.62,masc,100,libre,benjamin,2023-03-25,10:50:00,True

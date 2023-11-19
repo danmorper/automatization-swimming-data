@@ -1,38 +1,38 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-bartolome,bergillo,valeria,C.N.Cadiz,1:02.13,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-romero,rabanillo,fabiola,C.N.Cadiz,1:09.09,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-sánchez,torrecilla,carla,C.N.Los Barrios,1:10.28,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-darias,núnez,inés,C.N.Los Barrios,1:12.36,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-rosa,domínguez,martina,C.N.Los Barrios,1:12.62,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-fanning,morales,sofia,C.N.Cadiz,1:15.98,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-gomez,collantes,ana,C.N.Cadiz,1:25.59,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-luque,dominguez,idaira,C.N.Los Barrios,1:31.53,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-garcia,jimenez,adriana,C.N.Los Barrios,1:32.07,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-zájara,montero,julia,C.N.Conil,38.21,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-garcia,corzo,micaela,C.N.Portuense,39.69,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-candón,rodríguez,martina,C.N.Puerto Real,42.94,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-lópez,garcia,letizia,C.N.Puerto Real,49.14,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-alcedo,prieto,adriana,C.N.Puerto Real,49.41,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-pérez,gonzález,miriam,C.N.Carmona,50.70,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-maestre,fierro,cristina,C.N.Cadiz,50.90,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-areizaga,fernandez,enma,C.N.Cadiz,51.24,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-ayud,garcia,helena,C.N.Portuense,54.28,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-fernandez,daneri,valeria,C.N.Puerto Real,58.91,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-aguilera,capell,abril,C.N.Cadiz,1:00.42,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-gomez,gracia,carlota,C.N.Cadiz,1:07.28,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-utrera,garcia,maria,C.N.Cadiz,33.10,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-peña,navarro,jimena,C.N.Cadiz,34.72,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-estrada,chávez,natalia,C.N.Puerto Real,34.96,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-lozano,pérez,julia,C.N.Cadiz,35.26,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-pérez,gonzález,claudia,C.N.Carmona,36.18,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-ávila,mesa,celia,C.N.Carmona,36.48,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-ballesteros,rivera,norah,C.N.Los Barrios,36.99,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-rengifo,armenta,maría,C.N.Los Barrios,37.63,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-suarez,pajares,ana,C.N.Portuense,38.16,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-pastrana,uribe,julia,C.N.Portuense,38.50,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-boza,baez,daniela,C.N.Los Barrios,42.06,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-armendáriz,núñez,michelle,C.N.Puerto Real,43.29,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-escobar,fernandez,eva,C.N.Cadiz,43.48,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-ortega,miranda,andrea,C.N.Puerto Real,43.75,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-llavero,sanchez,elena,C.N.Puerto Real,44.45,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
-saidna,saidna,marwa,C.N.Puerto Real,57.23,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+bartolome,bergillo,valeria,C.N.Cadiz,1:02.13,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+romero,rabanillo,fabiola,C.N.Cadiz,1:09.09,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+sánchez,torrecilla,carla,C.N.Los Barrios,1:10.28,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+darias,núnez,inés,C.N.Los Barrios,1:12.36,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+rosa,domínguez,martina,C.N.Los Barrios,1:12.62,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+fanning,morales,sofia,C.N.Cadiz,1:15.98,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+gomez,collantes,ana,C.N.Cadiz,1:25.59,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+luque,dominguez,idaira,C.N.Los Barrios,1:31.53,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+garcia,jimenez,adriana,C.N.Los Barrios,1:32.07,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+zájara,montero,julia,C.N.Conil,38.21,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+garcia,corzo,micaela,C.N.Portuense,39.69,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+candón,rodríguez,martina,C.N.Puerto Real,42.94,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+lópez,garcia,letizia,C.N.Puerto Real,49.14,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+alcedo,prieto,adriana,C.N.Puerto Real,49.41,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+pérez,gonzález,miriam,C.N.Carmona,50.70,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+maestre,fierro,cristina,C.N.Cadiz,50.90,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+areizaga,fernandez,enma,C.N.Cadiz,51.24,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+ayud,garcia,helena,C.N.Portuense,54.28,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+fernandez,daneri,valeria,C.N.Puerto Real,58.91,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+aguilera,capell,abril,C.N.Cadiz,1:00.42,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+gomez,gracia,carlota,C.N.Cadiz,1:07.28,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+utrera,garcia,maria,C.N.Cadiz,33.10,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+peña,navarro,jimena,C.N.Cadiz,34.72,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+estrada,chávez,natalia,C.N.Puerto Real,34.96,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+lozano,pérez,julia,C.N.Cadiz,35.26,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+pérez,gonzález,claudia,C.N.Carmona,36.18,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+ávila,mesa,celia,C.N.Carmona,36.48,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+ballesteros,rivera,norah,C.N.Los Barrios,36.99,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+rengifo,armenta,maría,C.N.Los Barrios,37.63,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+suarez,pajares,ana,C.N.Portuense,38.16,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+pastrana,uribe,julia,C.N.Portuense,38.50,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+boza,baez,daniela,C.N.Los Barrios,42.06,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+armendáriz,núñez,michelle,C.N.Puerto Real,43.29,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+escobar,fernandez,eva,C.N.Cadiz,43.48,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+ortega,miranda,andrea,C.N.Puerto Real,43.75,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+llavero,sanchez,elena,C.N.Puerto Real,44.45,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False
+saidna,saidna,marwa,C.N.Puerto Real,57.23,fem,50,libre,preb-benj-alevin,2023-07-01,12:13:00,False

@@ -1,17 +1,17 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-garcia,parrado,pablo,C.D.N.Sanlucar,1:29.08,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-gonzalez,ford,henry,C.D.N.Ciudad De Algeciras,1:30.09,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-calderon,hidalgo,nicolas,C.N.Bahia De Cadiz,1:37.16,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-valle,garcia,juan,C.N.San Fernando,1:42.44,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-lópez,galán,jaime,C.N.Caballa - Ciudad De Ceuta,1:44.18,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-fernandez,clannachan,calum,DkvClub Natacion Jerez,1:45.00,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-calvente,sanchez,fernando,C.N.San Roque,1:46.21,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-garrido,garcia,antonio,C.D.N.Ciudad De Algeciras,1:46.93,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-rojas,perez,alvaro,C.N.Bahia De Cadiz,1:58.95,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-alva,lamazares,julio,C.D.N.Ciudad De Algeciras,2:02.79,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-pecino,montedeoca,hugo,C.N.Los Barrios,2:03.27,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-rodriguez,torres,gabriel,C.N.Bahia De Cadiz,2:04.16,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-lebrero,valle,roberto,C.N.San Fernando,2:05.59,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-fontalba,cerrillo,javier,C.N.Caballa - Ciudad De Ceuta,2:16.49,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-dieguez,dávila,vicente,C.N.Caballa - Ciudad De Ceuta,2:22.67,masc,100,libre,prebenjamin,2023-01-14,12:08:00
-serván,sánchez,daniel,C.N.Los Barrios,2:34.97,masc,100,libre,prebenjamin,2023-01-14,12:08:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+garcia,parrado,pablo,C.D.N.Sanlucar,1:29.08,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+gonzalez,ford,henry,C.D.N.Ciudad De Algeciras,1:30.09,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+calderon,hidalgo,nicolas,C.N.Bahia De Cadiz,1:37.16,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+valle,garcia,juan,C.N.San Fernando,1:42.44,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+lópez,galán,jaime,C.N.Caballa - Ciudad De Ceuta,1:44.18,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+fernandez,clannachan,calum,DkvClub Natacion Jerez,1:45.00,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+calvente,sanchez,fernando,C.N.San Roque,1:46.21,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+garrido,garcia,antonio,C.D.N.Ciudad De Algeciras,1:46.93,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+rojas,perez,alvaro,C.N.Bahia De Cadiz,1:58.95,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+alva,lamazares,julio,C.D.N.Ciudad De Algeciras,2:02.79,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+pecino,montedeoca,hugo,C.N.Los Barrios,2:03.27,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+rodriguez,torres,gabriel,C.N.Bahia De Cadiz,2:04.16,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+lebrero,valle,roberto,C.N.San Fernando,2:05.59,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+fontalba,cerrillo,javier,C.N.Caballa - Ciudad De Ceuta,2:16.49,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+dieguez,dávila,vicente,C.N.Caballa - Ciudad De Ceuta,2:22.67,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True
+serván,sánchez,daniel,C.N.Los Barrios,2:34.97,masc,100,libre,prebenjamin,2023-01-14,12:08:00,True

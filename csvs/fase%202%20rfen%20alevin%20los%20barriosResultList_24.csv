@@ -1,20 +1,20 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-serrato,mena,hugo,C.KronosNatación Mijas,1:07.89,masc,100,espalda,alevin,2023-04-01,16:44:00
-millet,senciales,sergio,C.N.Axarquia,1:12.13,masc,100,espalda,alevin,2023-04-01,16:44:00
-garcia,carrasco,alejandro,C.N.Estepona,1:15.65,masc,100,espalda,alevin,2023-04-01,16:44:00
-moyano,lopez,pedro,C.N.Villarrense,1:17.32,masc,100,espalda,alevin,2023-04-01,16:44:00
-lorite,gonzalez,bruno,Navial,1:19.75,masc,100,espalda,alevin,2023-04-01,16:44:00
-pavón,weitzner,max,C.N.Fuengirola,1:20.51,masc,100,espalda,alevin,2023-04-01,16:44:00
-díaz,guerra,javier,C.N.Axarquia,1:22.14,masc,100,espalda,alevin,2023-04-01,16:44:00
-sánchez,gonzález,alejandro,C.N.Axarquia,1:22.70,masc,100,espalda,alevin,2023-04-01,16:44:00
-frias,hernandez,gabriel,C.KronosNatación Mijas,1:23.00,masc,100,espalda,alevin,2023-04-01,16:44:00
-teba,alcázar,luis,C.KronosNatación Mijas,1:25.07,masc,100,espalda,alevin,2023-04-01,16:44:00
-blanco,jurado,pablo,C.D.N.Inacua Malaga,1:26.26,masc,100,espalda,alevin,2023-04-01,16:44:00
-varaksa,,siarhei,C.N.Estepona,1:26.36,masc,100,espalda,alevin,2023-04-01,16:44:00
-garcia,chicón,bruno,C.N.Fuengirola,1:26.38,masc,100,espalda,alevin,2023-04-01,16:44:00
-zavgorodni,,timur,C.N.Torremolinos,1:27.73,masc,100,espalda,alevin,2023-04-01,16:44:00
-linares,mata,josé,C.N.Axarquia,1:27.99,masc,100,espalda,alevin,2023-04-01,16:44:00
-rodriguez,martín,rodrigo,C.N.Axarquia,1:29.40,masc,100,espalda,alevin,2023-04-01,16:44:00
-nuñez,gonçalves,gonzalo,C.KronosNatación Mijas,1:37.33,masc,100,espalda,alevin,2023-04-01,16:44:00
-lobach,,maksim,C.N.Torremolinos,1:44.42,masc,100,espalda,alevin,2023-04-01,16:44:00
-garcía,melendo,juan,C.N.Villarrense,1:59.62,masc,100,espalda,alevin,2023-04-01,16:44:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+serrato,mena,hugo,C.KronosNatación Mijas,1:07.89,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+millet,senciales,sergio,C.N.Axarquia,1:12.13,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+garcia,carrasco,alejandro,C.N.Estepona,1:15.65,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+moyano,lopez,pedro,C.N.Villarrense,1:17.32,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+lorite,gonzalez,bruno,Navial,1:19.75,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+pavón,weitzner,max,C.N.Fuengirola,1:20.51,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+díaz,guerra,javier,C.N.Axarquia,1:22.14,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+sánchez,gonzález,alejandro,C.N.Axarquia,1:22.70,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+frias,hernandez,gabriel,C.KronosNatación Mijas,1:23.00,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+teba,alcázar,luis,C.KronosNatación Mijas,1:25.07,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+blanco,jurado,pablo,C.D.N.Inacua Malaga,1:26.26,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+varaksa,,siarhei,C.N.Estepona,1:26.36,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+garcia,chicón,bruno,C.N.Fuengirola,1:26.38,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+zavgorodni,,timur,C.N.Torremolinos,1:27.73,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+linares,mata,josé,C.N.Axarquia,1:27.99,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+rodriguez,martín,rodrigo,C.N.Axarquia,1:29.40,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+nuñez,gonçalves,gonzalo,C.KronosNatación Mijas,1:37.33,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+lobach,,maksim,C.N.Torremolinos,1:44.42,masc,100,espalda,alevin,2023-04-01,16:44:00,True
+garcía,melendo,juan,C.N.Villarrense,1:59.62,masc,100,espalda,alevin,2023-04-01,16:44:00,True

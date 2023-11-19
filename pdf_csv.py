@@ -53,6 +53,15 @@ no_distance = no_distance.fromkeys(folders)
 success = {}
 success = success.fromkeys(folders)
 
+def piscina_corta(df, path):
+    # Create a new column called 'Piscina Corta' and set it to true if there exists a file called 'piscina_corta.txt' in the path
+    if os.path.exists(os.path.join(path, 'piscina_corta.txt')):
+        df['Piscina Corta'] = True
+        return df
+    else:
+        df['Piscina Corta'] = False
+        return df
+
 # iterate through folders
 for folder in files_dict.keys():
     #iterate through files in folder
@@ -68,35 +77,45 @@ for folder in files_dict.keys():
             if distance == '200':
                 try: 
                     df = fun200.pdf_to_df(file_path)
+                    folder_path = os.path.join('pdfs', folder)
+                    print(folder_path)
+                    df = piscina_corta(df, folder_path)
                     # convert df to csv 
                     # remove .pdf from file name
                     file = file[:-4]
                     df.to_csv('csvs/' + folder + file + '.csv', index=False)
                     success[folder] = file
+                    print("Success in file: {}".format(file))
                 except:
                     errors[folder] = file
-                    print("Error in file: {}".format(file))
+                    print("Error in file: {}".format(file) + ". Distance: {}".format(distance))
                     continue
             elif distance == '100':
                 try:
                     df = fun100.pdf_to_df(file_path)
+                    folder_path = os.path.join('pdfs', folder)
+                    df = piscina_corta(df, folder_path)
                     # convert df to csv 
                     # remove .pdf from file name
                     file = file[:-4]
                     df.to_csv('csvs/' + folder + file + '.csv', index=False)
                     success[folder] = file
+                    print("Success in file: {}".format(file))
                 except:
                     errors[folder] = file
-                    print("Error in file: {}".format(file))
+                    print("Error in file: {}".format(file) + ". Distance: {}".format(distance))
                     continue
             elif distance == '50':
                 try:
                     df = fun50.pdf_to_df(file_path)
+                    folder_path = os.path.join('pdfs', folder)
+                    df = piscina_corta(df, folder_path)
                     # convert df to csv 
                     # remove .pdf from file name
                     file = file[:-4]
                     df.to_csv('csvs/' + folder + file + '.csv', index=False)
                     success[folder] = file
+                    print("Error in file: {}".format(file) + ". Distance: {}".format(distance))
                 except:
                     errors[folder] = file
                     print("Error in file: {}".format(file))
@@ -104,9 +123,8 @@ for folder in files_dict.keys():
             else:
                 no_distance[folder] = file
         except:
-            print("No distance found")
             errors[folder] = file
-            print("Error in file: {}".format(file))
+            print("Error in file: {}".format(file) + "No distance found")
             continue
 
         

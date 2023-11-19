@@ -1,17 +1,17 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-ruz,alcaide,virginia,11Dkv Club Natacion Jerez,35.34,fem,50,espalda,alevin,2023-04-01,12:41:00
-carrión,gomez,sarah,11C.N. Dos Hermanas,35.86,fem,50,espalda,alevin,2023-04-01,12:41:00
-probert,rey,rebeca,11Circulo Mercantil,36.62,fem,50,espalda,alevin,2023-04-01,12:41:00
-cidoncha,alfonso,lourdes,11Fusion Colombino-Lepe,36.69,fem,50,espalda,alevin,2023-04-01,12:41:00
-rodriguez,ruz,elsa,12C.N. Huelva,38.65,fem,50,espalda,alevin,2023-04-01,12:41:00
-piñero,herrera,mara,11Circulo Mercantil,38.81,fem,50,espalda,alevin,2023-04-01,12:41:00
-rodríguez,suárez,daniela,11C.N. Dos Hermanas,39.37,fem,50,espalda,alevin,2023-04-01,12:41:00
-orube,santos,ana,11Fusion Colombino-Lepe,39.88,fem,50,espalda,alevin,2023-04-01,12:41:00
-sánchez,pérez,abril,11C.N. Dos Hermanas,41.52,fem,50,espalda,alevin,2023-04-01,12:41:00
-román,lisalova,nikita,11C.N. Dos Hermanas,41.88,fem,50,espalda,alevin,2023-04-01,12:41:00
-peña,navarro,jimena,11C.N. Cadiz,42.26,fem,50,espalda,alevin,2023-04-01,12:41:00
-menjibar,fandiño,carolina,11C.N. Bahia De Cadiz,43.23,fem,50,espalda,alevin,2023-04-01,12:41:00
-ávila,mesa,celia,11C.N. Carmona,47.96,fem,50,espalda,alevin,2023-04-01,12:41:00
-gómez,castañeda,valeria,11C.N. Huelva,49.48,fem,50,espalda,alevin,2023-04-01,12:41:00
-quintero,otero,almudena,12C.N. Portuense,57.42,fem,50,espalda,alevin,2023-04-01,12:41:00
-melguizo,sánchez,áfrica,12C.N. Portuense,59.99,fem,50,espalda,alevin,2023-04-01,12:41:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+ruz,alcaide,virginia,11Dkv Club Natacion Jerez,35.34,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+carrión,gomez,sarah,11C.N. Dos Hermanas,35.86,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+probert,rey,rebeca,11Circulo Mercantil,36.62,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+cidoncha,alfonso,lourdes,11Fusion Colombino-Lepe,36.69,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+rodriguez,ruz,elsa,12C.N. Huelva,38.65,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+piñero,herrera,mara,11Circulo Mercantil,38.81,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+rodríguez,suárez,daniela,11C.N. Dos Hermanas,39.37,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+orube,santos,ana,11Fusion Colombino-Lepe,39.88,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+sánchez,pérez,abril,11C.N. Dos Hermanas,41.52,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+román,lisalova,nikita,11C.N. Dos Hermanas,41.88,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+peña,navarro,jimena,11C.N. Cadiz,42.26,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+menjibar,fandiño,carolina,11C.N. Bahia De Cadiz,43.23,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+ávila,mesa,celia,11C.N. Carmona,47.96,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+gómez,castañeda,valeria,11C.N. Huelva,49.48,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+quintero,otero,almudena,12C.N. Portuense,57.42,fem,50,espalda,alevin,2023-04-01,12:41:00,False
+melguizo,sánchez,áfrica,12C.N. Portuense,59.99,fem,50,espalda,alevin,2023-04-01,12:41:00,False

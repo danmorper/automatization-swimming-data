@@ -1,20 +1,20 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-saborito,castillo,aitor,C.N.Axarquia,1:05.81,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-serrato,mena,hugo,C.KronosNatación Mijas,1:06.27,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-palomo,timon,daniel,C.KronosNatación Mijas,1:09.52,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-rojas,rolón,ricardo,C.D.N.Inacua Malaga,1:10.24,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-navarrina,jaime,nathan,C.N.Fuengirola,1:15.47,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-martinez,gonzalez,alvaro,C.N.Los Barrios,1:17.28,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-efremov,ivanenko,daniel,C.N.Axarquia,1:18.86,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-casado,concheso,rafael,C.N.Fuengirola,1:23.15,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-varo,bernal,jose,C.D.N.Inacua Malaga,1:25.27,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-lorite,gonzalez,bruno,Navial,1:27.56,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-linares,mata,josé,C.N.Axarquia,1:29.37,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-varaksa,siarhei,10,C.N.Estepona,1:34.55,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-torres,gomez,jose,C.N.Villarrense,1:38.26,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-sánchez,gonzález,alejandro,C.N.Axarquia,1:39.08,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-delaunay,morgan,10,C.N.Los Barrios,1:39.45,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-garcía,baquero,márquez,C.KronosNatación Mijas,1:39.75,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-cano,luque,jose,C.N.Baena,1:41.77,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-martin,messaoudi,jose,C.N.Estepona,1:44.16,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
-rodriguez,garcía,javier,C.D.N.Ciudad De Algeciras,1:57.17,prueba 9 masc,100,mariposa,alevin,2023-04-01,12:13:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+saborito,castillo,aitor,C.N.Axarquia,1:05.81,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+serrato,mena,hugo,C.KronosNatación Mijas,1:06.27,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+palomo,timon,daniel,C.KronosNatación Mijas,1:09.52,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+rojas,rolón,ricardo,C.D.N.Inacua Malaga,1:10.24,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+navarrina,jaime,nathan,C.N.Fuengirola,1:15.47,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+martinez,gonzalez,alvaro,C.N.Los Barrios,1:17.28,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+efremov,ivanenko,daniel,C.N.Axarquia,1:18.86,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+casado,concheso,rafael,C.N.Fuengirola,1:23.15,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+varo,bernal,jose,C.D.N.Inacua Malaga,1:25.27,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+lorite,gonzalez,bruno,Navial,1:27.56,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+linares,mata,josé,C.N.Axarquia,1:29.37,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+varaksa,siarhei,10,C.N.Estepona,1:34.55,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+torres,gomez,jose,C.N.Villarrense,1:38.26,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+sánchez,gonzález,alejandro,C.N.Axarquia,1:39.08,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+delaunay,morgan,10,C.N.Los Barrios,1:39.45,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+garcía,baquero,márquez,C.KronosNatación Mijas,1:39.75,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+cano,luque,jose,C.N.Baena,1:41.77,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+martin,messaoudi,jose,C.N.Estepona,1:44.16,masc,100,mariposa,alevin,2023-04-01,12:13:00,True
+rodriguez,garcía,javier,C.D.N.Ciudad De Algeciras,1:57.17,masc,100,mariposa,alevin,2023-04-01,12:13:00,True

@@ -1,23 +1,23 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-peña,navarro,jimena,11C.N. Cadiz,1:27.17,fem,100,espalda,alevin,2023-05-27,12:43:00
-rodríguez,suárez,daniela,11C.N. Dos Hermanas,1:27.57,fem,100,espalda,alevin,2023-05-27,12:43:00
-menjibar,fandiño,carolina,11C.N. Bahia De Cadiz,1:32.44,fem,100,espalda,alevin,2023-05-27,12:43:00
-alba,peña,lucia,11Dkv Club Natacion Jerez,1:32.46,fem,100,espalda,alevin,2023-05-27,12:43:00
-monge,aixela,valeria,12C.D.N. Ciudad De Algeciras,1:32.72,fem,100,espalda,alevin,2023-05-27,12:43:00
-zuasti,romero,paula,11C.N. Portuense,1:33.37,fem,100,espalda,alevin,2023-05-27,12:43:00
-lozano,pérez,julia,11C.N. Cadiz,1:33.53,fem,100,espalda,alevin,2023-05-27,12:43:00
-estevez,terroba,leire,12C.N. San Fernando,1:35.91,fem,100,espalda,alevin,2023-05-27,12:43:00
-estrada,chávez,natalia,11C.N. Puerto Real,1:36.94,fem,100,espalda,alevin,2023-05-27,12:43:00
-lópez,bermejo,victoria,12C.N. Alcala,1:37.29,fem,100,espalda,alevin,2023-05-27,12:43:00
-antúnez,ruiz,elena,11C.N. Los Barrios,1:40.01,fem,100,espalda,alevin,2023-05-27,12:43:00
-gonzález,borrego,ana,12C.N. Caballa - Ciudad De Ceuta,1:40.83,fem,100,espalda,alevin,2023-05-27,12:43:00
-jimenez,martinez,claudia,12C.N. San Fernando,1:41.66,fem,100,espalda,alevin,2023-05-27,12:43:00
-braza,ramos,julia,12C.D.N. Sanlucar,1:43.39,fem,100,espalda,alevin,2023-05-27,12:43:00
-minaya,coello,elena,12C.D.N. Ciudad De Algeciras,1:44.22,fem,100,espalda,alevin,2023-05-27,12:43:00
-del,cueto,godoy,12C.N. Dos Hermanas,1:47.54,fem,100,espalda,alevin,2023-05-27,12:43:00
-ríos,pinilla,alejandra,12C.N. Caballa - Ciudad De Ceuta,1:47.78,fem,100,espalda,alevin,2023-05-27,12:43:00
-caro,vega,marta,12C.N. Portuense,1:47.82,fem,100,espalda,alevin,2023-05-27,12:43:00
-boza,baez,daniela,12C.N. Los Barrios,1:49.50,fem,100,espalda,alevin,2023-05-27,12:43:00
-llavero,sanchez,elena,11C.N. Puerto Real,1:55.13,fem,100,espalda,alevin,2023-05-27,12:43:00
-vera,romero,alicia,12C.D.N. Sanlucar,2:00.14,fem,100,espalda,alevin,2023-05-27,12:43:00
-melguizo,sánchez,áfrica,12C.N. Portuense,2:02.56,fem,100,espalda,alevin,2023-05-27,12:43:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+peña,navarro,jimena,11C.N. Cadiz,1:27.17,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+rodríguez,suárez,daniela,11C.N. Dos Hermanas,1:27.57,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+menjibar,fandiño,carolina,11C.N. Bahia De Cadiz,1:32.44,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+alba,peña,lucia,11Dkv Club Natacion Jerez,1:32.46,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+monge,aixela,valeria,12C.D.N. Ciudad De Algeciras,1:32.72,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+zuasti,romero,paula,11C.N. Portuense,1:33.37,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+lozano,pérez,julia,11C.N. Cadiz,1:33.53,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+estevez,terroba,leire,12C.N. San Fernando,1:35.91,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+estrada,chávez,natalia,11C.N. Puerto Real,1:36.94,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+lópez,bermejo,victoria,12C.N. Alcala,1:37.29,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+antúnez,ruiz,elena,11C.N. Los Barrios,1:40.01,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+gonzález,borrego,ana,12C.N. Caballa - Ciudad De Ceuta,1:40.83,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+jimenez,martinez,claudia,12C.N. San Fernando,1:41.66,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+braza,ramos,julia,12C.D.N. Sanlucar,1:43.39,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+minaya,coello,elena,12C.D.N. Ciudad De Algeciras,1:44.22,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+del,cueto,godoy,12C.N. Dos Hermanas,1:47.54,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+ríos,pinilla,alejandra,12C.N. Caballa - Ciudad De Ceuta,1:47.78,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+caro,vega,marta,12C.N. Portuense,1:47.82,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+boza,baez,daniela,12C.N. Los Barrios,1:49.50,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+llavero,sanchez,elena,11C.N. Puerto Real,1:55.13,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+vera,romero,alicia,12C.D.N. Sanlucar,2:00.14,fem,100,espalda,alevin,2023-05-27,12:43:00,True
+melguizo,sánchez,áfrica,12C.N. Portuense,2:02.56,fem,100,espalda,alevin,2023-05-27,12:43:00,True

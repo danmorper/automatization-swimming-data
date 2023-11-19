@@ -1,23 +1,23 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-puertas,ramirez,lucia,Navial,29.67,fem,50,libre,alevin,2023-04-01,17:18:00
-moreno,sohlberg,emma,C.N.ComarcaGuadalhorce,30.66,fem,50,libre,alevin,2023-04-01,17:18:00
-segovia,bogado,nerea,C.N.Fuengirola,30.96,fem,50,libre,alevin,2023-04-01,17:18:00
-rodríguez,gálvez,irene,C.N.Axarquia,31.71,fem,50,libre,alevin,2023-04-01,17:18:00
-amate,zamorano,inmaculada,Navial,32.61,fem,50,libre,alevin,2023-04-01,17:18:00
-merida,castillejo,sofia,Navial,33.34,fem,50,libre,alevin,2023-04-01,17:18:00
-albarracín,fodera,sol,C.N.ComarcaGuadalhorce,34.34,fem,50,libre,alevin,2023-04-01,17:18:00
-cardeña,holzmann,telma,C.N.Fuengirola,34.81,fem,50,libre,alevin,2023-04-01,17:18:00
-gómez,muñoz,sofía,C.N.Estepona,35.30,fem,50,libre,alevin,2023-04-01,17:18:00
-navarrina,jaime,naomi,C.N.Fuengirola,36.75,fem,50,libre,alevin,2023-04-01,17:18:00
-bullón,gonzález,alba,C.D.N.Inacua Malaga,36.85,fem,50,libre,alevin,2023-04-01,17:18:00
-cerezo,vidal,ariadna,C.N.Villarrense,37.05,fem,50,libre,alevin,2023-04-01,17:18:00
-santana,guzmán,carolina,C.D.N.Inacua Malaga,37.43,fem,50,libre,alevin,2023-04-01,17:18:00
-verdejo,jaen,elena,C.N.Los Barrios,37.49,fem,50,libre,alevin,2023-04-01,17:18:00
-segura,lozano,alexandra,C.N.Axarquia,37.70,fem,50,libre,alevin,2023-04-01,17:18:00
-jimenez,iglesias,naiara,C.N.Fuengirola,38.33,fem,50,libre,alevin,2023-04-01,17:18:00
-martinez,taranilla,leire,C.D.N.Inacua Malaga,41.93,fem,50,libre,alevin,2023-04-01,17:18:00
-nieto,martín,gala,C.N.Estepona,42.99,fem,50,libre,alevin,2023-04-01,17:18:00
-checa,delgado,ángela,C.N.Axarquia,45.20,fem,50,libre,alevin,2023-04-01,17:18:00
-garcia,moreno,elena,C.N.Baena,46.68,fem,50,libre,alevin,2023-04-01,17:18:00
-gago,plaza,elsa,C.N.Fuengirola,49.86,fem,50,libre,alevin,2023-04-01,17:18:00
-fernandez,martos,sara,C.N.Estepona,54.14,fem,50,libre,alevin,2023-04-01,17:18:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+puertas,ramirez,lucia,Navial,29.67,fem,50,libre,alevin,2023-04-01,17:18:00,True
+moreno,sohlberg,emma,C.N.ComarcaGuadalhorce,30.66,fem,50,libre,alevin,2023-04-01,17:18:00,True
+segovia,bogado,nerea,C.N.Fuengirola,30.96,fem,50,libre,alevin,2023-04-01,17:18:00,True
+rodríguez,gálvez,irene,C.N.Axarquia,31.71,fem,50,libre,alevin,2023-04-01,17:18:00,True
+amate,zamorano,inmaculada,Navial,32.61,fem,50,libre,alevin,2023-04-01,17:18:00,True
+merida,castillejo,sofia,Navial,33.34,fem,50,libre,alevin,2023-04-01,17:18:00,True
+albarracín,fodera,sol,C.N.ComarcaGuadalhorce,34.34,fem,50,libre,alevin,2023-04-01,17:18:00,True
+cardeña,holzmann,telma,C.N.Fuengirola,34.81,fem,50,libre,alevin,2023-04-01,17:18:00,True
+gómez,muñoz,sofía,C.N.Estepona,35.30,fem,50,libre,alevin,2023-04-01,17:18:00,True
+navarrina,jaime,naomi,C.N.Fuengirola,36.75,fem,50,libre,alevin,2023-04-01,17:18:00,True
+bullón,gonzález,alba,C.D.N.Inacua Malaga,36.85,fem,50,libre,alevin,2023-04-01,17:18:00,True
+cerezo,vidal,ariadna,C.N.Villarrense,37.05,fem,50,libre,alevin,2023-04-01,17:18:00,True
+santana,guzmán,carolina,C.D.N.Inacua Malaga,37.43,fem,50,libre,alevin,2023-04-01,17:18:00,True
+verdejo,jaen,elena,C.N.Los Barrios,37.49,fem,50,libre,alevin,2023-04-01,17:18:00,True
+segura,lozano,alexandra,C.N.Axarquia,37.70,fem,50,libre,alevin,2023-04-01,17:18:00,True
+jimenez,iglesias,naiara,C.N.Fuengirola,38.33,fem,50,libre,alevin,2023-04-01,17:18:00,True
+martinez,taranilla,leire,C.D.N.Inacua Malaga,41.93,fem,50,libre,alevin,2023-04-01,17:18:00,True
+nieto,martín,gala,C.N.Estepona,42.99,fem,50,libre,alevin,2023-04-01,17:18:00,True
+checa,delgado,ángela,C.N.Axarquia,45.20,fem,50,libre,alevin,2023-04-01,17:18:00,True
+garcia,moreno,elena,C.N.Baena,46.68,fem,50,libre,alevin,2023-04-01,17:18:00,True
+gago,plaza,elsa,C.N.Fuengirola,49.86,fem,50,libre,alevin,2023-04-01,17:18:00,True
+fernandez,martos,sara,C.N.Estepona,54.14,fem,50,libre,alevin,2023-04-01,17:18:00,True

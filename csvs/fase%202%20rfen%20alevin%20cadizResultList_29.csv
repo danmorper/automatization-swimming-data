@@ -1,28 +1,28 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-probert,rey,rebeca,CirculoMercantil,28.97,fem,50,libre,alevin,2023-04-01,17:19:00
-rabazo,olivera,paula,FusionColombino-Lepe,31.98,fem,50,libre,alevin,2023-04-01,17:19:00
-cidoncha,alfonso,lourdes,FusionColombino-Lepe,32.51,fem,50,libre,alevin,2023-04-01,17:19:00
-chamorro,benavente,belen,DkvClub Natacion Jerez,32.60,fem,50,libre,alevin,2023-04-01,17:19:00
-utrera,garcia,maria,C.N.Cadiz,34.08,fem,50,libre,alevin,2023-04-01,17:19:00
-peña,brenke,alina,FusionColombino-Lepe,34.32,fem,50,libre,alevin,2023-04-01,17:19:00
-orube,santos,ana,FusionColombino-Lepe,34.37,fem,50,libre,alevin,2023-04-01,17:19:00
-salvador,sabino,luara,C.N.Alcala,34.97,fem,50,libre,alevin,2023-04-01,17:19:00
-bravo,villar,marcela,C.N.Bahia De Cadiz,35.55,fem,50,libre,alevin,2023-04-01,17:19:00
-sanchez,morales,aitana,C.N.Union Rinconada,35.80,fem,50,libre,alevin,2023-04-01,17:19:00
-menjibar,fandiño,carolina,C.N.Bahia De Cadiz,36.05,fem,50,libre,alevin,2023-04-01,17:19:00
-escot,guerrero,cristina,CirculoMercantil,36.06,fem,50,libre,alevin,2023-04-01,17:19:00
-davila,delcan,ainhoa,C.N.Huelva,36.26,fem,50,libre,alevin,2023-04-01,17:19:00
-rodríguez,suárez,daniela,C.N.Dos Hermanas,36.66,fem,50,libre,alevin,2023-04-01,17:19:00
-soto,castañeda,alma,C.N.Huelva,38.30,fem,50,libre,alevin,2023-04-01,17:19:00
-rubiño,rubio,jimena,C.N.Alcala,38.59,fem,50,libre,alevin,2023-04-01,17:19:00
-aguaded,eugenio,violeta,FusionColombino-Lepe,39.39,fem,50,libre,alevin,2023-04-01,17:19:00
-morales,adriana,11,DkvClub Natacion Jerez,39.73,fem,50,libre,alevin,2023-04-01,17:19:00
-ramirez,varela,laura,FusionColombino-Lepe,39.88,fem,50,libre,alevin,2023-04-01,17:19:00
-jacinto,torres,macarena,CirculoMercantil,40.14,fem,50,libre,alevin,2023-04-01,17:19:00
-ortega,miranda,andrea,C.N.Puerto Real,43.11,fem,50,libre,alevin,2023-04-01,17:19:00
-boje,sancho,marina,C.N.Alcala,44.36,fem,50,libre,alevin,2023-04-01,17:19:00
-del,cueto,godoy,C.N.Dos Hermanas,46.10,fem,50,libre,alevin,2023-04-01,17:19:00
-lamas,ruiz,claudia,C.N.San Fernando,47.19,fem,50,libre,alevin,2023-04-01,17:19:00
-armendáriz,núñez,michelle,C.N.Puerto Real,47.54,fem,50,libre,alevin,2023-04-01,17:19:00
-martinez,de,pinillos,C.N.San Fernando,51.84,fem,50,libre,alevin,2023-04-01,17:19:00
-melguizo,sánchez,áfrica,C.N.Portuense,54.49,fem,50,libre,alevin,2023-04-01,17:19:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+probert,rey,rebeca,CirculoMercantil,28.97,fem,50,libre,alevin,2023-04-01,17:19:00,False
+rabazo,olivera,paula,FusionColombino-Lepe,31.98,fem,50,libre,alevin,2023-04-01,17:19:00,False
+cidoncha,alfonso,lourdes,FusionColombino-Lepe,32.51,fem,50,libre,alevin,2023-04-01,17:19:00,False
+chamorro,benavente,belen,DkvClub Natacion Jerez,32.60,fem,50,libre,alevin,2023-04-01,17:19:00,False
+utrera,garcia,maria,C.N.Cadiz,34.08,fem,50,libre,alevin,2023-04-01,17:19:00,False
+peña,brenke,alina,FusionColombino-Lepe,34.32,fem,50,libre,alevin,2023-04-01,17:19:00,False
+orube,santos,ana,FusionColombino-Lepe,34.37,fem,50,libre,alevin,2023-04-01,17:19:00,False
+salvador,sabino,luara,C.N.Alcala,34.97,fem,50,libre,alevin,2023-04-01,17:19:00,False
+bravo,villar,marcela,C.N.Bahia De Cadiz,35.55,fem,50,libre,alevin,2023-04-01,17:19:00,False
+sanchez,morales,aitana,C.N.Union Rinconada,35.80,fem,50,libre,alevin,2023-04-01,17:19:00,False
+menjibar,fandiño,carolina,C.N.Bahia De Cadiz,36.05,fem,50,libre,alevin,2023-04-01,17:19:00,False
+escot,guerrero,cristina,CirculoMercantil,36.06,fem,50,libre,alevin,2023-04-01,17:19:00,False
+davila,delcan,ainhoa,C.N.Huelva,36.26,fem,50,libre,alevin,2023-04-01,17:19:00,False
+rodríguez,suárez,daniela,C.N.Dos Hermanas,36.66,fem,50,libre,alevin,2023-04-01,17:19:00,False
+soto,castañeda,alma,C.N.Huelva,38.30,fem,50,libre,alevin,2023-04-01,17:19:00,False
+rubiño,rubio,jimena,C.N.Alcala,38.59,fem,50,libre,alevin,2023-04-01,17:19:00,False
+aguaded,eugenio,violeta,FusionColombino-Lepe,39.39,fem,50,libre,alevin,2023-04-01,17:19:00,False
+morales,adriana,11,DkvClub Natacion Jerez,39.73,fem,50,libre,alevin,2023-04-01,17:19:00,False
+ramirez,varela,laura,FusionColombino-Lepe,39.88,fem,50,libre,alevin,2023-04-01,17:19:00,False
+jacinto,torres,macarena,CirculoMercantil,40.14,fem,50,libre,alevin,2023-04-01,17:19:00,False
+ortega,miranda,andrea,C.N.Puerto Real,43.11,fem,50,libre,alevin,2023-04-01,17:19:00,False
+boje,sancho,marina,C.N.Alcala,44.36,fem,50,libre,alevin,2023-04-01,17:19:00,False
+del,cueto,godoy,C.N.Dos Hermanas,46.10,fem,50,libre,alevin,2023-04-01,17:19:00,False
+lamas,ruiz,claudia,C.N.San Fernando,47.19,fem,50,libre,alevin,2023-04-01,17:19:00,False
+armendáriz,núñez,michelle,C.N.Puerto Real,47.54,fem,50,libre,alevin,2023-04-01,17:19:00,False
+martinez,de,pinillos,C.N.San Fernando,51.84,fem,50,libre,alevin,2023-04-01,17:19:00,False
+melguizo,sánchez,áfrica,C.N.Portuense,54.49,fem,50,libre,alevin,2023-04-01,17:19:00,False

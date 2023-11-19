@@ -1,18 +1,18 @@
-first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time
-castillo,ojeda,julia,13C.D.N. Ciudad De Algeciras,43.15,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-gonzalez,martinez,gema,13C.N. San Fernando,43.90,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-nieto,giglio,maría,13C.N. Estepona,45.59,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-rodriguez,zambotto,gabriela,13C.D.N. Ciudad De Algeciras,46.57,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-millán,cózar,jimena,13C.N. Estepona,47.44,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-ramos,romero,leire,13C.D.N. Sanlucar,48.55,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-estrada,montero,angela,13C.N. San Fernando,50.21,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-lozano,mandesis,alicia,13C.N. Los Barrios,51.38,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-lópez,aldea,carmen,14C.D.N. Sanlucar,52.26,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-fernandez,clannachan,alexia,13Dkv Club Natacion Jerez,52.99,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-robinson,,anna,14C.N. San Roque,55.93,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-fernandez,sanchez,emma,13C.N. Los Barrios,56.91,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-herrera,herrera,ariadna,13C.N. Los Barrios,57.52,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-rabinowitz,,natalie,14C.N. Los Barrios,1:01.26,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-sánchez,tovar,valeria,14C.N. Los Barrios,1:05.28,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-robinson,,ines,14C.N. San Roque,1:05.51,fem,50,mariposa,benjamin,2023-04-16,10:09:00
-blanco,ruiz,thelma,14C.N. Los Barrios,1:06.52,fem,50,mariposa,benjamin,2023-04-16,10:09:00
+first_surname,second_surname,name,team,race_time,gender,distance,style,category,date,event_time,Piscina Corta
+castillo,ojeda,julia,13C.D.N. Ciudad De Algeciras,43.15,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+gonzalez,martinez,gema,13C.N. San Fernando,43.90,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+nieto,giglio,maría,13C.N. Estepona,45.59,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+rodriguez,zambotto,gabriela,13C.D.N. Ciudad De Algeciras,46.57,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+millán,cózar,jimena,13C.N. Estepona,47.44,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+ramos,romero,leire,13C.D.N. Sanlucar,48.55,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+estrada,montero,angela,13C.N. San Fernando,50.21,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+lozano,mandesis,alicia,13C.N. Los Barrios,51.38,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+lópez,aldea,carmen,14C.D.N. Sanlucar,52.26,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+fernandez,clannachan,alexia,13Dkv Club Natacion Jerez,52.99,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+robinson,,anna,14C.N. San Roque,55.93,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+fernandez,sanchez,emma,13C.N. Los Barrios,56.91,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+herrera,herrera,ariadna,13C.N. Los Barrios,57.52,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+rabinowitz,,natalie,14C.N. Los Barrios,1:01.26,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+sánchez,tovar,valeria,14C.N. Los Barrios,1:05.28,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+robinson,,ines,14C.N. San Roque,1:05.51,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
+blanco,ruiz,thelma,14C.N. Los Barrios,1:06.52,fem,50,mariposa,benjamin,2023-04-16,10:09:00,True
