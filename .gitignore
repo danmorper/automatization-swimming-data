@@ -1,3 +1,11 @@
-.DS_Store
-.vscode/
+# Python-related
 __pycache__/
+*.pyc
+
+# IDE/Editor-related
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+.DS_Store
