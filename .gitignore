@@ -9,3 +9,8 @@ __pycache__/
 # Temporary files
 *.log
 .DS_Store
+
+# Files and directories I added here after creating the repo
+bin/
+lib/
+temporal.py
