@@ -45,9 +45,16 @@ You can install the required Python packages using `pip`:
 
 3. Install the necessary Python packages as mentioned in the prerequisites.
 
-4. Run the main file:
+4. In order to download the list of all swimming teams in Spain from this website, https://rfen.es/es/clubs, run: 
+`python clubs.py`
+The results can be seen in clubs.csv
+5. In order to download all the results of the competitions in pdf from this website, https://www.fan.es/, run:
 `python main_workflow.py`
+the result can be seen in pdfs folder
 
+6. In order to convert pdfs to csvs, run 
+`python pdf_csv.py`
+the result can be seen in cvs folder
 ## Structure
 The repository is organized as follows:
 
