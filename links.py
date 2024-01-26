@@ -4,6 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.firefox.options import Options
+import sys
+import json
 def is_iterable(obj):
     """
     Check if an object is iterable.
@@ -27,8 +29,14 @@ options.headless = False  # Set to False if you want to see the Firefox window
 # Initialize the WebDriver
 driver = webdriver.Firefox(options=options)
 
-# Navigate to the page
-url = 'https://www.fan.es/index.php/natacion/eventos-provinciales/calendario-cadiz'
+# Verifica si se proporciona una URL como argumento
+if len(sys.argv) != 2:
+    print("Uso: python link.py <URL>")
+    sys.exit(1)
+
+# Obtiene la URL de los argumentos de línea de comandos
+url = sys.argv[1]
+
 driver.get(url)
 
 # Wait for the dropdown to be clickable
@@ -75,12 +83,12 @@ for url in urls_linksweb:
         urls.append(web_results.get_attribute('href'))
         print('hemos conseguido        ' + web_results.get_attribute('href') + '\n')
 
-# Dictionary wit urls_linksweb as keys and urls as values
-url_dict = dict(zip(urls_linksweb, urls))
 
-# save dictionary as json file
-import json
-with open('urls.json', 'w') as fp:
-    json.dump(url_dict, fp)
+# Save the dictionary as a JSON file with the city name
+city_name = url.split('/')[-1]
+json_result_file = f'results/{city_name}_result.json'
+with open(json_result_file, 'w') as result_file:
+    json.dump(urls, result_file, indent=4)
+
 # Close the WebDriver
 driver.quit()

@@ -1,12 +1,60 @@
-# Automating Swimming Data Collection
-This project focuses on automating the collection of swimming-related data using various techniques:
+# Swimming Competition Data Automation
 
--Web Scraping: I utilize Selenium for web scraping tasks.
+This repository contains a set of Python scripts that automate the process of collecting, processing, and organizing swimming competition data from various websites. The scripts use web scraping, data extraction, and file management techniques to achieve this automation.
 
--Data Cleaning: I perform extensive data cleaning operations to extract data from PDF files.
+## Table of Contents
 
-## clubs.py
-The clubs.py script is responsible for retrieving a comprehensive list of swimming teams located in Spain. This information is obtained through web scraping from the official website: https://rfen.es/es/clubs.
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [File Structure](#file-structure)
 
-## exec.py
-exec.py serves as the central script for executing various automation tasks within the project. Additionally, it measures the execution time of these tasks and records the results in a file named time.txt.
+## Features
+
+- **Web Scraping**: Automated web scraping to extract competition data from multiple websites.
+- **Data Processing**: Conversion of extracted data from PDF format to CSV, with data type conversions and cleaning.
+- **Data Organization**: Merging CSV files for different cities and organizing PDFs into folders.
+- **Configurable**: Easily adaptable for different competition websites and data formats.
+- **Headless Browsing**: Utilizes headless browsers for web scraping, reducing visual disturbance.
+
+## Prerequisites
+
+Before using these scripts, make sure you have the following dependencies installed:
+
+- Python 3.x
+- Selenium
+- Pandas
+- Requests
+- Tabula
+- Firefox WebDriver (for Selenium)
+
+You can install the required Python packages using `pip`:
+`pip install selenium pandas requests tabula-py`
+
+
+
+## Getting Started
+
+1. Clone this repository to your local machine:
+
+`git clone https://github.com/danmorper/swimming-competition-automation.git`
+
+2. Navigate to the project directory:
+`cd swimming-competition-automation`
+
+3. Install the necessary Python packages as mentioned in the prerequisites.
+
+4. Run the main file:
+`python main_workflow.py`
+
+## Structure
+The repository is organized as follows:
+
+- main_workflow.py: Main control script to execute the entire workflow.
+- pdf_to_csv_converter.py: Script to process PDF files and convert them to CSV.
+- merge_csv_files.py: Script to merge CSV files for different cities.
+- url_scraper.py: Script for web scraping and URL extraction.
+- additional_url_scraper.py: Script to scrape additional URLs based on collected data.
+- functions200m.py, functions100m.py, functions50m.py: External functions for PDF data extraction.
+- README.md: This documentation file.

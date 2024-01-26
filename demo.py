@@ -3,11 +3,16 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
-
+import sys
 # import urls.json file
 import json
-with open('urls.json') as f:
-    urls = json.load(f)
+with open('overall_results.json') as f:
+    dict_urls = json.load(f)
+
+# Receive the city name as an argument
+city_name = sys.argv[1]
+# Get the URL for the city
+urls = dict_urls[city_name]
 
 # Set up Firefox options
 options = Options()
@@ -26,7 +31,9 @@ for url in urls.values():
     # Find all <a> tags with "Resultados" in the text and click on it
     resultados_links = driver.find_elements(By.PARTIAL_LINK_TEXT, 'Resultados')
 
-    output_dir = "pdfs"
+    # Create a new directory with name cityname inside of pdfs to store the pdfs
+    os.makedirs(os.path.join("pdfs", city_name), exist_ok=True)
+    output_dir = os.path.join("pdfs", city_name)
     pdfs = []
     try:
         del resultados_links[0]

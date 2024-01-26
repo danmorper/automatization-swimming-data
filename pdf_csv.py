@@ -6,10 +6,9 @@ import functions200m as fun200
 import functions100m as fun100
 import functions50m as fun50
 
-# start time counter
-import time
-start_time = time.time()
-
+import sys
+# get the city name as an argument
+city_name = sys.argv[1]
 
 ## Get all files in pdfs folder
 folders = os.listdir('pdfs')
@@ -62,6 +61,10 @@ def piscina_corta(df, path):
         df['Piscina Corta'] = False
         return df
 
+def delegacion(df, city):
+    df['delegacion'] = city
+    return df
+
 # iterate through folders
 for folder in files_dict.keys():
     #iterate through files in folder
@@ -80,6 +83,7 @@ for folder in files_dict.keys():
                     folder_path = os.path.join('pdfs', folder)
                     print(folder_path)
                     df = piscina_corta(df, folder_path)
+                    df = delegacion(df, city_name)
                     # convert df to csv 
                     # remove .pdf from file name
                     file = file[:-4]
@@ -95,6 +99,7 @@ for folder in files_dict.keys():
                     df = fun100.pdf_to_df(file_path)
                     folder_path = os.path.join('pdfs', folder)
                     df = piscina_corta(df, folder_path)
+                    df = delegacion(df, city_name)
                     # convert df to csv 
                     # remove .pdf from file name
                     file = file[:-4]
@@ -110,6 +115,7 @@ for folder in files_dict.keys():
                     df = fun50.pdf_to_df(file_path)
                     folder_path = os.path.join('pdfs', folder)
                     df = piscina_corta(df, folder_path)
+                    df = delegacion(df, city_name)
                     # convert df to csv 
                     # remove .pdf from file name
                     file = file[:-4]
@@ -149,10 +155,3 @@ with open('success.json', 'w') as fp:
 #     fun50.pdf_to_df(pdf)
 # else:
 #     print("Distance not found")
-
-# end time counter
-end_time = time.time()
-
-# save time in a file
-with open('time.txt', 'w') as f:
-    f.write(str(end_time - start_time))

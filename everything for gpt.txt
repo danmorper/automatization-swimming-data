@@ -1,0 +1,1534 @@
+exec.py: 
+import os
+import time
+import json
+# Start time counter
+start_time = time.time()
+
+# Read the URLs and city names from the JSON file
+with open('urls_delegaciones.json', 'r') as urls_file:
+    urls_data = json.load(urls_file)
+
+# Lista de scripts a ejecutar
+script_files = ['demo.py', 'pdf_csv.py', 'merge_csv.py']
+
+# Create a dictionary to store the results for each delegacion
+results = {}
+for city, url in urls_data.items():
+    # Execute each link.py script for the URL
+    # The script will save the results as a JSON file
+    os.system(f'python links.py "{url}"')
+    with open('urls.json', 'r') as urls_file:
+        urls_data = json.load(urls_file)
+        results[city] = urls_data
+
+    # Execute demo.py script with the city name
+
+    os.system(f'python demo.py "{city}"')
+    # Execute pdf_csv.py script with the city name
+    os.system(f'python pdf_csv.py "{city}"')
+    # Execute merge_csv.py script
+    os.system(f'python merge_csv.py')
+    # Execute merge_csv.py script
+    os.system(f'python merge_csv.py')
+
+
+# Save the overall results as a JSON file
+with open('overall_results.json', 'w') as overall_results_file:
+    json.dump(results, overall_results_file, indent=4)
+
+# End time counter
+end_time = time.time()
+
+# Total time taken in a txt file
+with open('time_taken.txt', 'w') as time_taken_file:
+    time_taken_file.write(f'Total time taken: {end_time - start_time} seconds')
+
+pdf_csv.py: 
+import tabula
+import pandas as pd
+import os
+# Import 20mmfunctions.py
+import functions200m as fun200
+import functions100m as fun100
+import functions50m as fun50
+
+import sys
+# get the city name as an argument
+city_name = sys.argv[1]
+
+## Get all files in pdfs folder
+folders = os.listdir('pdfs')
+files_dict = dict()
+files_dict = files_dict.fromkeys(folders)
+for key in files_dict.keys():
+    files_dict[key] = []
+# Add files to files_dict
+for folder in folders:
+    folder_path = 'pdfs/' + folder
+    if (os.path.isdir(folder_path)):
+        files_in_folder = os.listdir(folder_path)
+        for file in files_in_folder:
+            files_dict[folder].append(file)
+print(files_dict)
+#export files_dict as json
+import json
+with open('files_dict.json', 'w') as fp:
+    json.dump(files_dict, fp)
+
+def selectfun(pdf):
+    # if any column name has the string '4 x ' then omit do nothing
+    tabu = tabula.read_pdf(pdf, pages='all')
+    df = tabu[0]
+    names = df.columns
+    if any('4 x ' in name for name in names):
+        print('relevo')
+    else:
+        # Detect in which column the distance is
+        posible_distances = ['50m', '100m', '200m']
+        for distance in posible_distances:
+            for name in names:
+                if (distance in name):
+                    distance = ''.join([i for i in distance if not i.isalpha()])
+                    return distance
+
+errors = dict()
+errors = errors.fromkeys(folders)
+no_distance = {}
+no_distance = no_distance.fromkeys(folders)
+success = {}
+success = success.fromkeys(folders)
+
+def piscina_corta(df, path):
+    # Create a new column called 'Piscina Corta' and set it to true if there exists a file called 'piscina_corta.txt' in the path
+    if os.path.exists(os.path.join(path, 'piscina_corta.txt')):
+        df['Piscina Corta'] = True
+        return df
+    else:
+        df['Piscina Corta'] = False
+        return df
+
+def delegacion(df, city):
+    df['delegacion'] = city
+    return df
+
+# iterate through folders
+for folder in files_dict.keys():
+    #iterate through files in folder
+    for file in files_dict[folder]:
+        print(file)
+        ## Read pdf file
+        file_path = "pdfs/{}/{}".format(folder, file)
+
+        ## Select function
+        try: 
+            distance = selectfun(file_path)
+            ## Apply function
+            if distance == '200':
+                try: 
+                    df = fun200.pdf_to_df(file_path)
+                    folder_path = os.path.join('pdfs', folder)
+                    print(folder_path)
+                    df = piscina_corta(df, folder_path)
+                    df = delegacion(df, city_name)
+                    # convert df to csv 
+                    # remove .pdf from file name
+                    file = file[:-4]
+                    df.to_csv('csvs/' + folder + file + '.csv', index=False)
+                    success[folder] = file
+                    print("Success in file: {}".format(file))
+                except:
+                    errors[folder] = file
+                    print("Error in file: {}".format(file) + ". Distance: {}".format(distance))
+                    continue
+            elif distance == '100':
+                try:
+                    df = fun100.pdf_to_df(file_path)
+                    folder_path = os.path.join('pdfs', folder)
+                    df = piscina_corta(df, folder_path)
+                    df = delegacion(df, city_name)
+                    # convert df to csv 
+                    # remove .pdf from file name
+                    file = file[:-4]
+                    df.to_csv('csvs/' + folder + file + '.csv', index=False)
+                    success[folder] = file
+                    print("Success in file: {}".format(file))
+                except:
+                    errors[folder] = file
+                    print("Error in file: {}".format(file) + ". Distance: {}".format(distance))
+                    continue
+            elif distance == '50':
+                try:
+                    df = fun50.pdf_to_df(file_path)
+                    folder_path = os.path.join('pdfs', folder)
+                    df = piscina_corta(df, folder_path)
+                    df = delegacion(df, city_name)
+                    # convert df to csv 
+                    # remove .pdf from file name
+                    file = file[:-4]
+                    df.to_csv('csvs/' + folder + file + '.csv', index=False)
+                    success[folder] = file
+                    print("Error in file: {}".format(file) + ". Distance: {}".format(distance))
+                except:
+                    errors[folder] = file
+                    print("Error in file: {}".format(file))
+                    continue
+            else:
+                no_distance[folder] = file
+        except:
+            errors[folder] = file
+            print("Error in file: {}".format(file) + "No distance found")
+            continue
+
+        
+    
+# save errors no_distance and success as json
+import json
+with open('errors.json', 'w') as fp:
+    json.dump(errors, fp)
+with open('no_distance.json', 'w') as fp:
+    json.dump(no_distance, fp)
+with open('success.json', 'w') as fp:
+    json.dump(success, fp)
+
+    
+# pdf = 'pdfs/ResultList_37.pdf'
+# distance = selectfun(pdf)
+# if distance == '200':
+#     fun200.pdf_to_df(pdf)
+# elif distance == '100':
+#     fun100.pdf_to_df(pdf)
+# elif distance == '50':
+#     fun50.pdf_to_df(pdf)
+# else:
+#     print("Distance not found")
+
+merge_csv.py: 
+import datetime
+import os
+import pandas as pd
+
+# Get list of files in csvs folder
+files = os.listdir('csvs')
+
+# List to store dataframes
+dfs = []
+
+# Iterate through files
+for file in files:
+    if file.endswith('.csv'):
+        # Read file
+        file_path = os.path.join('csvs', file)
+        df_temp = pd.read_csv(file_path)
+        # Append to list
+        dfs.append(df_temp)
+
+# Concatenate all dataframes
+df = pd.concat(dfs, ignore_index=True)
+
+# Define columns (if necessary)
+df = df[['first_surname', 'second_surname', 'name', 'team', 'race_time', 'gender', 'distance', 'style', 'category', 'date', 'event_time', "Piscina Corta"]]
+# Removing digits from the 'team' column
+df['team'] = df['team'].str.replace('\d+', '', regex=True)
+
+# export df as csv
+df.to_csv('merged.csv', index=False)
+
+# Managing correct data types: 
+# Converting data types as per the user's request
+df['first_surname'] = df['first_surname'].astype('string')
+df['second_surname'] = df['second_surname'].astype('string')
+df['name'] = df['name'].astype('string')
+df['gender'] = df['gender'].astype('string')
+df['category'] = df['category'].astype('string')
+
+# Converting 'distance' to integer. This assumes that all values in 'distance' can be converted to integers.
+df['distance'] = pd.to_numeric(df['distance'], errors='coerce').astype('Int64')
+
+# Converting 'race_time' and 'event_time' to time format and 'date' to date format
+df['event_time'] = pd.to_datetime(df['event_time'], format='%H:%M:%S', errors='coerce').dt.time
+df['date'] = pd.to_datetime(df['date'], errors='coerce')
+
+# Race_time
+# Aplicando la conversión correcta para 'race_time'
+def convert_race_time(time_str):
+    """ Convert race time from string to datetime.time, accounting for minutes, seconds, and centiseconds. """
+    if ':' in time_str:
+        # Format is MM:SS.cc
+        minutes, seconds = time_str.split(':')
+        seconds, centiseconds = seconds.split('.')
+        return datetime.time(minute=int(minutes), second=int(seconds), microsecond=int(centiseconds)*10000)
+    else:
+        # Format is SS.cc
+        seconds, centiseconds = time_str.split('.')
+        return datetime.time(second=int(seconds), microsecond=int(centiseconds)*10000)
+
+# Convert 'race_time' to string
+df['race_time'] = df['race_time'].astype('string')
+
+# Aplicando la conversión a la columna 'race_time'
+df['race_time'] = df['race_time'].apply(convert_race_time)
+
+# Remove rows in which gender is neither 'masc' nor 'fem'
+data_cleaned = df[df['gender'].isin(['masc', 'fem'])]
+
+# Be sure that new df is correct
+remaining_issues = data_cleaned[~data_cleaned['gender'].isin(['masc', 'fem'])]
+# Save df as csv
+data_cleaned.to_csv('merged_datatype.csv', index=False)
+
+
+links.py: 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.firefox.options import Options
+import sys
+import json
+def is_iterable(obj):
+    """
+    Check if an object is iterable.
+
+    Args:
+    obj: Object to be checked.
+
+    Returns:
+    bool: True if the object is iterable, False otherwise.
+    """
+    try:
+        iter(obj)
+        return True
+    except TypeError:
+        return False
+    
+# Set up Firefox options
+options = Options()
+options.headless = False  # Set to False if you want to see the Firefox window
+
+# Initialize the WebDriver
+driver = webdriver.Firefox(options=options)
+
+# Verifica si se proporciona una URL como argumento
+if len(sys.argv) != 2:
+    print("Uso: python link.py <URL>")
+    sys.exit(1)
+
+# Obtiene la URL de los argumentos de línea de comandos
+url = sys.argv[1]
+
+driver.get(url)
+
+# Wait for the dropdown to be clickable
+wait = WebDriverWait(driver, 10)
+dropdown = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="limit"]')))
+
+# Click on the dropdown to show options
+dropdown.click()
+
+# Now, select the 'Todos' option
+# Since the 'Todos' option is a value in the dropdown, we can set it directly
+all_option = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/section[4]/div/div/div[1]/section/div/div/div/div/div/div/div[3]/div[6]/form/div/div/select/option[9]')))
+
+all_option.click()
+
+# Wait for the page to refresh with all the rows visible
+wait.until(EC.staleness_of(all_option))
+
+# At this point, you can start scraping the data as all rows should now be visible
+
+# Get all the rows
+rows = driver.find_elements(By.CLASS_NAME, 'ev_link_row')
+urls_linksweb = []
+for row in rows:
+    urls_linksweb.append(row.get_attribute('href'))
+
+# Now, you can loop through the urls and scrape the data
+urls = []
+for url in urls_linksweb:
+    print('Scraping: ' + url + ' ..............')
+    driver.get(url)
+    # Do your scraping here
+    # get the a which has text 'WEB DE RESULTADOS'
+    try:
+        web_results = driver.find_element(By.PARTIAL_LINK_TEXT, 'WEB DE RESULTADOS')
+    except:
+        web_results = driver.find_elements(By.PARTIAL_LINK_TEXT, 'WEB DEL CAMPEONATO')
+        
+    if (is_iterable(web_results)):
+        for web in web_results:
+            urls.append(web.get_attribute('href'))
+            print('hemos conseguido        ' + web.get_attribute('href') + '\n')
+    else:
+        urls.append(web_results.get_attribute('href'))
+        print('hemos conseguido        ' + web_results.get_attribute('href') + '\n')
+
+
+# Save the dictionary as a JSON file with the city name
+city_name = url.split('/')[-1]
+json_result_file = f'results/{city_name}_result.json'
+with open(json_result_file, 'w') as result_file:
+    json.dump(urls, result_file, indent=4)
+
+# Close the WebDriver
+driver.quit()
+
+demo.py: 
+import os
+import requests
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+import sys
+# import urls.json file
+import json
+with open('overall_results.json') as f:
+    dict_urls = json.load(f)
+
+# Receive the city name as an argument
+city_name = sys.argv[1]
+# Get the URL for the city
+urls = dict_urls[city_name]
+
+# Set up Firefox options
+options = Options()
+options.headless = True  # Set to False if you want to see the Firefox window
+
+# Use the options to specify the driver path
+driver = webdriver.Firefox(options=options)
+
+for url in urls.values():
+    print("url is: {}".format(url))
+    # Open the URL in the browser
+    driver.get(url)
+    # print the title of the page
+    # print(driver.title)
+
+    # Find all <a> tags with "Resultados" in the text and click on it
+    resultados_links = driver.find_elements(By.PARTIAL_LINK_TEXT, 'Resultados')
+
+    # Create a new directory with name cityname inside of pdfs to store the pdfs
+    os.makedirs(os.path.join("pdfs", city_name), exist_ok=True)
+    output_dir = os.path.join("pdfs", city_name)
+    pdfs = []
+    try:
+        del resultados_links[0]
+    except:
+        pass
+    try:
+        for link in resultados_links:
+            pdfs.append(link.get_attribute('href'))
+    except:
+        pass
+
+    # Create a new directory inside of pdfs to store the pdfs
+    new_folder_name = url.split('/')[-1]
+    if new_folder_name == '':
+        new_folder_name = url.split('/')[-2]
+    new_folder_path = os.path.join(output_dir, new_folder_name)
+    os.makedirs(new_folder_path, exist_ok=True)
+    #Find text in the page which contains 'Piscina Corta'
+    if 'Piscina Corta' in driver.page_source:
+        # Create a file called piscina_corta.txt inside of the new folder
+        with open(os.path.join(new_folder_path, 'piscina_corta.txt'), 'w') as f:
+            f.write('forsa clu natasion jere lolololololo')
+
+    for pdf in pdfs:
+        r = requests.get(pdf)
+        if r.status_code == 200:
+            file_path = os.path.join(new_folder_path, os.path.basename(pdf))
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            with open(file_path, 'wb') as f:
+                f.write(r.content)
+
+
+    # print list of files in pdfs directory
+# Close the browser
+driver.close() 
+
+
+functions50m.py: 
+import tabula
+import pandas as pd
+from datetime import datetime as dt
+import csv
+
+def check_gender (x):
+    if 'masc' in x:
+        return 'masc'
+    elif 'fem' in x:
+        return 'fem'
+    else:
+        return None
+    
+def gender_distance_style_category_date_time(lista):
+    """
+    lista: result of tabula.read_pdf
+    Output is (gender, distance, style, category) of the pdf IT NEEDS TO BE USED BEFORE nas_rows
+    Functions in which it is being used: pdf_to_df
+    """
+    df = lista
+    date_string = df.iloc[0,0].split(' ')[0]
+    time_string = df.iloc[0,0].split(' ')[2]
+    names = df.columns
+    #names in lowercase
+    names = [name.lower() for name in names]
+    names = [name.replace('á','a') for name in names]
+    names = [name.replace('é','e') for name in names]
+    names = [name.replace('í','i') for name in names]
+    names = [name.replace('ó','o') for name in names]
+    names = [name.replace('ú','u') for name in names]
+    
+    # Find string in names which contains 50m, 100m, 200m or 400m
+    gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
+    namessplitpoint = gender_distance_style[0].split('.')
+    gender_str = namessplitpoint[0]
+    gender = check_gender(gender_str)
+    distance = namessplitpoint[1].split(' ')[1]
+    # remove letters in distance
+    distance = ''.join([i for i in distance if not i.isalpha()])
+    style = namessplitpoint[1].split(' ')[2]
+
+    # last element in names
+    namessplitspace = names[-1].split(' ')
+    category = namessplitspace[0]
+
+    return gender, distance, style, category, date_string, time_string
+
+def add_columns(df, gender, distance, style, category, date_string, time_string): 
+    """"
+    add to df 3 columns gender, distance, style, category.
+    It should be used together with gender_distance_style_category
+    Functions in which it is being used: pdf_to_df
+    """
+    #add to df 5 columns
+    # First gender
+    df["gender"] = [gender]*df.shape[0]
+    # Second distance
+    df["distance"] = [distance]*df.shape[0]
+    # Third style
+    df["style"] = [style]*df.shape[0]
+    # Fourth category
+    df["category"] = [category]*df.shape[0]
+    # Fifth date
+    df["date"] = [date_string]*df.shape[0]
+    df["date"] = pd.to_datetime(df["date"], format='%d/%m/%Y')
+    # Sixth time
+    df["time"] = [time_string]*df.shape[0]
+    df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
+    return df
+
+def race_timefun(df):
+    race_time = df.iloc[:,-2].tolist()
+    # remove nan
+    race_time = [x for x in race_time if str(x) != 'nan']
+    # remove first element
+    race_time = race_time[1:]
+    df.drop(df.columns[-2], axis=1, inplace=True)
+    return race_time
+
+#Datacleaning
+def nas_rows(df):
+    """
+    df: dataframe
+    Output: df with rows with only NaN removed and it removes the first two rows
+    Functions in which it is being used: pdf_to_df
+    """
+    # Remove columns with more than 20% NaN
+    df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
+    # Remove rows with more than 20% NaN
+    df.dropna(axis=0, thresh=int(0.8*df.shape[1]), inplace=True)
+    # Remove first two rows
+    df.drop([0,1], axis=0, inplace=True)
+    
+    return df
+
+# def column_points(df):
+#     """
+#     df: dataframe
+#     Output: column with more than 20% of hyphens
+#     We use this function in points function, in order to find the column we'll called score
+#     """
+#     for column in df.columns:
+#         decimal_count = sum(df[column].apply(lambda x: isinstance(x, str) and x.count('.') == 1 and x.replace('.', '').isdigit()))
+#         if decimal_count >= len(df) / 5:
+#             return column
+#     return  KeyError("No column with more than 20% hyphens found. list_hyphens: {}".format(list_hyphens))
+
+# Example of usage:
+# Replace 'your_data_frame' with the name of your DataFrame
+# hyphen_columns = find_column_with_half_hyphens(your_data_frame)
+# print(hyphen_columns)
+
+# def puntos(df):
+#     """
+#     df: dataframe
+#     Output: list of points and df without the column of points. From now on I will say scores instead of points
+#     Functions being used: column_points
+#     Functions in which it is being used: evenANDpuntos
+#     """
+
+#     # find the column with more than 20% of hyphens
+#     column = column_points(df)
+#     # extract the forth column starting by the end
+#     points = df[column].tolist()
+#     # remove elements from puntos which are "-"
+#     points = [point for point in points if point != "-"]
+#     # remove the column
+#     df.drop(column, axis=1, inplace=True)
+#     return points, df
+
+def remove_accents(input_str):
+        s = input_str
+        s = s.replace('á','a')
+        s = s.replace('é','e')
+        s = s.replace('í','i')
+        s = s.replace('ó','o')
+        s = s.replace('ú','u')
+        return s
+def make_lowercase(input_str):
+    s = input_str
+    s = s.lower()
+    return s  
+def remove_whitespace(input_str):
+    s = input_str
+    s = s.replace(' ','')
+    return s
+
+def find_teams(df, teams_rfen):
+    """
+    df: dataframe
+    Output: list of teams
+    It uses even_odd and puntos functions and it uses add_columns function
+    Functions in which it is being used: pdf_to_df
+    """
+    columns = df.columns.tolist()
+    print(df)
+    for column in columns:
+        for element in df[column].tolist():
+            if type(element) == str:
+                element = make_lowercase(element)
+                element = remove_accents(element)
+                element = remove_whitespace(element)
+                for character in element:
+                    if type(element) == list:
+                        pass
+                    else:
+                        if character.isdigit():
+                            element = element.replace(character, '')
+                if element in teams_rfen["clubes"].tolist():
+                    return column
+
+def columns_df (df, race_time):
+    """
+    df: dataframe
+    Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
+    It uses even_odd and puntos functions and it uses add_columns function
+    Functions in which it is being used: pdf_to_df
+    """
+    df.iloc[:,0] = df.iloc[:,0].str.split('.')
+
+    print(df.columns)
+    # remove rows with only one element in the first column
+    df = df[df.iloc[:,0].map(len) > 1]
+    # remove the first column
+    first_column = df.columns[0]
+    print(df[first_column])
+    df[["drop", "full_name"]] = pd.DataFrame(df[first_column].tolist(), index= df.index)
+    print(df["drop"])
+    print(df["full_name"])
+    df.drop(first_column, axis=1, inplace=True)
+    df.drop("drop", axis=1, inplace=True)
+    # Reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # remove , in full_name
+    df["full_name"] = df["full_name"].str.replace(',', '')
+    # split full_name in three columns: firstname, secondname and name
+    name_parts = df['full_name'].str.split()
+
+    # Take guiris into account
+    for name_part in name_parts:
+        if len(name_part) == 2:
+            name_part.insert(1, '')
+    df['first_surname'] = name_parts.str[0]
+    df['first_surname'] = df['first_surname'].str.lower()
+    df['second_surname'] = name_parts.str[1]
+    df['second_surname'] = df['second_surname'].str.lower()
+    df['name'] = name_parts.str[2]
+    df['name'] = df['name'].str.lower()
+    # remove full_name
+    df.drop("full_name", axis=1, inplace=True)
+
+    # first surname first column second surname second column and name third column
+    cols = df.columns.tolist()
+    cols = cols[-3:] + cols[:-3]
+    df = df[cols]
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+    
+    print(df.iloc[:,2])
+
+    # Teams
+    file = open("clubs.csv", "r")
+    # dataframe from csv file with header
+    teams_rfen = pd.DataFrame(csv.reader(file, delimiter=","))
+    # make first row as header
+    teams_rfen.columns = teams_rfen.iloc[0]
+    # remove first row
+    teams_rfen = teams_rfen.iloc[1:]
+    teams_column_name = find_teams(df, teams_rfen)
+    teams = df[teams_column_name]
+    # remove the column
+    df.drop(teams_column_name, axis=1, inplace=True)
+    # remove numbers and first whitespace in third column
+    # remove numbers from teams if they exist
+
+    if teams.str.contains('\d').any():
+        teams = teams.str.replace('\d+', '')
+        # teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
+
+    # remove first whitespace if it exists
+    if teams.str.contains(' ').any():
+        teams = teams.str.replace(' ', '', 1)
+        # teams = [item.lstrip() for item in teams]
+    # add teams as the fourth column
+    df.insert(loc = 3, column = "team", value = teams)
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+    print(df)
+    print(df.iloc[:,2:])
+    df.insert(loc = 4, column = "race_time", value = race_time)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # rename last column to event_time
+    df.rename(columns={df.columns[-1]: "event_time"}, inplace=True)
+    #drop columns if they are not 11
+    if (len(df.columns) != 11):
+        # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        columns = df.columns.tolist()
+        notdropping = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        for column in columns:
+            if column not in notdropping:
+                df.drop(column, axis=1, inplace=True)
+                # reset index
+                df.reset_index(drop=True, inplace=True) 
+
+
+    df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+    return df
+
+# def delete_columns(df):
+#     """
+#     df: dataframe
+#     Output: df without columns 2 and 4
+#     """
+#     df.drop(df.columns[2], axis=1, inplace=True)
+#     df.drop(df.columns[4], axis=1, inplace=True)
+#     return df
+
+def pdf_to_df(pdf): 
+    tabu = tabula.read_pdf(pdf, pages='all')
+    tabu = tabu[0]
+    race_time = race_timefun(tabu)
+    gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
+    tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
+    tabu = nas_rows(tabu)
+    # reset index of tabu
+    tabu.reset_index(drop=True, inplace=True)
+    # tabu = delete_columns(tabu) 
+    tabu = columns_df(tabu, race_time)
+    return tabu
+
+functions100m.py: 
+import tabula
+import pandas as pd
+from datetime import datetime as dt
+import csv
+import re
+
+# Define a function that checks if a string starts with an integer followed by a point, a whitespace, and then a letter
+def check_string_format(s):
+    # Regular expression pattern to match the specific format
+    pattern = r"^\d+\.\s[a-zA-Z]"
+    return bool(re.match(pattern, s))
+
+def check_gender (x):
+    if 'masc' in x:
+        return 'masc'
+    elif 'fem' in x:
+        return 'fem'
+    else:
+        return None
+    
+def gender_distance_style_category_date_time(lista):
+    """
+    lista: result of tabula.read_pdf
+    Output is (gender, distance, style, category) of the pdf IT NEEDS TO BE USED BEFORE nas_rows
+    Functions in which it is being used: pdf_to_df
+    """
+    df = lista
+    date_string = df.iloc[0,0].split(' ')[0]
+    time_string = df.iloc[0,0].split(' ')[2]
+    names = df.columns
+    #names in lowercase
+    names = [name.lower() for name in names]
+    names = [name.replace('á','a') for name in names]
+    names = [name.replace('é','e') for name in names]
+    names = [name.replace('í','i') for name in names]
+    names = [name.replace('ó','o') for name in names]
+    names = [name.replace('ú','u') for name in names]
+    # Find string in names which contains 50m, 100m, 200m or 400m
+    gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
+    namessplitpoint = gender_distance_style[0].split('.')
+    gender_str = namessplitpoint[0]
+    gender = check_gender(gender_str)
+    distance = namessplitpoint[1].split(' ')[1]
+    # remove letters in distance
+    distance = ''.join([i for i in distance if not i.isalpha()])
+    style = namessplitpoint[1].split(' ')[2]
+
+    # last element in names
+    namessplitspace = names[-1].split(' ')
+    category = namessplitspace[0]
+
+    return gender, distance, style, category, date_string, time_string
+
+def add_columns(df, gender, distance, style, category, date_string, time_string): 
+    """"
+    add to df 3 columns gender, distance, style, category.
+    It should be used together with gender_distance_style_category
+    Functions in which it is being used: pdf_to_df
+    """
+    #add to df 5 columns
+    # First gender
+    df["gender"] = [gender]*df.shape[0]
+    # Second distance
+    df["distance"] = [distance]*df.shape[0]
+    # Third style
+    df["style"] = [style]*df.shape[0]
+    # Fourth category
+    df["category"] = [category]*df.shape[0]
+    # Fifth date
+    df["date"] = [date_string]*df.shape[0]
+    df["date"] = pd.to_datetime(df["date"], format='%d/%m/%Y')
+    # Sixth time
+    df["time"] = [time_string]*df.shape[0]
+    df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
+    return df
+
+def race_timefun(df):
+    # find column where there are some nan and it has the most rows with ":" in it
+    columns = df.columns.tolist()
+    previous_second_condition = 0
+    second_condition = 0
+    for column in columns:
+        first_condition = df[column].isnull().any()
+        previous_second_condition = second_condition
+        second_condition = sum(df[column].apply(lambda x: isinstance(x, str) and x.count(':') == 1))
+        # By adding second_condition > previous_second_condition I get at the end the column with the most rows with ":"
+        if first_condition and second_condition > previous_second_condition:
+            column_nan = column
+    race_time = df[column_nan].tolist()
+    # remove nan
+    race_time = [x for x in race_time if str(x) != 'nan']
+
+    # remove elements without :
+    race_time = [x for x in race_time if ':' in x]
+    
+    race_time = [x.split(' ')[0] for x in race_time]
+    df.drop(column_nan, axis=1, inplace=True)
+    return race_time
+
+#Datacleaning
+def nas_rows(df):
+    """
+    df: dataframe
+    Output: df with rows with only NaN removed and it removes the first two rows
+    Functions in which it is being used: pdf_to_df
+    """
+    # Remove columns with more than 20% NaN
+    df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
+    # Remove rows with more than 20% NaN
+    df.dropna(axis=0, thresh=int(0.8*df.shape[1]), inplace=True)
+    # Remove first two rows
+    df.drop([0,1], axis=0, inplace=True)
+    
+    return df
+
+# def column_points(df):
+#     """
+#     df: dataframe
+#     Output: column with more than 20% of hyphens
+#     We use this function in points function, in order to find the column we'll called score
+#     """
+#     for column in df.columns:
+#         decimal_count = sum(df[column].apply(lambda x: isinstance(x, str) and x.count('.') == 1 and x.replace('.', '').isdigit()))
+#         if decimal_count >= len(df) / 5:
+#             return column
+#     return  KeyError("No column with more than 20% hyphens found. list_hyphens: {}".format(list_hyphens))
+
+# Example of usage:
+# Replace 'your_data_frame' with the name of your DataFrame
+# hyphen_columns = find_column_with_half_hyphens(your_data_frame)
+# print(hyphen_columns)
+
+# def puntos(df):
+#     """
+#     df: dataframe
+#     Output: list of points and df without the column of points. From now on I will say scores instead of points
+#     Functions being used: column_points
+#     Functions in which it is being used: evenANDpuntos
+#     """
+
+#     # find the column with more than 20% of hyphens
+#     column = column_points(df)
+#     # extract the forth column starting by the end
+#     points = df[column].tolist()
+#     # remove elements from puntos which are "-"
+#     points = [point for point in points if point != "-"]
+#     # remove the column
+#     df.drop(column, axis=1, inplace=True)
+#     return points, df
+def even_odd(df):
+    """
+    df: dataframe
+    Output: df with only even rows and df with only odd rows
+    It uses even_odd function
+    Functions in which it is being used: evenANDpuntos
+    """
+    # create a new dataframe with even rows
+    even = df.iloc[::2]
+    # create a new dataframe with odd rows
+    odd = df.iloc[1::2]
+    return even, odd
+
+def evenANDpuntos(df):
+    """
+    df: dataframe
+    Output: df with only even rows and a new column for scores
+    It uses even_odd and puntos functions
+    Functions in which it is being used: pdf_to_df
+    """
+    even, _ = even_odd(df)
+    # score, _ = puntos(df)
+    # convert to float
+    # score = [float(x) for x in score]
+    # add puntos to even
+    # even["score"] = score
+    # reset index
+    even.reset_index(drop=True, inplace=True)
+    return even
+
+def make_lowercase(s):
+    """Converts a string to lowercase."""
+    return s.lower()
+
+def remove_accents(s):
+    """Removes accents from a string."""
+    import unicodedata
+    return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+
+def remove_whitespace(s):
+    """Removes whitespace from a string."""
+    return ''.join(s.split())
+
+def find_teams(df, teams_rfen):
+    """
+    Modifies the input function to normalize the data for comparison,
+    and to check for partial matches in all columns.
+    """
+    columns_with_teams = []
+
+    # Normalizing the team names
+    teams = [make_lowercase(remove_accents(remove_whitespace(team))) for team in teams_rfen["clubes"].tolist()]
+
+    # Iterating through each column in the dataframe
+    for column in df.columns:
+        # Normalizing the data in the column
+        normalized_column = df[column].apply(lambda x: make_lowercase(remove_accents(remove_whitespace(str(x)))))
+        
+        # Checking for any match in the column
+        for team in teams:
+            if normalized_column.str.contains(team).any():
+                columns_with_teams.append(column)
+                break  # Breaks the inner loop if a team is found in the current column
+
+    return columns_with_teams[0]
+
+def teams_with_names(df, teams_column_name):
+    if (check_string_format(df[teams_column_name].iloc[0])):
+        # Regular expression pattern to extract the desired parts
+        # Capturing everything after the initial number and dot as the name
+        # Capturing the number followed by the team name as the second part
+        pattern1 = r'\d+\. ([\w\s,]+) (\d+ [\w\s.]+)'
+        # pattern2 is same but without digit at the beginning
+        pattern2 = r'([\w\s,]+) (\d+ [\w\s.]+)'
+
+        # Lists to store the extracted data
+        names = []
+        number_team = []
+
+        for item in df[teams_column_name].tolist():
+            match1 = re.match(pattern1, item)
+            match2 = re.match(pattern2, item)
+            if match1:
+                name_append = match1.group(1).strip()  # Name
+                number_team_append = match1.group(2).strip() # Number + Team
+
+                # Remove digits, dots and first whitespace from name_append
+                name_append = re.sub(r'^\d+\. ', '', name_append)
+                # Remove digits from number_team_append
+                number_team_append = re.sub(r'\d+', '', number_team_append)
+                
+                names.append(name_append)
+                number_team.append(number_team_append)
+            elif match2:
+                name_append = match2.group(1).strip()  # Name
+                number_team_append = match2.group(2).strip() # Number + Team
+                # Remove digits, dots and first whitespace from number_team_append if they have them
+                number_team_append = re.sub(r'^\d+\. ', '', match2.group(2).strip())
+
+                names.append(name_append)
+                number_team.append(number_team_append)
+            else:
+                # Append NaN or a placeholder if the pattern doesn't match
+                names.append(pd.NA)
+                number_team.append(pd.NA)
+        # Add columns to the dataframe
+        df.insert(loc = 3, column = "team", value = number_team)
+        df.insert(loc = 4, column = "full_name", value = names)
+        # Remove the original column
+        df.drop(teams_column_name, axis=1, inplace=True)
+
+        # Reset index
+        df.reset_index(drop=True, inplace=True)
+        return df
+    return df
+    
+def columns_df (df, race_time, teams_column_name, teams_rfen):
+    """
+    df: dataframe
+    Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
+    It uses even_odd and puntos functions and it uses add_columns function
+    Functions in which it is being used: pdf_to_df
+    """
+
+    if ("full_name" in df.columns):
+        pass
+    else:
+        df.iloc[:,0] = df.iloc[:,0].str.split('.')
+        # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
+        # remove the first column
+        names_column = df.columns[0]
+        df[["drop", "full_name"]] = pd.DataFrame(df[names_column].tolist(), index= df.index)
+        df.drop(names_column, axis=1, inplace=True)
+        df.drop("drop", axis=1, inplace=True)
+        # Reset index
+        df.reset_index(drop=True, inplace=True)
+
+    # remove , in full_name
+    df["full_name"] = df["full_name"].str.replace(',', '')
+    # remove first whitespace in full_name
+    df["full_name"] = df["full_name"].str.replace(' ', '', 1)
+    # split full_name in three columns: firstname, secondname and name
+    df['full_name'].str.split()
+
+    # remove rows with nan in full_name 
+    df.dropna(subset=['full_name'], inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    name_parts = df['full_name'].str.split()
+    # Take guiris into account
+    for name_part in name_parts:
+        if len(name_part) == 2:
+            name_part.insert(1, '')
+    df['first_surname'] = name_parts.str[0]
+    df['first_surname'] = df['first_surname'].str.lower()
+    df['second_surname'] = name_parts.str[1]
+    df['second_surname'] = df['second_surname'].str.lower()
+    df['name'] = name_parts.str[2]
+    df['name'] = df['name'].str.lower()
+    # remove full_name
+    df.drop("full_name", axis=1, inplace=True)
+
+    # first surname first column second surname second column and name third column
+    cols = df.columns.tolist()
+    cols = cols[-3:] + cols[:-3]
+    df = df[cols]
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    if ("team" not in df.columns):
+        # find teams column
+        teams = df[teams_column_name]
+        # remove the column
+        df.drop(teams_column_name, axis=1, inplace=True)
+        # remove numbers and first whitespace in third column
+        # remove numbers from teams if they exist
+
+        if teams.str.contains('\d').any():
+            teams = teams.str.replace('\d+', '')
+            # teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
+
+        # remove first whitespace if it exists
+        if teams.str.contains(' ').any():
+            teams = teams.str.replace(' ', '', 1)
+            # teams = [item.lstrip() for item in teams]
+        # add teams as the fourth column
+        df.insert(loc = 3, column = "team", value = teams)
+
+        # reset index
+        df.reset_index(drop=True, inplace=True)
+
+    print(df.iloc[:,2:])
+    df.insert(loc = 4, column = "race_time", value = race_time)
+    
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # rename last column to event_time
+    df.rename(columns={df.columns[-1]: "event_time"}, inplace=True)
+    #drop columns if they are not 11
+    if (len(df.columns) != 11):
+        # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        columns = df.columns.tolist()
+        notdropping = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        for column in columns:
+            if column not in notdropping:
+                df.drop(column, axis=1, inplace=True)
+                # reset index
+                df.reset_index(drop=True, inplace=True)
+
+    df.columns = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+    return df
+
+# def delete_columns(df):
+#     """
+#     df: dataframe
+#     Output: df without columns 2 and 4
+#     """
+#     df.drop(df.columns[2], axis=1, inplace=True)
+#     df.drop(df.columns[4], axis=1, inplace=True)
+#     return df
+def nas_rows_extreme(df, race_time):
+    # keep index in which there's a row with a nan
+    index = df.index[df.isnull().any(axis=1)]
+    # remove rows with nan
+    df.dropna(axis=0, inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+    # delete element in race_time with the same index as the row with nan
+    race_time = [race_time[i] for i in range(len(race_time)) if i not in index]
+    return df, race_time
+
+def pdf_to_df(pdf): 
+    tabu = tabula.read_pdf(pdf, pages='all')
+    tabu = tabu[0]
+    gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
+    race_time = race_timefun(tabu)
+    tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
+    tabu = nas_rows(tabu)
+    # reset index of tabu
+    tabu.reset_index(drop=True, inplace=True)
+
+    # Teams
+    file = open("clubs.csv", "r")
+    # dataframe from csv file with header
+    teams_rfen = pd.DataFrame(csv.reader(file, delimiter=","))
+    # make first row as header
+    teams_rfen.columns = teams_rfen.iloc[0]
+    # remove first row
+    teams_rfen = teams_rfen.iloc[1:]
+    # find teams column
+
+
+    teams_column_name = find_teams(tabu, teams_rfen)
+
+    # tabu = delete_columns(tabu) 
+    tabu = evenANDpuntos(tabu)
+    # tabu to csv
+    tabu.to_csv("tabu.csv", index=False)
+    tabu = teams_with_names(tabu, teams_column_name)
+    print(tabu)
+    tabu, race_time = nas_rows_extreme(tabu, race_time)
+    tabu = columns_df(df=tabu, race_time=race_time, teams_column_name=teams_column_name, teams_rfen=teams_rfen)
+    return tabu
+
+functions200m.py: 
+import tabula
+import pandas as pd
+from datetime import datetime as dt
+import csv
+def check_gender (x):
+    if 'masc' in x:
+        return 'masc'
+    elif 'fem' in x:
+        return 'fem'
+    else:
+        return None
+    
+def gender_distance_style_category_date_time(lista):
+    """
+    lista: result of tabula.read_pdf
+    Output is (gender, distance, style, category) of the pdf IT NEEDS TO BE USED BEFORE nas_rows
+    Functions in which it is being used: pdf_to_df
+    """
+    df = lista
+    date_string = df.iloc[0,0].split(' ')[0]
+    time_string = df.iloc[0,0].split(' ')[2]
+    names = df.columns
+    #names in lowercase
+    names = [name.lower() for name in names]
+    names = [name.replace('á','a') for name in names]
+    names = [name.replace('é','e') for name in names]
+    names = [name.replace('í','i') for name in names]
+    names = [name.replace('ó','o') for name in names]
+    names = [name.replace('ú','u') for name in names]
+    # Find string in names which contains 50m, 100m, 200m or 400m
+    gender_distance_style = [name for name in names if "50m" in name or "100m" in name or "200m" in name or "400m" in name]
+    namessplitpoint = gender_distance_style[0].split('.')
+    gender_str = namessplitpoint[0]
+    gender = check_gender(gender_str)
+    distance = namessplitpoint[1].split(' ')[1]
+    # remove letters in distance
+    distance = ''.join([i for i in distance if not i.isalpha()])
+    style = namessplitpoint[1].split(' ')[2]
+
+    # last element in names
+    namessplitspace = names[-1].split(' ')
+    category = namessplitspace[0]
+
+    return gender, distance, style, category, date_string, time_string
+
+def add_columns(df, gender, distance, style, category, date_string, time_string): 
+    """"
+    add to df 3 columns gender, distance, style, category.
+    It should be used together with gender_distance_style_category
+    Functions in which it is being used: pdf_to_df
+    """
+    #add to df 5 columns
+    # First gender
+    df["gender"] = [gender]*df.shape[0]
+    # Second distance
+    df["distance"] = [distance]*df.shape[0]
+    # Third style
+    df["style"] = [style]*df.shape[0]
+    # Fourth category
+    df["category"] = [category]*df.shape[0]
+    # Fifth date
+    df["date"] = [date_string]*df.shape[0]
+    df["date"] = pd.to_datetime(df["date"], format='%d/%m/%Y')
+    # Sixth time
+    df["time"] = [time_string]*df.shape[0]
+    df["time"] = pd.to_datetime(df["time"], format='%H:%M').dt.time
+    return df
+
+def has_whitespace(x):
+    return x.count(' ')>0
+
+def list_has_whitespace(x):
+    return sum(map(has_whitespace, x))>0
+
+def race_time(df):
+    last_column = df.iloc[:, -7].tolist() # it is called last_column because at the beginning it was
+    last_column_name = df.columns[-7]
+    racetime_dic = dict()
+    # if there's a whitespace in any of the rows of the lastcolumn
+    if (list_has_whitespace(last_column)):
+        #key is the column name
+        racetime_dic[last_column_name] = []
+        for element in last_column:
+            if (has_whitespace(element)):
+                race_time = element.split(' ')[0]
+                racetime_dic[last_column_name].append(race_time)
+
+            else:
+                if(element.count(':')>0):
+                    race_time = element
+                    racetime_dic[last_column_name].append(race_time)
+    else:
+        previous_last_column = df.iloc[:,-8].tolist()
+        previous_last_column_name = df.columns[-8]
+        racetime_dic[previous_last_column_name] = []
+        for element in previous_last_column:
+            if(element.count(':')>0):
+                    race_time = element
+                    racetime_dic[last_column_name].append(race_time)
+    return racetime_dic
+#Datacleaning
+def nas_rows(df):
+    """
+    df: dataframe
+    Output: df with rows with only NaN removed and it removes the first two rows
+    Functions in which it is being used: pdf_to_df
+    """
+    # Remove columns with more than 5% NaN
+    df.dropna(axis=1, thresh=int(0.8*df.shape[0]), inplace=True)
+    # Remove rows with more than 5% NaN
+    df.dropna(axis=0, thresh=int(0.8*df.shape[1]), inplace=True)
+    # Remove first two rows
+    df.drop([0,1], axis=0, inplace=True)
+    
+    return df
+
+# def column_points(df):
+#     """
+#     df: dataframe
+#     Output: column with more than 20% of hyphens
+#     We use this function in points function, in order to find the column we'll called score
+#     """
+#     for column in df.columns:
+#         decimal_count = sum(df[column].apply(lambda x: isinstance(x, str) and x.count('.') == 1 and x.replace('.', '').isdigit()))
+#         if decimal_count >= len(df) / 5:
+#             return column
+#     return  KeyError("No column with more than 20% hyphens found. list_hyphens: {}".format(list_hyphens))
+
+# Example of usage:
+# Replace 'your_data_frame' with the name of your DataFrame
+# hyphen_columns = find_column_with_half_hyphens(your_data_frame)
+# print(hyphen_columns)
+
+# def puntos(df):
+#     """
+#     df: dataframe
+#     Output: list of points and df without the column of points. From now on I will say scores instead of points
+#     Functions being used: column_points
+#     Functions in which it is being used: evenANDpuntos
+#     """
+
+#     # find the column with more than 20% of hyphens
+#     column = column_points(df)
+#     # extract the forth column starting by the end
+#     points = df[column].tolist()
+#     # remove elements from puntos which are "-"
+#     points = [point for point in points if point != "-"]
+#     # remove the column
+#     df.drop(column, axis=1, inplace=True)
+#     return points, df
+def even_odd(df):
+    """
+    df: dataframe
+    Output: df with only even rows and df with only odd rows
+    It uses even_odd function
+    Functions in which it is being used: evenANDpuntos
+    """
+    # create a new dataframe with even rows
+    even = df.iloc[::2]
+    # create a new dataframe with odd rows
+    odd = df.iloc[1::2]
+    return even, odd
+
+def evenANDpuntos(df):
+    """
+    df: dataframe
+    Output: df with only even rows and a new column for scores
+    It uses even_odd and puntos functions
+    Functions in which it is being used: pdf_to_df
+    """
+    even, _ = even_odd(df)
+    # score, _ = puntos(df)
+    # convert to float
+    # score = [float(x) for x in score]
+    # add puntos to even
+    # even["score"] = score
+    # reset index
+    even.reset_index(drop=True, inplace=True)
+    return even
+
+def remove_accents(input_str):
+        s = input_str
+        s = s.replace('á','a')
+        s = s.replace('é','e')
+        s = s.replace('í','i')
+        s = s.replace('ó','o')
+        s = s.replace('ú','u')
+        return s
+def make_lowercase(input_str):
+    s = input_str
+    s = s.lower()
+    return s  
+def remove_whitespace(input_str):
+    s = input_str
+    s = s.replace(' ','')
+    return s
+
+def find_teams(df, teams_rfen):
+    """
+    df: dataframe
+    Output: list of teams
+    It uses even_odd and puntos functions and it uses add_columns function
+    Functions in which it is being used: pdf_to_df
+    """
+    columns = df.columns.tolist()
+    for column in columns:
+        for element in df[column].tolist():
+            if type(element) == str:
+                element = make_lowercase(element)
+                element = remove_accents(element)
+                element = remove_whitespace(element)
+                for character in element:
+                    # remove digits from element (teams names in some cases are like this: 1. CN Portuense)
+                    if character.isdigit():
+                        element = element.replace(character, '')
+                if element in teams_rfen["clubes"].tolist():
+                    return column
+            
+def columns_df (df, racetime_dic):
+    """
+    df: dataframe
+    Output: df with column's names "first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"
+    It uses even_odd and puntos functions and it uses add_columns function
+    Functions in which it is being used: pdf_to_df
+    """
+    df.iloc[:,0] = df.iloc[:,0].str.split('.')
+    # df[['first_surname', 'second_surname', 'name']] = df.iloc[:,0].str.split(' ', 2, expand=True)
+    # remove the first column
+    first_column = df.columns[0]
+
+    # remove rows with nan in any column
+    df.dropna(axis=0, how='any', inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    df[["drop", "full_name"]] = pd.DataFrame(df[first_column].tolist(), index= df.index)
+    df.drop(first_column, axis=1, inplace=True)
+    df.drop("drop", axis=1, inplace=True)
+    # Reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # remove , in full_name
+    df["full_name"] = df["full_name"].str.replace(',', '')
+    # remove first whitespace in full_name
+    df["full_name"] = df["full_name"].str.replace(' ', '', 1)
+    # split full_name in three columns: firstname, secondname and name
+    df['full_name'].str.split()
+
+    # drop rows in df with nan in full_name
+    df.dropna(subset=['full_name'], inplace=True)
+    df.reset_index(drop=True, inplace=True)
+    
+    name_parts = df['full_name'].str.split()
+
+    # Take guiris into account
+    for name_part in name_parts:
+        if len(name_part) == 2:
+            name_part.insert(1, '')
+    df['first_surname'] = name_parts.str[0]
+    df['first_surname'] = df['first_surname'].str.lower()
+    df['second_surname'] = name_parts.str[1]
+    df['second_surname'] = df['second_surname'].str.lower()
+    df['name'] = name_parts.str[2]
+    df['name'] = df['name'].str.lower()
+    # remove full_name
+    df.drop("full_name", axis=1, inplace=True)
+
+    # first surname first column second surname second column and name third column
+    cols = df.columns.tolist()
+    cols = cols[-3:] + cols[:-3]
+    df = df[cols]
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # drop column 5
+    # df.drop(df.columns[5], axis=1, inplace=True)
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # Teams
+    file = open("clubs.csv", "r")
+    # dataframe from csv file with header
+    teams_rfen = pd.DataFrame(csv.reader(file, delimiter=","))
+    # make first row as header
+    teams_rfen.columns = teams_rfen.iloc[0]
+    # remove first row
+    teams_rfen = teams_rfen.iloc[1:]
+    teams_column_name = find_teams(df, teams_rfen)
+    teams = df[teams_column_name]
+
+    # remove the column
+    df.drop(teams_column_name, axis=1, inplace=True)
+    # remove numbers and first whitespace in third column
+    # remove numbers from teams if they exist
+
+    if teams.str.contains('\d').any():
+        teams = teams.str.replace('\d+', '')
+        # teams = [''.join(char for char in item if not char.isdigit()).strip() for item in teams]
+
+    # remove first whitespace if it exists
+    if teams.str.contains(' ').any():
+        teams = teams.str.replace(' ', '', 1)
+        # teams = [item.lstrip() for item in teams]
+    # add teams as the fourth column
+    df.insert(loc = 3, column = "team", value = teams)
+
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+    # drop any column with more than 10% NaN
+    df.dropna(axis=1, thresh=int(0.9*df.shape[0]), inplace=True)
+    df.reset_index(drop=True, inplace=True)
+
+    # We add race_time
+    column = list(racetime_dic.keys())[0]
+    values = racetime_dic[column]
+    df["race_time"] = values
+    # We remove the column in which we extracted race_time
+    df.drop(column, axis=1, inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # We add event_time
+    df.rename(columns={"time": "event_time"}, inplace=True)
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    #drop columns if they are not 11
+    if (len(df.columns) != 11):
+        # drop columns named differently from ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        columns = df.columns.tolist()
+        notdropping = ["first_surname", "second_surname", "name", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]
+        for column in columns:
+            if column not in notdropping:
+                df.drop(column, axis=1, inplace=True)
+                # reset index
+                df.reset_index(drop=True, inplace=True)
+    df = df[["name", "first_surname", "second_surname", "team", "race_time", "gender", "distance", "style", "category", "date", "event_time"]]
+    # reset index
+    df.reset_index(drop=True, inplace=True)
+
+    # remove integers from team column if they exist
+    if df["team"].str.contains('\d').any():
+        df["team"] = df["team"].str.replace('\d+', '')
+        # df["team"] = [''.join(char for char in item if not char.isdigit()).strip() for item in df["team"]]
+    return df
+
+# def delete_columns(df):
+#     """
+#     df: dataframe
+#     Output: df without columns 2 and 4
+#     """
+#     df.drop(df.columns[2], axis=1, inplace=True)
+#     df.drop(df.columns[4], axis=1, inplace=True)
+#     return df
+
+def pdf_to_df(pdf): 
+    tabu = tabula.read_pdf(pdf, pages='all')
+    tabu = tabu[0]
+    gender, distance, style, category, date, time = gender_distance_style_category_date_time(tabu)
+    tabu = add_columns(tabu, gender=gender, distance=distance, style=style, category=category, date_string=date, time_string=time) #add_columns has dataframe as input
+    tabu = nas_rows(tabu)
+    # reset index of tabu
+    tabu.reset_index(drop=True, inplace=True)
+    # tabu = delete_columns(tabu) 
+    tabu = evenANDpuntos(tabu)
+    racetime_dic = race_time(tabu)
+    tabu = columns_df(tabu, racetime_dic)
+    return tabu
