@@ -47,7 +47,34 @@ You can install the required Python packages using `pip`:
 
 4. In order to download the list of all swimming teams in Spain from this website, https://rfen.es/es/clubs, run: 
 `python clubs.py`
-The results can be seen in clubs.csv
+The result can be found in clubes.csv. Here is a brief look:
+
+| comunidad_autonoma      | provincia           | clubes                                          |
+|:------------------------|:--------------------|:------------------------------------------------|
+| comunidadvalenciana     | valencia            | a.c.almassera                                   |
+| andalucia               | sevilla             | a.c.d.entretorres                               |
+| catalunya               | girona              | a.c.e.j.lajunquera                              |
+| regiondemurcia          | murcia              | a.c.r.emp                                       |
+| cantabria               | cantabria           | a.campurriananatacion                           |
+| cantabria               | cantabria           | a.cantabranat.                                  |
+| aragon                  | zaragoza            | a.d.a.calatayud                                 |
+| cantabria               | cantabria           | a.d.alberdiproinca                              |
+| andalucia               | sevilla             | a.d.aljarafexxi                                 |
+| andalucia               | jaen                | a.d.arjona                                      |
+| comunidadvalenciana     | valencia            | a.c.almassera                                   |
+| andalucia               | sevilla             | a.c.d.entretorres                               |
+| catalunya               | girona              | a.c.e.j.lajunquera                              |
+| regiondemurcia          | murcia              | a.c.r.emp                                       |
+| cantabria               | cantabria           | a.campurriananatacion                           |
+| cantabria               | cantabria           | a.cantabranat.                                  |
+| aragon                  | zaragoza            | a.d.a.calatayud                                 |
+| cantabria               | cantabria           | a.d.alberdiproinca                              |
+| andalucia               | sevilla             | a.d.aljarafexxi                                 |
+| andalucia               | jaen                | a.d.arjona                                      |
+| castilla-lamancha       | albacete            | a.d.atlantida                                   |
+| castillayleon           | leon                | a.d.bierzoalto                                  |
+| comunidaddemadrid       | madrid              | a.d.c.lasmatas                                  |
+
 5. In order to download all the results of the competitions in pdf from this website, https://www.fan.es/, run:
 `python main_workflow.py`
 the result can be seen in pdfs folder
