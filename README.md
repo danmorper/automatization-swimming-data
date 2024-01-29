@@ -30,7 +30,9 @@ Before using these scripts, make sure you have the following dependencies instal
 - Firefox WebDriver (for Selenium)
 
 You can install the required Python packages using `pip`:
-`pip install selenium pandas requests tabula-py`
+```bash
+pip install selenium pandas requests tabula-py
+```
 
 
 
@@ -38,15 +40,21 @@ You can install the required Python packages using `pip`:
 
 1. Clone this repository to your local machine:
 
-`git clone https://github.com/danmorper/swimming-competition-automation.git`
+```bash
+git clone https://github.com/danmorper/swimming-competition-automation.git
+```
 
 2. Navigate to the project directory:
-`cd swimming-competition-automation`
+```bash
+cd swimming-competition-automation
+```
 
 3. Install the necessary Python packages as mentioned in the prerequisites.
 
 4. In order to download the list of all swimming teams in Spain from this website, https://rfen.es/es/clubs, run: 
-`python clubs.py`
+```bash
+python clubs.py
+```
 The result can be found in clubes.csv. Here is a brief look:
 
 | comunidad_autonoma      | provincia           | clubes                                          |
@@ -76,11 +84,15 @@ The result can be found in clubes.csv. Here is a brief look:
 | comunidaddemadrid       | madrid              | a.d.c.lasmatas                                  |
 
 5. In order to download all the results of the competitions in pdf from this website, https://www.fan.es/, run:
-`python main_workflow.py`
+```bash
+python main_workflow.py
+```
 the result can be seen in pdfs folder
 
 6. In order to convert pdfs to csvs, run 
-`python pdf_csv.py`
+```bash
+python pdf_csv.py
+```
 the result can be seen in cvs folder
 ## Structure
 The repository is organized as follows:
